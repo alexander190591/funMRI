@@ -1,13 +1,17 @@
 
 #include "src/ScannerModule/include/RFIDRC522.h"
-//#include "src/SoundModule/include/DFPlayerMini.h"
-#include "src/SoundDummy/Include/SoundDummy.h"
+#include "src/SoundModule/include/DFPlayerMini.h"
+//#include "src/SoundDummy/Include/SoundDummy.h"
 #include "src/BluetoothFeather/Include/BluetoothFeather.h"
 
-#define SOMO_TX 28
-#define SOMO_RX 29
+/**
+ * @brief Defines for Bluefruit Feather nRF52832
+ * 
+ */
+#define SOMO_TX 7      //28 before
+#define SOMO_RX 11     //29 before
 #define SOMO_BAUDRATE 9600
-#define LED_PIN 2
+#define LED_PIN LED_BUILTIN
 #define RFID_SS_PIN 5
 #define RFID_RST_PIN 4
 
@@ -23,15 +27,18 @@ void setup()
   pinMode(LED_PIN, OUTPUT);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
-  digitalWrite(LED_PIN, LOW);
+
 
   communicationPtr = new BluetoothFeather();
   communicationPtr->init();
 
   scannerPtr = new RFIDRC522(RFID_RST_PIN, RFID_SS_PIN);
 
-  //soundPtr = new DFPlayerMini(SOMO_RX, SOMO_TX, SOMO_BAUDRATE);
-  soundPtr = new SoundDummy(PIN_LED1);
+  soundPtr = new DFPlayerMini(SOMO_RX, SOMO_TX, SOMO_BAUDRATE);
+  //soundPtr = new SoundDummy(LED_PIN);
+
+  digitalWrite(LED_BUILTIN, HIGH);
+
   soundPtr->playSound();
 
   Serial.println("Setup done...");
