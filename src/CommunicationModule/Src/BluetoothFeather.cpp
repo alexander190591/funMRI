@@ -16,6 +16,10 @@
 #include <Adafruit_LittleFS.h>
 #include <InternalFileSystem.h>
 
+//#include "../../BatteryModule/Include/BatteryFeather.h"
+//IBatteryModule* battModule = new BatteryFeather(31);
+
+
 // BLE Service
 BLEDfu  bledfu;  // OTA DFU service
 BLEDis  bledis;  // device information

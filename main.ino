@@ -2,7 +2,7 @@
 #include "src/ScannerModule/include/RFIDRC522.h"
 #include "src/SoundModule/include/DFPlayerMini.h"
 //#include "src/SoundDummy/Include/SoundDummy.h"
-#include "src/BluetoothFeather/Include/BluetoothFeather.h"
+#include "src/CommunicationModule/Include/BluetoothFeather.h"
 
 /**
  * @brief Defines for Bluefruit Feather nRF52832

@@ -25,7 +25,8 @@ protected:
 
 private:
 	DFRobotDFPlayerMini *_DFPlayerPtr = nullptr;
-	SoftwareSerial *_serialPtr = nullptr;
+	//SoftwareSerial *_serialPtr = nullptr;
+	Uart* _serialPtr = nullptr;						// Changed to UART ptr instead of SoftwareSerial.
 	int _rx = -1;
 	int _tx = -1;
 	int _baudrate = 0;

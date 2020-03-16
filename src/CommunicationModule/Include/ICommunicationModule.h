@@ -5,8 +5,8 @@
  *      Author: Alexander
  */
 
-#ifndef BLUETOOTHMODULE_HM_10_ICOMMUNICATIONMODULE_H_
-#define BLUETOOTHMODULE_HM_10_ICOMMUNICATIONMODULE_H_
+#ifndef ICOMMUNICATIONMODULE_H_
+#define ICOMMUNICATIONMODULE_H_
 #include <Arduino.h>
 
 	class ICommunicationModule {

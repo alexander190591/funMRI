@@ -38,9 +38,11 @@ void DFPlayerMini::playSound(){
 
 void DFPlayerMini::init(){
 	//Include exception here instead of Serial:
-	_serialPtr = new SoftwareSerial(_rx, _tx);
+	
+	//new SoftwareSerial(_rx, _tx); ---- SoftwareSerial is in conflict with BluetoothFeather. Dedicated UART pins on Feather is used instead.
+	_serialPtr = &Serial; 
 
-	_serialPtr->begin(_baudrate);
+	//_serialPtr->begin(_baudrate);
 	  
 	if(!_DFPlayerPtr->begin(*(_serialPtr)))
 	{
