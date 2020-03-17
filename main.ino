@@ -1,8 +1,8 @@
 
-#include "src/ScannerModule/include/RFIDRC522.h"
-#include "src/SoundModule/include/DFPlayerMini.h"
-//#include "src/SoundDummy/Include/SoundDummy.h"
-#include "src/CommunicationModule/Include/BluetoothFeather.h"
+#include "src/Modules/ScannerModule/include/RFIDRC522.h"
+#include "src/Modules/SoundModule/include/DFPlayerMini.h"
+//#include "src/Modules/SoundDummy/Include/SoundDummy.h"
+#include "src/Modules/CommunicationModule/Include/BluetoothFeather.h"
 
 /**
  * @brief Defines for Bluefruit Feather nRF52832
@@ -50,7 +50,7 @@ void loop()
   // if(messageReceived.length() >= 1)
   //   {
   //     String msgSend = "Message received: ";
-  //     msgSend.concat(messageReceived);
+  //     msgSend += messageReceived;
 
   //     Serial.println(msgSend);
 
@@ -64,7 +64,7 @@ void loop()
   //     String respondToBT = "";
   //     for(int i = 0; i < scannerPtr->getSizeOfData(); i++)
   //     {
-  //       respondToBT.concat(scannerPtr->retrieveResult()[i]); //+= scannerPtr->retrieveResult()[i];
+  //       respondToBT += scannerPtr->retrieveResult()[i]; //+= scannerPtr->retrieveResult()[i];
   //     }
   //     IDTag = respondToBT;
   //   }
@@ -84,7 +84,7 @@ void loop()
   if(BTmsg.length() >= 1)
     {
       String msgSend = "Message received: ";
-      msgSend.concat(BTmsg);
+      msgSend += BTmsg;
 
       //Serial.println(msgSend);
     }
@@ -100,7 +100,7 @@ void loop()
       respondToBT = "";
       for(int i = 0; i < scannerPtr->getSizeOfData(); i++)
       {
-        respondToBT.concat(scannerPtr->retrieveResult()[i]); //+= scannerPtr->retrieveResult()[i];
+        respondToBT += scannerPtr->retrieveResult()[i]; //+= scannerPtr->retrieveResult()[i];
       }
       IDTag = respondToBT;
     }
@@ -116,10 +116,10 @@ void loop()
       String newScanString = "";
       for(int i = 0; i < scannerPtr->getSizeOfData(); i++)
       {
-        newScanString.concat(scannerPtr->retrieveResult()[i]);
+        newScanString += scannerPtr->retrieveResult()[i];
       }
 
-      if(newScanString.equals(IDTag))
+      if(newScanString == IDTag)
       {
         soundPtr->playSound();
         communicationPtr->sendCmd("true");

@@ -1,11 +1,11 @@
-#ifndef IBATTERYMODULE_H_
-#define IBATTERYMODULE_H_
+#ifndef ISUPPLYMODULE_H_
+#define ISUPPLYMODULE_H_
 #include <stdint.h>
 
-class IBatteryModule {
+class ISupplyModule {
 	public:
 		virtual float readBatteryVoltage(void) = 0;
 		virtual uint8_t MilliVoltToPercentage(float mVolts) = 0;
 	};
 
-#endif // IBATTERYMODULE_H_
+#endif // ISUPPLYMODULE_H_

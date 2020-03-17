@@ -93,14 +93,15 @@ void startAdv(void)
 }
 
 /**
- * @brief Sends the String cmd via the Bluetooth module to the central that is connected.
+ * @brief Sends the string cmd via the Bluetooth module to the central that is connected.
  * 
- * @param cmd String with the command that is to be sent to the central (funMRI App).
+ * @param cmd string with the command that is to be sent to the central (funMRI App).
  */
 void BluetoothFeather::sendCmd(String cmd)
 {
     char buf[64];
     cmd.toCharArray(buf, 64);
+    //strcpy(buf, cmd.c_str());
     int count = sizeof(buf);
     bleuart.write(buf);
     Serial.println(buf);
@@ -113,10 +114,12 @@ void BluetoothFeather::sendCmd(String cmd)
  */
 String BluetoothFeather::receiveCmd()
 {
-    String message = "";
+  String message = "";
   // Forward from BLEUART to HW Serial
   while ( bleuart.available() )
   {
+    // String ArduinoString = bleuart.readString();
+    // message = ArduinoString.c_str();
     message = bleuart.readString();
   }
   return message;

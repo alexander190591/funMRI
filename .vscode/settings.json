@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "string": "cpp",
+        "xstring": "cpp"
+    },
+    "doxdocgen.generic.authorEmail": "au482141@post.au.dk",
+    "doxdocgen.generic.authorName": "Alexander Najbjerg Christensen"
+}

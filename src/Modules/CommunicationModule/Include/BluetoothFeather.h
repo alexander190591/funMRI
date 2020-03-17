@@ -12,7 +12,6 @@
 #ifndef BLUETOOTHFEATHER_H_
 #define BLUETOOTHFEATHER_H_
 #include "ICommunicationModule.h"
-#include <Arduino.h>
 
 class BluetoothFeather : public ICommunicationModule
 {

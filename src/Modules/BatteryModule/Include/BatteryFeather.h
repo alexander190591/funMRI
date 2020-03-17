@@ -10,7 +10,7 @@
 #ifndef BATTERYFEATHER_H_
 #define BATTERYFEATHER_H_
 
-#include "IBatteryModule.h"
+#include "ISupplyModule.h"
 
 #define NRF52
 
@@ -30,14 +30,14 @@
 
 #define REAL_VBAT_MV_PER_LSB (VBAT_DIVIDER_COMP * VBAT_MV_PER_LSB)
 
-class BatteryFeather : public IBatteryModule
+class BatteryFeather : public ISupplyModule
 {
-    public:
-        BatteryFeather(uint32_t BatteryVoltagePin);
-        float readBatteryVoltage(void);
-		uint8_t MilliVoltToPercentage(float mVolts);
-    private:
-        uint32_t _vBatPin = 0;
+public:
+    BatteryFeather(uint32_t BatteryVoltagePin);
+    float readBatteryVoltage(void);
+    uint8_t MilliVoltToPercentage(float mVolts);
+private:
+    uint32_t _vBatPin = 0;
 };
 
 
