@@ -1,4 +1,4 @@
-#include "../include/SoundDummy.h"
+#include "../Include/SoundDummy.h"
 #include <Arduino.h>
 
 SoundDummy::SoundDummy(uint8_t ledPin)

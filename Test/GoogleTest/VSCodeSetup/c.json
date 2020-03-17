@@ -1,0 +1,430 @@
+{
+    // Place your snippets for c here. Each snippet is defined under a snippet name and has a prefix, body and
+    // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+    // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+    // same ids are connected.
+    // Example:
+    // "Print to console": {
+    // 	"prefix": "log",
+    // 	"body": [
+    // 		"console.log('$1');",
+    // 		"$2"
+    // 	],
+    // 	"description": "Log output to console"
+    // }
+    "class defi.": {
+        "prefix": "class",
+        "body": [
+            "/**",
+            " * @brief Class $1: TODO: description.",
+            " *",
+            " */",
+            "class $1",
+            "{",
+            "\t/************************************************************************",
+            "\t *                             Attributes.                              *",
+            "\t ************************************************************************/",
+            "\t // TODO place attributes here.",
+            "",
+            "  public:",
+            "\t/************************************************************************",
+            "\t *                            Constructors.                             *",
+            "\t ************************************************************************/",
+            "\t/**",
+            "\t * Default constructor, constructs a new $1 object.",
+            "\t *",
+            "\t */",
+            "\t$1()",
+            "\t{",
+            "\t\t$2",
+            "\t}",
+            "\t/************************************************************************/",
+            "",
+            "\t/**",
+            "\t * Destructor, destroys a $1 object.",
+            "\t *",
+            "\t */",
+            "\t~$1()",
+            "\t{",
+            "\t\t$3",
+            "\t}",
+            "\t/************************************************************************/",
+            "",
+            "\t/************************************************************************",
+            "\t *                               Methods.                               *",
+            "\t ************************************************************************/",
+            "\t // TODO place methods here.",
+            "",
+            "} // Ending class: $1 definition.",
+            "/****************************************************************************/",
+            "",
+            "$0"
+        ],
+        "description": "class definition"
+    },
+    "for loop": {
+        "prefix": "for",
+        "body": [
+		  "for ( uint16_t $1; $1 < $2; $1++ )",
+		  "{",
+          "\t$3",
+          "}",
+          "",
+          "$0"
+        ],
+        "description": "for loop"
+    },
+    "while loop": {
+        "prefix": "while",
+        "body": [
+		  "while ( $1 )",
+		  "{",
+          "\t$2",
+          "}",
+          "",
+          "$0"
+        ],
+        "description": "while loop"
+    },
+    "do while loop": {
+        "prefix": "do",
+        "body": [
+		  "do",
+		  "{",
+          "\t$2",
+          "} while ( $1 )",
+          "",
+          "$0"
+        ],
+        "description": "do while loop"
+    },
+    "switch1": {
+        "prefix": "switch1",
+        "body": [
+		  "switch ( $1 )",
+		  "{",
+          "\tcase $2:",
+          "\t{",
+		  "\t\t$3",
+          "\t\tbreak;",
+          "\t}",
+          "\tdefault:",
+          "\t{",
+		  "\t\t$4",
+          "\t\tbreak;",
+          "\t}",
+          "}",
+          "",
+          "$0"
+        ],
+        "description": "switch statement"
+    },
+    "switch2": {
+        "prefix": "switch2",
+        "body": [
+		  "switch ( $1 )",
+		  "{",
+          "\tcase $2:",
+          "\t{",
+		  "\t\t$4",
+          "\t\tbreak;",
+          "\t}",
+          "\tcase $3:",
+          "\t{",
+		  "\t\t$5",
+          "\t\tbreak;",
+          "\t}",
+          "\tdefault:",
+          "\t{",
+		  "\t\t$6",
+          "\t\tbreak;",
+          "\t}",
+          "}",
+          "",
+          "$0"
+        ],
+        "description": "switch statement"
+    },
+    "switch3": {
+        "prefix": "switch3",
+        "body": [
+		  "switch ( $1 )",
+		  "{",
+          "\tcase $2:",
+          "\t{",
+		  "\t\t$5",
+          "\t\tbreak;",
+          "\t}",
+          "\tcase $3:",
+          "\t{",
+		  "\t\t$6",
+          "\t\tbreak;",
+          "\t}",
+          "\tcase $4:",
+          "\t{",
+		  "\t\t$7",
+          "\t\tbreak;",
+          "\t}",
+          "\tdefault:",
+          "\t{",
+		  "\t\t$8",
+          "\t\tbreak;",
+          "\t}",
+          "}",
+          "",
+          "$0"
+        ],
+        "description": "switch statement"
+    },
+    "switch4": {
+        "prefix": "switch4",
+        "body": [
+		  "switch ( $1 )",
+		  "{",
+          "\tcase $2:",
+          "\t{",
+		  "\t\t$6",
+          "\t\tbreak;",
+          "\t}",
+          "\tcase $3:",
+          "\t{",
+		  "\t\t$7",
+          "\t\tbreak;",
+          "\t}",
+          "\tcase $4:",
+          "\t{",
+		  "\t\t$8",
+          "\t\tbreak;",
+          "\t}",
+          "\tcase $5:",
+          "\t{",
+		  "\t\t$9",
+          "\t\tbreak;",
+          "\t}",
+          "\tdefault:",
+          "\t{",
+		  "\t\t$10",
+          "\t\tbreak;",
+          "\t}",
+          "}",
+          "",
+          "$0"
+        ],
+        "description": "switch statement"
+    },
+    "switch5": {
+        "prefix": "switch5",
+        "body": [
+		  "switch ( $1 )",
+		  "{",
+          "\tcase $2:",
+          "\t{",
+		  "\t\t$7",
+          "\t\tbreak;",
+          "\t}",
+          "\tcase $3:",
+          "\t{",
+		  "\t\t$8",
+          "\t\tbreak;",
+          "\t}",
+          "\tcase $4:",
+          "\t{",
+		  "\t\t$9",
+          "\t\tbreak;",
+          "\t}",
+          "\tcase $5:",
+          "\t{",
+		  "\t\t$10",
+          "\t\tbreak;",
+          "\t}",
+          "\tcase $6:",
+          "\t{",
+		  "\t\t$11",
+          "\t\tbreak;",
+          "\t}",
+          "\tdefault:",
+          "\t{",
+		  "\t\t$12",
+          "\t\tbreak;",
+          "\t}",
+          "}",
+          "",
+          "$0"
+        ],
+        "description": "switch statement"
+    },
+    "if": {
+        "prefix": "if",
+        "body": [
+		  "if ( $1 )",
+		  "{",
+          "\t$1",
+          "}",
+          "",
+          "$0"
+        ],
+        "description": "if"
+    },
+    "else": {
+        "prefix": "else",
+        "body": [
+		  "else",
+		  "{",
+          "\t$1",
+          "}",
+          "",
+          "$0"
+        ],
+        "description": "if"
+    },
+    "if else": {
+        "prefix": "elif",
+        "body": [
+		  "if ( $1 )",
+		  "{",
+          "\t$2",
+		  "}",
+		  "else",
+		  "{",
+		  "\t$3",
+          "}",
+          "",
+          "$0"
+        ],
+        "description": "if else"
+    },
+    "if else +1": {
+        "prefix": "elif1",
+        "body": [
+		  "if ( $1 )",
+		  "{",
+          "\t$3",
+		  "}",
+		  "else if ( $2 )",
+		  "{",
+		  "\t$4",
+		  "}",
+		  "else",
+		  "{",
+		  "\t$5",
+          "}",
+          "",
+          "$0"
+        ],
+        "description": "if else if"
+    },
+    "if else +2": {
+        "prefix": "elif2",
+        "body": [
+		  "if ( $1 )",
+		  "{",
+          "\t$4",
+		  "}",
+		  "else if ( $2 )",
+		  "{",
+		  "\t$5",
+          "}",
+          "else if ( $3 )",
+          "{",
+          "\t$6",
+          "}",
+		  "else",
+		  "{",
+		  "\t$7",
+          "}",
+          "",
+          "$0"
+        ],
+        "description": "if else if"
+    },
+    "if else +3": {
+        "prefix": "elif3",
+        "body": [
+		  "if ( $1 )",
+		  "{",
+          "\t$5",
+		  "}",
+		  "else if ( $2 )",
+		  "{",
+		  "\t$6",
+          "}",
+          "else if ( $3 )",
+          "{",
+          "\t$7",
+          "}",
+          "else if ( $4 )",
+          "{",
+          "\t$8",
+          "}",
+		  "else",
+		  "{",
+		  "\t$9",
+          "}",
+          "",
+          "$0"
+        ],
+        "description": "if else if"
+    },
+    "if else +4": {
+        "prefix": "elif4",
+        "body": [
+		  "if ( $1 )",
+		  "{",
+          "\t$6",
+		  "}",
+		  "else if ( $2 )",
+		  "{",
+		  "\t$7",
+          "}",
+          "else if ( $3 )",
+          "{",
+          "\t$8",
+          "}",
+          "else if ( $4 )",
+          "{",
+          "\t$9",
+          "}",
+          "else if ( $5 )",
+          "{",
+          "\t$10",
+          "}",
+		  "else",
+		  "{",
+		  "\t$11",
+          "}",
+          "",
+          "$0"
+        ],
+        "description": "if else if"
+    },
+    "struct typedef": {
+        "prefix": "struct typedef",
+        "body": [
+		  "typedef struct $1_",
+		  "{",
+          "\t$0",
+          "} $1_t;"
+        ],
+        "description": "struct typedef"
+    },
+    "enum typedef": {
+        "prefix": "enum typedef",
+        "body": [
+		  "typedef enum $1_",
+		  "{",
+          "\t$0",
+          "} $1_t;"
+        ],
+        "description": "enum typedef"
+    },
+    "if success": {
+        "prefix": "if success",
+        "body": [
+		  "if ( ${1:result} == E_SUCCESS )",
+		  "{",
+          "\t$0",
+          "}"
+        ],
+        "description": "if result is success"
+    },
+}

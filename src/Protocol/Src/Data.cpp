@@ -16,7 +16,7 @@
  * 
  * @param dataOutputArray Array that is being filled with the values found in the _data array.
  */
-void Data::getData(char* dataOutputArray) const
+void Data::getData(char dataOutputArray[])
 {
     for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++)
         dataOutputArray[i] = _data[i];
@@ -27,7 +27,7 @@ void Data::getData(char* dataOutputArray) const
  * 
  * @param dataInputArray Array of which the values are copied into the _data array.
  */
-void Data::setData(char* dataInputArray)
+void Data::setData(char dataInputArray[])
 {
     for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++)
         _data[i] = dataInputArray[i];
@@ -43,4 +43,12 @@ void Data::setMessage(Message msg)
     _data[SIZE_OF_DATA_ARRAY] = {0};        // Clearing the array.
     _data[0] = 'M';
     _data[1] = msg;
+}
+
+void Data::setIDdata(char ID[])
+{
+    _data[SIZE_OF_DATA_ARRAY] = {0};        // Clearing the array.
+    _data[0] = 'M';
+    for(int i = 1; i < SIZE_OF_DATA_ARRAY; i++)
+        _data[i] = ID[i];
 }

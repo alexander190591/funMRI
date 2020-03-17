@@ -4,8 +4,8 @@
  *  Created on: 3. feb. 2020
  *      Author: taunb
  */
-#include "../include/RFIDRC522.h"
-#include "../include/RFID-RC522/rfid-master/rfid-master/src/MFRC522.h"
+#include "../Include/RFIDRC522.h"
+#include "../Include/RFID-RC522/rfid-master/rfid-master/src/MFRC522.h"
 #include <SPI.h>
 
 RFIDRC522::RFIDRC522(int RSTpin, int SSpin)

@@ -1,0 +1,381 @@
+{
+    // * Paths
+    // Custom config paths (ref by ${config:name}, ex: ${config:custompath.iar})
+    "custompath.mingw" : "C:/MinGW/bin",
+    "custompath.iararm" : "C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3",
+    "custompath.iarmsp430" : "C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.0",
+    "custompath.python3" : "C:/Python/Python35-32",
+    "custompath.jlink" : "C:/Program Files (x86)/SEGGER/JLink_V644c",
+    "custompath.gnuarm" : "C:/Program Files (x86)/GNU Tools ARM Embedded/8 2018-q4-major/bin",
+    "custompath.llvm" : "C:/Program Files (x86)/LLVM/bin",
+    "custompath.ruby" : "C:/Ruby/bin",
+    "custompath.cppcheck" : "C:/Program Files (x86)/Cppcheck",
+    "custompath.tmhhomeeditor" : "F:/HOME/TMH/editor",
+
+    "terminal.integrated.shellArgs.windows": ["-noexit",
+                                              "-command",
+    "$Env:Path=\"${config:custompath.mingw};${config:custompath.iararm};${config:custompath.python3};${config:custompath.jlink};${config:custompath.gnuarm};${config:custompath.llvm};${config:custompath.ruby};${config:custompath.tmhhomeeditor};$Env:Path\"",
+                                             ],
+
+    // * Workbench
+    "workbench.colorTheme": "Dark (Molokai)",
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.editor.enablePreview": false, // Whether files should be opened in preview mode
+    "workbench.statusBar.visible": true,
+    "workbench.colorCustomizations": {
+        "editor.selectionHighlightBackground": "#FBFF0040",
+        "editor.findMatchBackground": "#FBFF0040",
+        "editor.findMatchHighlightBackground": "#FBFF0040",
+        "editor.lineHighlightBackground": "#FF830030",
+        "editorCursor.foreground": "#FF8300FF",
+        "editorCursor.background": "#FFFFFFFF",
+        "statusBar.background": "#00ff00",
+        "statusBar.noFolderBackground": "#00ff00",
+        "statusBar.debuggingBackground": "#00ff00",
+        "terminalCursor.background": "#F8F8F2",
+        "terminalCursor.foreground": "#F8F8F2",
+        "terminal.ansiBlack": "#272822",
+        "terminal.ansiBlue": "#66D9EF",
+        "terminal.ansiBrightBlack": "#75715E",
+        "terminal.ansiBrightBlue": "#66D9EF",
+        "terminal.ansiBrightCyan": "#A1EFE4",
+        "terminal.ansiBrightGreen": "#A6E22E",
+        "terminal.ansiBrightMagenta": "#AE81FF",
+        "terminal.ansiBrightRed": "#F92672",
+        "terminal.ansiBrightWhite": "#F9F8F5",
+        "terminal.ansiBrightYellow": "#F4BF75",
+        "terminal.ansiCyan": "#A1EFE4",
+        "terminal.ansiGreen": "#A6E22E",
+        "terminal.ansiMagenta": "#AE81FF",
+        "terminal.ansiRed": "#F92672",
+        "terminal.ansiWhite": "#F8F8F2",
+        "terminal.ansiYellow": "#F4BF75"
+    },
+
+    // * Statusbar
+    // Enable/Disable ActiveFileInStatusBar
+    "ActiveFileInStatusBar.enable": true,
+    // Show fullpath or relative path in status bar.
+    "ActiveFileInStatusBar.fullpath": false,
+    // Reveal the active file in the file system.
+    "ActiveFileInStatusBar.revealFile": false,
+
+    // * Editor
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.rulers": [ 120, ], // shows a vertical line at the number of characters specified
+    "editor.minimap.enabled": false, // Disable the "zoomed out view" to the right"
+    "editor.fontSize": 14, // Font size
+    "editor.renderWhitespace": "none", // controls how the editor renders whitespaces: none, boundary, all
+    "editor.formatOnPaste": false, // format when pasting
+    "editor.formatOnSave": false, // format when saving
+    "editor.cursorBlinking": "smooth", // blink, smooth, phase, expand, solid
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.suggestOnTriggerCharacters": true, // Controls if suggestions should automatically show up when typing trigger characters
+    "editor.tabCompletion": "on", // Controls if pressing tab inserts the best suggestion and if tab cycles through other suggestions
+    "editor.suggestSelection": "recentlyUsed", // Controls how suggestions are pre-selected when showing the suggest list
+    "editor.wordBasedSuggestions": true,
+    "editor.parameterHints.enabled": true,
+    "editor.suggest.localityBonus": true, // Controls whether sorting favours words that appear close to the cursor
+    "editor.quickSuggestionsDelay": 200,
+
+    // * Trailing spaces
+    "trailing-spaces.backgroundColor": "rgba(255,0,0,0.3)",
+
+    // * Explorer
+    "explorer.sortOrder": "default", // type, modified, filesFirst, default
+    "explorer.compactFolders": true,
+
+    "terminal.integrated.automationShell.windows": "powershell.exe",
+
+    "cortex-debug.JLinkGDBServerPath": "${config:custompath.jlink}/JLinkGDBServerCL.exe",
+    "cortex-debug.armToolchainPath": "${config:custompath.gnuarm}", // https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads
+    "terminal.integrated.shell.windows": "powershell.exe",
+    "python.pythonPath": "${config:custompath.python3}/python.exe",
+    "python.linting.pylintArgs": [  "--rcfile", "${config:custompath.tmhhomeeditor}/.pylintrc", ],
+    "python.formatting.yapfArgs": [ "--style", "${config:custompath.tmhhomeeditor}/.style.yapf" ],
+    "C_Cpp.clang_format_path": "${config:custompath.llvm}/clang-format.exe", // KOS only supports 4.0.X version of clang-format
+
+    // * Terminal --> shell launcher
+    "shellLauncher.shells.windows": [
+        { "shell": "cmd.exe", "label": "cmd" },
+        { "shell": "wsl.exe", "label": "WSL" },
+        { "shell": "powershell.exe", "label": "PowerShell" },
+        { "shell": "ipython.exe", "label": "IPython" },
+    ],
+
+    // * Terminal
+    "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.enableBell": false,
+    "terminal.explorerKind": "integrated",
+    // "terminal.integrated.drawBoldTextInBrightColors": true,
+    "terminal.integrated.confirmOnExit": false,
+    "terminal.integrated.cursorBlinking": true,
+    "debug.console.wordWrap": false,
+    "debug.showBreakpointsInOverviewRuler": true,
+
+    // * Language specific editor settings
+    "[c]": {},
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "[bat]": {},
+
+    // * Files
+    "files.autoSave": "onWindowChange",
+    "files.trimFinalNewlines": true, // trim any extra newlines at the end of file
+    "files.associations": { "*.h" : "c", "*.c" : "c", "*.hpp" : "cpp", "*.cpp" : "cpp" },
+
+    // * Exclude file extensions in file search
+    "files.exclude":        { "**/*.o": true, "**/*.d": true, "**/*.i": true, "**/*.pbi": true, "**/*.lst": true, "**/*.pbi.xcl": true,
+                              "**/*.ipch": true, "**/*.out": true, "**/*.hex": true, "**/*.bin": true, "**/*.exe": true, },
+    "files.watcherExclude": { "**/*.o": true, "**/*.d": true, "**/*.i": true, "**/*.pbi": true, "**/*.lst": true, "**/*.pbi.xcl": true,
+                              "**/*.ipch": true, "**/*.out": true, "**/*.hex": true, "**/*.bin": true, "**/*.exe": true, },
+    "search.exclude":       { "**/*.o": true, "**/*.d": true, "**/*.i": true, "**/*.pbi": true, "**/*.lst": true, "**/*.pbi.xcl": true,
+                              "**/*.ipch": true, "**/*.out": true, "**/*.hex": true, "**/*.bin": true, "**/*.exe": true, },
+
+    // * Error lens
+    "errorLens.statusBarControl": "hide-when-no-issues",
+    "errorLens.errorColor": "rgba(240,0,0,0.15)",
+    "errorLens.errorTextColor": "rgba(240,0,0,1)",
+    "errorLens.warningColor": "rgba(180,180,0,0.15)",
+    "errorLens.warningTextColor": "rgba(180,180,0,1.0)",
+    "errorLens.infoColor": "rgba(0,200,0,0.15)",
+    "errorLens.infoTextColor": "rgba(0,200,0,1)",
+    "errorLens.hintColor": "rgba(20,140,140,0.15)",
+    "errorLens.hintTextColor": "rgba(20,140,140,1.0)",
+    "errorLens.addAnnotationTextPrefixes": true,
+    "errorLens.enabledDiagnosticLevels": [ "error", "warning", "info", "hint" ],
+    "errorLens.fontMargin": "40px",
+    "errorLens.fontStyle": "normal", // italic
+    "errorLens.fontWeight": "100", // normal
+
+    // * Find all references using rg
+    // "find.all.references.engine": "rg",
+    // // exclude (!) file extensions and folders with specific names
+    // "find.all.references.options": "--glob !{*.o,*.d,*.i,*.pbi,*.lst,*.pbi.xcl,*.ipch,*.out,*.hex,*.bin,*.exe,*.map,*.pbw,*.pass,IAR,eclipse,build,builds}",
+
+    // * Version Control
+    "svn.enableProposedApi": "none",
+
+    // * GIT lens
+    "gitlens.currentLine.enabled": false,
+
+    // * Miscellaneous
+    "sync.gist": "63916e701e307e719da402c536f95670", // https://gist.github.com/Nikkostyrer/63916e701e307e719da402c536f95670
+    "sync.forceUpload": true,
+    "window.zoomLevel": 0,
+    "adv-cppdbg.disableRegisterView": false,
+
+    // * Better Comments
+    "better-comments.multilineComments": true,
+    "better-comments.highlightPlainText": false,
+
+    // "todo-tree.includeGlobs": [ "**/*.h", "**/*.c", "**/*.py", ],
+    "todo-tree.filtering.includeGlobs": [
+        "**/*.h",
+        "**/*.c",
+        "**/*.py"
+    ],
+
+    // * TODO highlighting
+    "todohighlight.isEnable": true,
+    "todohighlight.isCaseSensitive": true,
+    "todohighlight.keywords":
+    [
+        // "#ff0000"
+        { "text": "NOTE", "color": "black", "backgroundColor": "yellow", "overviewRulerColor": "grey" },
+        { "text": "TODO", "color": "white", "backgroundColor": "red", }, //other styling properties goes here ...
+    ],
+
+    // * DOXYGEN
+    "doxdocgen.c.commentPrefix": " * ",
+    "doxdocgen.c.factoryMethodText": "Create a {name} object.",
+    "doxdocgen.c.firstLine": "/**",
+    "doxdocgen.c.getterText": "Get the {name} object.",
+    "doxdocgen.c.lastLine": " */",
+    "doxdocgen.c.setterText": "Set the {name} object.",
+    "doxdocgen.c.triggerSequence": "/**",
+    "doxdocgen.cpp.ctorText": "Construct a new {name} object.",
+    "doxdocgen.cpp.dtorText": "Destroy the {name} object.",
+    "doxdocgen.cpp.tparamTemplate": "@tparam {param} ",
+    "doxdocgen.generic.boolReturnsTrueFalse": true,
+    "doxdocgen.generic.generateSmartText": true,
+    "doxdocgen.generic.paramTemplate": "@param {param} ",
+    "doxdocgen.generic.returnTemplate": "@return {type} ",
+    "doxdocgen.generic.splitCasingSmartText": true,
+    "doxdocgen.file.versionTag": "", // Version number for the file.
+    "doxdocgen.generic.authorEmail": "nikolaj.eriksen@gmail.com", // Set the e-mail address of the author.  Replaces {email}.
+    "doxdocgen.generic.authorName": "Nikolaj Emil Sørensen", // Set the name of the author.  Replaces {author}.
+    "doxdocgen.generic.authorTag": "@author {author} <{email}>", // Set the style of the author tag and your name.  Can template {author} and {email}.
+    "doxdocgen.file.copyrightTag": [ "" ], // File copyright documentation tag.  Array of strings will be converted to one line per element.  Can template {year}.
+    "doxdocgen.file.fileTemplate": "@file   {name}",
+    "doxdocgen.generic.briefTemplate": "brief", // The template of the brief Doxygen line that is generated. If empty it won't get generated at all.
+    "doxdocgen.generic.dateFormat": "DD-MM-YYYY", // The format to use for the date.
+    "doxdocgen.generic.dateTemplate": "@date   {date}",
+    "doxdocgen.generic.includeTypeAtReturn": true, // Whether include type information at return.
+    "doxdocgen.generic.linesToGet": 20, // How many lines the plugin should look for to find the end of the declaration. Please be aware that setting this value too low could improve the speed of comment generation by a very slim margin but the plugin also may not correctly detect all declarations or definitions anymore.
+    "doxdocgen.file.fileOrder": [ "empty", "empty", "file", "author", "date", ], // The order to use for the file comment. Values can be used multiple times. Valid values are shown in default setting.
+    "doxdocgen.generic.order": [ "empty", "brief", "empty", "tparam", "param", "return" ], // The order to use for the comment generation. Values can be used multiple times. Valid values are shown in default setting.
+
+    // * PSI-header, used for Kamstrup copyright header
+    "psi-header.variables": [
+                                [ "author" , "Nikolaj Emil Sørensen" ],
+                                [ "authoremail", "nikolaj.eriksen@gmail.com" ],
+                                [ "company", "Kamstrup A/S" ],
+                                [ "initials", "NIEE" ]
+    ],
+
+    "psi-header.changes-tracking": {
+        "isActive": true,
+        "modAuthor": " * mod @author ",
+        "modDate": " * mod @date ",
+        "modDateFormat": "date",
+        "autoHeader": "manualSave",
+        "include": [],
+        "exclude": [
+            "markdown",
+            "json"
+        ]
+    },
+
+    "psi-header.templates": [
+        { "language": "*",      "template": [ "/****************************************************************************",
+                                              " * Copyright (C) Kamstrup A/S, <<year>>. All rights reserved.",
+                                              " ****************************************************************************/",
+                                              "#ifndef __<<filenamebase>>_<<year>>__",
+                                              "#define __<<filenamebase>>_<<year>>__",
+                                              "/**",
+                                              " *",
+                                              " * @file   <<filename>>",
+                                              " *",
+                                              " * Created:",
+                                              " * @author <<author>> <<<authoremail>>>",
+                                              " * @date   <<filecreated('dddd, Do MMMM YYYY h:mm:ss')>>",
+                                              " *",
+                                              " *",
+                                              " * Modified:",
+                                              " * mod @author <<author>> <<<authoremail>>>",
+                                              " * mod @date   <<dateformat('dddd, Do MMMM YYYY h:mm:ss')>>",
+                                              " *",
+                                              "*/",
+                                              "",
+                                              "",
+                                              "#endif // __<<filename>>__", ],
+                                            ] },
+        { "language": "python",    "template": [    "Copyright: <<company>>, <<year>>. All rights reserved.",
+                                                    "",
+                                                    "File:   <<filename>>",
+                                                    "",
+                                                    "Author: <<author>> <<<authoremail>>>",
+                                                    "",
+                                                    "Date:   <<filecreated('DD/MM/YYYY')>>",
+                                                    "",
+                                                    "Insert description of file here",
+                                                    "" ] },
+    ],
+    "psi-header.lang-config": [
+        { "language": "c", "begin": "", "end": "", "prefix": "" },
+        { "language": "cpp", "begin": "", "end": "", "prefix": "" },
+        { "language": "python", "begin": "\"\"\"", "end": "\"\"\"", "prefix": "" }
+    ],
+
+    // * Indent Rainbow
+    "indentRainbow.includedLanguages" :[ "python" ], // Empty means all languages
+    "indentRainbow.excludedLanguages": [ "plaintext" ],
+    "indentRainbow.updateDelay": 100,
+    "indentRainbow.tabmixColor": "rgba(128,32,96,0.6)",
+    "indentRainbow.errorColor": "rgba(128,32,32,0.6)",
+    "indentRainbow.colors": [
+        "rgba(255,255,64,0.07)",
+        "rgba(227,255,127,0.07)",
+        "rgba(255,127,255,0.07)",
+        // "rgba(79,236,236,0.07)"
+    ],
+
+    // * Bracket pair colorizer
+    "bracket-pair-colorizer-2.forceUniqueOpeningColor": false,
+    "bracket-pair-colorizer-2.forceIterationColorCycle": false,
+    "bracket-pair-colorizer-2.colorMode": "Independent",
+    "bracket-pair-colorizer-2.highlightActiveScope": true,
+    "bracket-pair-colorizer-2.showBracketsInGutter": true,
+    "bracket-pair-colorizer-2.showBracketsInRuler": false,
+    "bracket-pair-colorizer-2.showHorizontalScopeLine": false,
+    "bracket-pair-colorizer-2.showVerticalScopeLine": true,
+    "bracket-pair-colorizer-2.colors": [ "Gold", "DeepPink", "LightSkyBlue", "Chartreuse", "Red", "Green", "MistyRose" ], // CSS color names!
+
+    // * Languages
+    "C_Cpp.default.cppStandard": "c++14",
+    "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.updateChannel": "Insiders",
+    "C_Cpp.workspaceParsingPriority": "highest",
+    "C_Cpp.suggestSnippets": false, // Only use custom snippets
+    "C_Cpp.clang_format_style": "file",
+    "C_Cpp.enhancedColorization": "Disabled", // Can cause weird colors when enabled!
+    "C_Cpp.intelliSenseEngine": "Default", // Context aware, but atm causes some "identifier not found" problems
+    // "C_Cpp.loggingLevel": "Debug",
+    // "C_Cpp.intelliSenseEngine": "Tag Parser", // Not context aware, but causes no problems
+    // "C_Cpp.intelliSenseEngineFallback": "Enabled",
+
+    // * Code Runner
+    // "code-runner.executorMap": {
+    //     "python": "py -2 -u",
+    // },
+    // "code-runner.fileDirectoryAsCwd": true,
+
+    // * Python
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    // "python.linting.pycodestyleEnabled": true,
+    // "python.linting.pylintArgs": ["--max-line-length=120"],
+    "python.terminal.activateEnvironment": false,
+    "python.terminal.executeInFileDir": true,
+    "python.analysis.openFilesOnly": true,
+    // "python.jediEnabled": true,
+    "python.autoComplete.showAdvancedMembers": true,
+
+    "python.formatting.provider": "yapf",
+
+    // Should help with reducing latency in file
+    "zenMode.hideStatusBar": false,
+    "zenMode.hideActivityBar": true,
+    "zenMode.hideTabs": false,
+    "zenMode.restore": true,
+    "zenMode.fullScreen": true,
+    "zenMode.centerLayout": true,
+    "zenMode.hideLineNumbers": false,
+
+    // * VIM
+    "vim.leader": "-",
+
+    "vim.statusBarColorControl": true, // change to "true" if status should change color when changing mode
+    "vim.statusBarColors.insert": "#ff0000",
+    "vim.statusBarColors.normal": "#00ff00",
+    "vim.statusBarColors.visual": "#0000ff",
+    "vim.statusBarColors.visualblock": "#5f00af",
+    "vim.statusBarColors.visualline": "#5f00af",
+
+    "vim.searchHighlightColor": "#FBFF0040",
+    "vim.mouseSelectionGoesIntoVisualMode": true,
+    "vim.easymotion": true,
+    "vim.sneak": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.cursorStylePerMode.insert": "line", // block, line, line-thin, underline, text-decoration, native
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.replace": "block-outline",
+    "vim.cursorStylePerMode.visual": "block-outline",
+    "vim.cursorStylePerMode.visualblock": "block-outline",
+    "vim.cursorStylePerMode.visualline": "block-outline",
+
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.duration": 250,
+    "vim.highlightedyank.color": "rgba(250, 240, 170, 0.3)",
+
+    "vim.sneakUseIgnorecaseAndSmartcase": true,
+    "vim.smartcase": true,
+}
