@@ -7,7 +7,7 @@
 TEST(Data, setMessage_getData)
 {
     IData* myDataPtr = new Data();
-    myDataPtr->setMessage(ERROR_NO_ID_REGISTERED);
+    myDataPtr->setMessage(MSG_ERROR_NO_ID_REGISTERED);
 
     char data[SIZE_OF_DATA_ARRAY];
     myDataPtr->getData(data);

@@ -1,12 +1,14 @@
-/*
- * BluetoothFeather.h
- * This is the Header file for the Bluetooth Module embedded in the Bluefruit Feather nRF.
- * It needs to communicate with the Arduino through the Serial-pins.
- * On the Bluefruit Feather, these are the RX and the TX pins.
- *
- *  Created on: January 29th 2020
- * 	Edited on: March 16th 2020
- *      Author: Alexander
+/**
+ * @file BluetoothFeather.h
+ * @author Alexander Najbjerg Christensen (au482141@post.au.dk)
+ * @brief This is the Header file for the Bluetooth Module embedded in the Bluefruit Feather nRF.
+ * 			It needs to communicate with the Arduino through the Serial-pins.
+ * 			On the Bluefruit Feather, these are the RX and the TX pins.
+ * @version 0.1
+ * @date 2020-03-18
+ * 
+ * @copyright Copyright (c) 2020
+ * 
  */
 
 #ifndef BLUETOOTHFEATHER_H_
@@ -18,10 +20,8 @@ class BluetoothFeather : public ICommunicationModule
 public:
 	BluetoothFeather();
 	bool init();
-	void sendCmd(String cmd);
-	String receiveCmd();
+	void sendData(Data& data);
+	void receiveData(Data& data);
 };
-
-
 
 #endif /* BLUETOOTHMODULE_HM_10_BLUETOOTHMODULE_H_ */

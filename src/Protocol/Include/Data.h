@@ -43,10 +43,14 @@
 class Data : public IData
 {
 public:
-    void getData(char dataOutputParameter[]);
-    void setData(char dataInputParameter[]);
+    void getData(unsigned char dataOutputParameter[]);
+    void setData(unsigned char dataInputParameter[]);
     void setMessage(Message msg);
-    void setIDdata(char IDdata[]);
+    void setIDdata(unsigned char IDdata[]);
+    Message getMessage();
+    void clearData();
+    bool dataReceived();
+    bool isSame(unsigned char arrayOne[], unsigned char arrayTwo[]);
 private:
     char _data[SIZE_OF_DATA_ARRAY];             
 };

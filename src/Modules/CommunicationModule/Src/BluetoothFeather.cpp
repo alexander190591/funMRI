@@ -93,36 +93,48 @@ void startAdv(void)
 }
 
 /**
- * @brief Sends the string cmd via the Bluetooth module to the central that is connected.
+ * @brief Sends the Data data via the Bluetooth module to the central that is connected.
  * 
- * @param cmd string with the command that is to be sent to the central (funMRI App).
+ * @param [out] data Reference to the data object with the data that is to be sent to the central (funMRI App).
  */
-void BluetoothFeather::sendCmd(String cmd)
+void BluetoothFeather::sendData(Data& data)
 {
-    char buf[64];
-    cmd.toCharArray(buf, 64);
-    //strcpy(buf, cmd.c_str());
-    int count = sizeof(buf);
-    bleuart.write(buf);
-    Serial.println(buf);
+    unsigned char buf[SIZE_OF_DATA_ARRAY];
+    data.getData(buf);
+    bleuart.write((char*)buf);
 }
 
 /**
- * @brief Checking for incoming messages on the Bluetooth connection. If anything is available, the message is returned.
+ * @brief Checking for incoming data on the Bluetooth connection. If anything 
+ * starting with either 'D' or 'M' is sent, the first eight bytes of the data incoming 
+ * is written into the Data object's data attribute.
+ * @param [out] data Reference to the data object with the data attribute that is to be set with the incoming data.
  * 
- * @return String with the message received via Bluetooth from central (funMRI App).
  */
-String BluetoothFeather::receiveCmd()
+void BluetoothFeather::receiveData(Data& data)
 {
-  String message = "";
-  // Forward from BLEUART to HW Serial
+  char tmpArray[SIZE_OF_DATA_ARRAY + 1] = {0,0,0,0,0,0,0,0,0};  // Adding +1 to receive the /0
+  char dataArray[SIZE_OF_DATA_ARRAY] = {0,0,0,0,0,0,0,0};       // Final array for setting Data attribute.
+
+  // Forward protocol bytes (8 bytes) from BLEUART to dataArray
   while ( bleuart.available() )
   {
-    // String ArduinoString = bleuart.readString();
-    // message = ArduinoString.c_str();
-    message = bleuart.readString();
+    bleuart.read(tmpArray, SIZE_OF_DATA_ARRAY + 1);             // Reading data from BLE
+
+    // Serial.print("tmpArray[9] == "); Serial.write(tmpArray, SIZE_OF_DATA_ARRAY + 1);  // For debugging purposes...
+    
+    // Error guard: Check if first char is either 'D' or 'M'. If not, do nothing.
+    if(tmpArray[0] == 'D' || tmpArray[0] == 'M')
+    {
+      for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++)               // Only reading 8 bytes == protocol length
+      {
+        dataArray[i] = tmpArray[i];                             // Taking the protocol-bytes.
+      }
+      // Serial.print("dataArray[8] == "); Serial.write(dataArray, SIZE_OF_DATA_ARRAY);  // For debugging purposes...
+    }
   }
-  return message;
+
+  data.setData((unsigned char*)dataArray);
 }
 
 /**

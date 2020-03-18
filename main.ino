@@ -18,7 +18,10 @@
 IScannerModule *scannerPtr = nullptr;
 ISoundModule *soundPtr = nullptr;
 ICommunicationModule *communicationPtr = nullptr;
-String IDTag = "";
+Data* data = new Data();
+
+unsigned char IDTag[SIZE_OF_DATA_ARRAY - 1] = {0, 0, 0, 0, 0, 0, 0};
+unsigned char newIDTag[SIZE_OF_DATA_ARRAY - 1] = {0, 0, 0, 0, 0, 0, 0};
 
 void setup()
 {
@@ -39,14 +42,15 @@ void setup()
 
   digitalWrite(LED_BUILTIN, HIGH);
 
-  soundPtr->playSound();
+  //soundPtr->playSound();
 
   Serial.println("Setup done...");
 }
 
 void loop()
 { 
-  // String messageReceived = communicationPtr->receiveCmd();
+  data->clearData();  // Every loop starts by clearing data for new data to be received.
+  // String messageReceived = communicationPtr->receiveData();
   // if(messageReceived.length() >= 1)
   //   {
   //     String msgSend = "Message received: ";
@@ -54,7 +58,7 @@ void loop()
 
   //     Serial.println(msgSend);
 
-  //     communicationPtr->sendCmd(msgSend);
+  //     communicationPtr->sendData(msgSend);
   //   }
   
   // scannerPtr->scan();
@@ -78,61 +82,156 @@ void loop()
   // digitalWrite(LED_BUILTIN, LOW);
   // delay(1000);
 
-  //Blocking bluetooth receive:
-  String BTmsg = communicationPtr->receiveCmd();
+  
+  communicationPtr->receiveData(*data);
 
-  if(BTmsg.length() >= 1)
-    {
-      String msgSend = "Message received: ";
-      msgSend += BTmsg;
+  // if(data->dataReceived())
+  // {
+  //   unsigned char receivedArray[SIZE_OF_DATA_ARRAY+1];
+  //   data->getData(receivedArray);
+  //   Serial.print("Message received: "); Serial.write(receivedArray, SIZE_OF_DATA_ARRAY);
+  // }
 
-      //Serial.println(msgSend);
-    }
-
-  if(BTmsg == "I")
+  if(data->dataReceived())
   {
-    String respondToBT = "default";
-    scannerPtr->scan();
+    Serial.println("Data received: ");
+    unsigned char receivedArray[SIZE_OF_DATA_ARRAY+1];
+    data->getData(receivedArray); Serial.write(receivedArray, SIZE_OF_DATA_ARRAY); Serial.println("");
 
-    if(scannerPtr->isNewScanAvailable())
+    Serial.print("Type received: "); Serial.write(receivedArray, 1); Serial.println("");
+    Serial.print("_data[0]: "); Serial.write(receivedArray+1,1); Serial.println("");
+
+    if(data->getMessage() == MSG_CMD_INIT || data->getMessage() == MSG_TEST_INIT)
     {
-      //respondToBT = "scanIsAvailable";
-      respondToBT = "";
-      for(int i = 0; i < scannerPtr->getSizeOfData(); i++)
+      Serial.println("INIT ENTERED");
+
+      data->setMessage(MSG_ERROR_NO_ID_REGISTERED);
+      //String respondToBT = "default";
+      scannerPtr->scan();
+
+      Serial.println("After scan()...");
+
+      if(scannerPtr->isNewScanAvailable())
       {
-        respondToBT += scannerPtr->retrieveResult()[i]; //+= scannerPtr->retrieveResult()[i];
+        Serial.println("isNewScanAvailable == true");
+        //respondToBT = "scanIsAvailable";
+        //respondToBT = "";
+
+        for(int i = 0; i < scannerPtr->getSizeOfData(); i++)
+        {
+          IDTag[i] = scannerPtr->retrieveResult()[i]; //+= scannerPtr->retrieveResult()[i];
+        }
+        data->setIDdata(IDTag);
       }
-      IDTag = respondToBT;
+
+      unsigned char idTagArray[8] = {0,0,0,0,0,0,0,0};
+      data->getData(idTagArray);
+      Serial.print("IDTag: "); Serial.write(idTagArray+1,7); Serial.println("");
+
+      communicationPtr->sendData(*data);
     }
-
-    communicationPtr->sendCmd(respondToBT);
-
-  }
-  if(BTmsg == "S")
-  {
-    scannerPtr->scan();
-    if(scannerPtr->isNewScanAvailable())
+    else if(data->getMessage() == MSG_CMD_SCAN || data->getMessage() == MSG_TEST_SCAN)
     {
-      String newScanString = "";
-      for(int i = 0; i < scannerPtr->getSizeOfData(); i++)
+      Serial.println("SCAN ENTERED");
+      scannerPtr->scan();
+      if(scannerPtr->isNewScanAvailable())
       {
-        newScanString += scannerPtr->retrieveResult()[i];
-      }
+        Serial.println("New scan is available.");
+        for(int i = 0; i < scannerPtr->getSizeOfData(); i++)
+        {
+          newIDTag[i] = scannerPtr->retrieveResult()[i];
+        }
 
-      if(newScanString == IDTag)
-      {
-        soundPtr->playSound();
-        communicationPtr->sendCmd("true");
-      }
-      else
-      {
-        communicationPtr->sendCmd("scanning error: not init tag");
+        if(data->isSame(newIDTag, IDTag))
+        {
+          soundPtr->playSound();
+          Serial.println("INFO_SOUND_PLAYED (0xCC)");
+          data->setMessage(MSG_INFO_SOUND_PLAYED);
+          communicationPtr->sendData(*data);
+        }
+        else
+        {
+          Serial.println("ERROR_NOT_INIT_TAG (0xBB)");
+          data->setMessage(MSG_ERROR_NOT_INIT_TAG);
+          communicationPtr->sendData(*data);
+          //communicationPtr->sendData("scanning error: not init tag");
+        }
       }
     }
-
-    else
+    else if(data->getMessage() == MSG_ERROR_NOT_A_MESSAGE)
     {
-      communicationPtr->sendCmd("scanning error: scanning not available");
+      data->setMessage(MSG_ERROR_NOT_A_MESSAGE);
+      Serial.println("ERROR_NOT_A_MESSAGE (0xFF)");
+      unsigned char msgToSend[SIZE_OF_DATA_ARRAY];
+      data->getData(msgToSend);
+      Serial.print("Sending data: "); Serial.write(msgToSend, SIZE_OF_DATA_ARRAY);
+      communicationPtr->sendData(*data);
+
+      //communicationPtr->sendData("scanning error: scanning not available");
     }
+    Serial.println("Leaving if(data->dataReceived())...");
   }
 }
+
+
+
+  // THIS IS OLD CODE.........................................................................................
+
+  //Blocking bluetooth receive:
+  //String BTmsg = communicationPtr->receiveData();
+
+//   if(BTmsg.length() >= 1)
+//     {
+//       String msgSend = "Message received: ";
+//       msgSend += BTmsg;
+
+//       //Serial.println(msgSend);
+//     }
+
+//   if(BTmsg == "I")
+//   {
+//     String respondToBT = "default";
+//     scannerPtr->scan();
+
+//     if(scannerPtr->isNewScanAvailable())
+//     {
+//       //respondToBT = "scanIsAvailable";
+//       respondToBT = "";
+//       for(int i = 0; i < scannerPtr->getSizeOfData(); i++)
+//       {
+//         respondToBT += scannerPtr->retrieveResult()[i]; //+= scannerPtr->retrieveResult()[i];
+//       }
+//       IDTag = respondToBT;
+//     }
+
+//     communicationPtr->sendData(respondToBT);
+
+//   }
+//   if(BTmsg == "S")
+//   {
+//     scannerPtr->scan();
+//     if(scannerPtr->isNewScanAvailable())
+//     {
+//       String newScanString = "";
+//       for(int i = 0; i < scannerPtr->getSizeOfData(); i++)
+//       {
+//         newScanString += scannerPtr->retrieveResult()[i];
+//       }
+
+//       if(newScanString == IDTag)
+//       {
+//         soundPtr->playSound();
+//         communicationPtr->sendData("true");
+//       }
+//       else
+//       {
+//         communicationPtr->sendData("scanning error: not init tag");
+//       }
+//     }
+
+//     else
+//     {
+//       communicationPtr->sendData("scanning error: scanning not available");
+//     }
+//   }
+// }
