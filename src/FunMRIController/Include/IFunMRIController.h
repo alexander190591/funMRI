@@ -1,3 +1,6 @@
+#ifndef _IFUNMRICONTROLLER_H_
+#define _IFUNMRICONTROLLER_H_
+
 /**
  * @file IFunMRIController.h
  * @author Alexander Najbjerg Christensen (au482141@post.au.dk)
@@ -8,9 +11,6 @@
  * @copyright Copyright (c) 2020
  * 
  */
-
-#ifndef _IFUNMRICONTROLLER_H_
-#define _IFUNMRICONTROLLER_H_
 
 #include "../../FunMRI/Include/FunMRI.h"
 

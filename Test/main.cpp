@@ -9,19 +9,19 @@ TEST(Data, setMessage_getData)
     IData* myDataPtr = new Data();
     myDataPtr->setMessage(MSG_ERROR_NO_ID_REGISTERED);
 
-    char data[SIZE_OF_DATA_ARRAY];
+    unsigned char data[SIZE_OF_DATA_ARRAY];
     myDataPtr->getData(data);
 
     ASSERT_EQ(data[0], 'M');
-    ASSERT_EQ((uint8_t)data[1], ERROR_NO_ID_REGISTERED);
+    ASSERT_EQ((uint8_t)data[1], MSG_ERROR_NO_ID_REGISTERED);
 }
 
 TEST(Data, setData_getData)
 {
     IData* myDataPtr = new Data();
-    char data[SIZE_OF_DATA_ARRAY] = {'D','1','2','3','4','5','6','7'};
+    unsigned char data[SIZE_OF_DATA_ARRAY] = {'D','1','2','3','4','5','6','7'};
     myDataPtr->setData(data);
-    char dataRead[SIZE_OF_DATA_ARRAY];
+    unsigned char dataRead[SIZE_OF_DATA_ARRAY];
     myDataPtr->getData(dataRead);
 
     bool isSame = false;
@@ -42,10 +42,10 @@ TEST(Data, setData_getData)
 TEST(Data, setIDdata_getData)
 {
     IData* myDataPtr = new Data();
-    char IDdata[SIZE_OF_DATA_ARRAY] = {'1','2','3','4','5','6','7'};
-    char IDDataFinal[SIZE_OF_DATA_ARRAY] = {'D','1','2','3','4','5','6','7'};
+    unsigned char IDdata[SIZE_OF_DATA_ARRAY] = {'1','2','3','4','5','6','7'};
+    unsigned char IDDataFinal[SIZE_OF_DATA_ARRAY] = {'D','1','2','3','4','5','6','7'};
     myDataPtr->setIDdata(IDdata);
-    char dataRead[SIZE_OF_DATA_ARRAY];
+    unsigned char dataRead[SIZE_OF_DATA_ARRAY];
     myDataPtr->getData(dataRead);
 
     bool isSame = false;

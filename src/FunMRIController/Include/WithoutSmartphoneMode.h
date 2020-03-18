@@ -1,3 +1,6 @@
+#ifndef WITHOUTSMARTPHONEMODE_H_
+#define WITHOUTSMARTPHONEMODE_H_
+
 /**
  * @file WithoutSmartphoneMode.h
  * @author Alexander Najbjerg Christensen (au482141@post.au.dk)
@@ -8,9 +11,6 @@
  * @copyright Copyright (c) 2020
  * 
  */
-
-#ifndef WITHOUTSMARTPHONEMODE_H_
-#define WITHOUTSMARTPHONEMODE_H_
 
 #include "IFunMRIController.h"
 

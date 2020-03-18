@@ -1,3 +1,6 @@
+#ifndef SMARTPHONEMODE_H_
+#define SMARTPHONEMODE_H_
+
 /**
  * @file SmartphoneMode.h
  * @author Alexander Najbjerg Christensen (au482141@post.au.dk)
@@ -15,7 +18,8 @@ class SmartphoneMode : public IFunMRIController
 {
 public:
     void run(void);
-    
 private:
     FunMRI* _funMRI = nullptr;
 };
+
+#endif // SMARTPHONEMODE_H_

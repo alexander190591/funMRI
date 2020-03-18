@@ -16,8 +16,8 @@
 #include <Adafruit_LittleFS.h>
 #include <InternalFileSystem.h>
 
-//#include "../../BatteryModule/Include/BatteryFeather.h"
-//IBatteryModule* battModule = new BatteryFeather(31);
+//#include "../../SupplyModule/Include/BatteryFeather.h"
+//ISupplyModule* battModule = new BatteryFeather(31);
 
 
 // BLE Service

@@ -8,8 +8,8 @@
  * @brief Defines for Bluefruit Feather nRF52832
  * 
  */
-#define SOMO_TX 7      //28 before
-#define SOMO_RX 11     //29 before
+#define SOMO_TX 7
+#define SOMO_RX 11
 #define SOMO_BAUDRATE 9600
 #define LED_PIN LED_BUILTIN
 #define RFID_SS_PIN 5
@@ -50,47 +50,8 @@ void setup()
 void loop()
 { 
   data->clearData();  // Every loop starts by clearing data for new data to be received.
-  // String messageReceived = communicationPtr->receiveData();
-  // if(messageReceived.length() >= 1)
-  //   {
-  //     String msgSend = "Message received: ";
-  //     msgSend += messageReceived;
-
-  //     Serial.println(msgSend);
-
-  //     communicationPtr->sendData(msgSend);
-  //   }
-  
-  // scannerPtr->scan();
-  // if(scannerPtr->isNewScanAvailable())
-  //   {
-  //     //respondToBT = "scanIsAvailable";
-  //     String respondToBT = "";
-  //     for(int i = 0; i < scannerPtr->getSizeOfData(); i++)
-  //     {
-  //       respondToBT += scannerPtr->retrieveResult()[i]; //+= scannerPtr->retrieveResult()[i];
-  //     }
-  //     IDTag = respondToBT;
-  //   }
-
-  // delay(3000);
-
-  // digitalWrite(LED_BUILTIN, HIGH);
-  // digitalWrite(LED_PIN, HIGH);
-  // delay(1000);
-  // digitalWrite(LED_PIN, LOW);
-  // digitalWrite(LED_BUILTIN, LOW);
-  // delay(1000);
-
   
   communicationPtr->receiveData(*data);
-
-  // if(data->dataReceived())
-  // {
-  //   unsigned char receivedArray[SIZE_OF_DATA_ARRAY+1];
-  //   data->getData(receivedArray);
-  //   Serial.print("Message received: "); Serial.write(receivedArray, SIZE_OF_DATA_ARRAY);
-  // }
 
   if(data->dataReceived())
   {
