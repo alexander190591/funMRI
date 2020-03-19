@@ -43,14 +43,14 @@
 class Data : public IData
 {
 public:
-    void getData(unsigned char dataOutputParameter[]);
-    void setData(unsigned char dataInputParameter[]);
-    void setMessage(Message msg);
-    void setIDdata(unsigned char IDdata[]);
-    Message getMessage();
-    void clearData();
-    bool dataReceived();
-    bool isSame(unsigned char arrayOne[], unsigned char arrayTwo[]);
+    void getData(unsigned char dataOutputParameter[]) override;
+    void setData(unsigned char dataInputParameter[])  override;
+    void setMessage(Message msg)  override;
+    void setIDdata(unsigned char IDdata[])  override;
+    Message getMessage()  override;
+    void clearData()  override;
+    bool dataReceived()  override;
+    bool isSame(unsigned char arrayOne[], unsigned char arrayTwo[])  override;
 private:
     char _data[SIZE_OF_DATA_ARRAY];             
 };

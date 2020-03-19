@@ -1,7 +1,8 @@
 /**
  * @file SmartphoneFactory.cpp
  * @author Alexander Najbjerg Christensen (au482141@post.au.dk)
- * @brief 
+ * @brief This is the SmartphoneFactory. It instatiates the modules needed for a functional funMRI,
+ *        that can communicate with a smartphone.
  * @version 0.1
  * @date 2020-03-18
  * 
@@ -38,4 +39,3 @@
     {
         // TODO --------------------------------------------------------------------------------------------
     }
-

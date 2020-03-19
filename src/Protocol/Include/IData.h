@@ -35,7 +35,7 @@ public:
     virtual void setData(unsigned char dataInputParameter[]) = 0;
     virtual void setMessage(Message msg) = 0;
     virtual void setIDdata(unsigned char IDdata[]) = 0;
-    virtual Message getMessage();
+    virtual Message getMessage() = 0;
     virtual void clearData() = 0;
     virtual bool dataReceived() = 0;
     virtual bool isSame(unsigned char arrayOne[], unsigned char arrayTwo[]) = 0;

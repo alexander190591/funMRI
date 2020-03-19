@@ -35,12 +35,12 @@ INCLUDEPATH  := 																	\
 	-IGoogleTest/googletest/googletest/ 											\
 	-I../src/FunMRI/Include/ 														\
 	-I../src/FunMRIController/Include/ 												\
-#	-I../src/Modules/SupplyModule/Include/ 											\
+	-I../src/Protocol/Include/ 														\
+	#-I../src/Modules/SupplyModule/Include/ 											\
 	-I../src/Modules/CommunicationModule/Include/ 									\
 	-I../src/Modules/ScannerModule/Include/ 										\
 	-I../src/Modules/SoundModule/Include/ 											\
 	-I../src/Modules/SoundDummy/Include/ 											\
-	-I../src/Protocol/Include/ 														\
 	-I../src/Modules/ScannerModule/Include/RFID-RC522/rfid-master/rfid-master/src/ 	\
 	-I../src/Modules/SoundModule/Include/DFRobotDFPlayer/							\
 
@@ -54,7 +54,7 @@ SRC      :=                      																		\
    $(wildcard ../src/FunMRI/Src/*.cpp) 																	\
    $(wildcard ../src/FunMRIController/Src/*.cpp) 														\
    $(wildcard ../src/Protocol/Src/*.cpp) 																\
-   $(wildcard ../src/Modules/SupplyModule/Src/*.cpp) 													\
+   #$(wildcard ../src/Modules/SupplyModule/Src/*.cpp) 													\
    $(wildcard ../src/Modules/CommunicationModule/Src/*.cpp) 											\
    $(wildcard ../src/Modules/ScannerModule/Src/*.cpp) 													\
    $(wildcard ../src/Modules/SoundModule/Src/*.cpp) 													\

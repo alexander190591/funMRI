@@ -20,6 +20,7 @@
 #include "../../Protocol/Include/Data.h"
 #include "../../State/Include/IState.h"
 #include "../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h"
+#include "../../FunMRIFactory/Include/IFunMRIFactory.h"
 
 class FunMRI
 {
@@ -35,6 +36,7 @@ public:
     void modeChanged(void);
     void microSwitchPressed(void);
 private:
+    IFunMRIFactory* _funMRIFactory = nullptr;
     IUserInterfaceModule* _userInterface = nullptr;
     ISupplyModule* _supplyModule = nullptr;
     IScannerModule* _scannerModule = nullptr;
