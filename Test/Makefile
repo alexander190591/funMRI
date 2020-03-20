@@ -33,6 +33,8 @@ INCLUDEPATH  := 																	\
 	-Iinclude/ 																		\
 	-IGoogleTest/googletest/googletest/include/ 									\
 	-IGoogleTest/googletest/googletest/ 											\
+	-IGoogleTest/googletest/googlmock/												\
+	-IGoogleTest/googletest/googlemock/include/gmock/								\
 	-I../src/FunMRI/Include/ 														\
 	-I../src/FunMRIController/Include/ 												\
 	-I../src/Protocol/Include/ 														\

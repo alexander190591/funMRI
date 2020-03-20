@@ -31,7 +31,22 @@ build/objects/main.o: main.cpp \
  GoogleTest/googletest/googletest/src/gtest-printers.cc \
  GoogleTest/googletest/googletest/src/gtest-test-part.cc \
  GoogleTest/googletest/googletest/src/gtest-typed-test.cc \
- ../src/Protocol/Include/Data.h ../src/Protocol/Include/IData.h
+ ../src/Protocol/Include/Data.h ../src/Protocol/Include/IData.h \
+ ../src/FunMRI/Include/FunMRI.h \
+ ../src/FunMRI/Include/../../Modules/ScannerModule/include/IScannerModule.h \
+ ../src/FunMRI/Include/../../Modules/SoundModule/include/ISoundModule.h \
+ ../src/FunMRI/Include/../../Modules/SupplyModule/Include/ISupplyModule.h \
+ ../src/FunMRI/Include/../../Modules/CommunicationModule/Include/ICommunicationModule.h \
+ ../src/FunMRI/Include/../../Modules/CommunicationModule/Include/../../../Protocol/Include/Data.h \
+ ../src/FunMRI/Include/../../Protocol/Include/Data.h \
+ ../src/FunMRI/Include/../../State/Include/IState.h \
+ ../src/FunMRI/Include/../../State/Include/../../FunMRI/Include/FunMRI.h \
+ ../src/FunMRI/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h \
+ ../src/FunMRI/Include/../../FunMRIFactory/Include/IFunMRIFactory.h \
+ ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/CommunicationModule/Include/ICommunicationModule.h \
+ ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/ScannerModule/Include/IScannerModule.h \
+ ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/SupplyModule/Include/ISupplyModule.h \
+ ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h
 
 GoogleTest/googletest/googletest/src/gtest-all.cc:
 
@@ -100,3 +115,33 @@ GoogleTest/googletest/googletest/src/gtest-typed-test.cc:
 ../src/Protocol/Include/Data.h:
 
 ../src/Protocol/Include/IData.h:
+
+../src/FunMRI/Include/FunMRI.h:
+
+../src/FunMRI/Include/../../Modules/ScannerModule/include/IScannerModule.h:
+
+../src/FunMRI/Include/../../Modules/SoundModule/include/ISoundModule.h:
+
+../src/FunMRI/Include/../../Modules/SupplyModule/Include/ISupplyModule.h:
+
+../src/FunMRI/Include/../../Modules/CommunicationModule/Include/ICommunicationModule.h:
+
+../src/FunMRI/Include/../../Modules/CommunicationModule/Include/../../../Protocol/Include/Data.h:
+
+../src/FunMRI/Include/../../Protocol/Include/Data.h:
+
+../src/FunMRI/Include/../../State/Include/IState.h:
+
+../src/FunMRI/Include/../../State/Include/../../FunMRI/Include/FunMRI.h:
+
+../src/FunMRI/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h:
+
+../src/FunMRI/Include/../../FunMRIFactory/Include/IFunMRIFactory.h:
+
+../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/CommunicationModule/Include/ICommunicationModule.h:
+
+../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/ScannerModule/Include/IScannerModule.h:
+
+../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/SupplyModule/Include/ISupplyModule.h:
+
+../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h:
