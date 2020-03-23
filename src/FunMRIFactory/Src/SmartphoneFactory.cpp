@@ -10,7 +10,7 @@
  * 
  */
 
-#include "../Include/SmartphoneFactory.h"
+#include "../Include/Implementations/SmartphoneFactory.h"
 #include "../../Modules/CommunicationModule/Include/BluetoothFeather.h"
 #include "../../Modules/ScannerModule/Include/RFIDRC522.h"
 #include "../../Modules/SoundModule/Include/DFPlayerMini.h"

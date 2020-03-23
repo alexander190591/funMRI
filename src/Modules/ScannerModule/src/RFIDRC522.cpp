@@ -23,10 +23,7 @@ RFIDRC522::~RFIDRC522()
 
 void RFIDRC522::scan()
 {
-	/*
-	* FOR DEBUGGING.... 
-	*/
-	Serial.println("scan() entered...");
+	Serial.println("scan() entered..."); // For debugging purposes
 
 	_rfidPtr->PCD_Reset();
 	_rfidPtr->PCD_Init();

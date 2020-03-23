@@ -3,6 +3,7 @@
 #include "src/Modules/SoundModule/include/DFPlayerMini.h"
 //#include "src/Modules/SoundDummy/Include/SoundDummy.h"
 #include "src/Modules/CommunicationModule/Include/BluetoothFeather.h"
+#include "src/Protocol/Include/Data.h"
 
 /**
  * @brief Defines for Bluefruit Feather nRF52832

@@ -11,13 +11,19 @@
 
 #include "..\Include\Data.h"
 
+// Data::Data(const Data& oldData)
+// {
+//     for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++)
+//         _data[i] = oldData._data[i];
+// }
+
 /**
  * @brief Method that sets the dataOutputArray to the values found in the _data array.
  * 
  * @param [out] dataOutputArray Array that is being filled with the values found in the _data array.
  *          OBS: Size of dataOutputArray MUST be SIZE_OF_DATA_ARRAY long!!
  */
-void Data::getData(unsigned char dataOutputArray[])
+void Data::getData(unsigned char dataOutputArray[]) const
 {
     for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++)
         dataOutputArray[i] = _data[i];
@@ -114,6 +120,14 @@ bool Data::dataReceived()
         return false;
 }
 
+/**
+ * @brief Checks if the two arrays contain the same data.
+ * 
+ * @param arrayOne is the array that is compared to arrayTwo.
+ * @param arrayTwo is the array that is compared to arrayOne.
+ * @return true is returned if the data in the two arrays are equal.
+ * @return false is returned if the data in the two arrays are NOT equal.
+ */
 bool Data::isSame(unsigned char arrayOne[], unsigned char arrayTwo[])
 {
     bool isSame = false;
@@ -129,4 +143,16 @@ bool Data::isSame(unsigned char arrayOne[], unsigned char arrayTwo[])
         }
     }
     return isSame;
+}
+
+bool operator==(const Data& lhs, const Data& rhs)
+{
+    unsigned char one[SIZE_OF_DATA_ARRAY];
+    lhs.getData(one);
+    unsigned char two[SIZE_OF_DATA_ARRAY];
+    rhs.getData(two);
+
+    Data dataComparer = Data();
+
+    return dataComparer.isSame(one, two);
 }

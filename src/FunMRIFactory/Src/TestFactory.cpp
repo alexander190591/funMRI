@@ -9,7 +9,7 @@
  * 
  */
 
-#include "../Include/TestFactory.h"
+#include "../Include/Implementations/TestFactory.h"
 
 ICommunicationModule* TestFactory::createCommunicationModule(void)
 {

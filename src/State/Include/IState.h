@@ -14,7 +14,7 @@
 
 #include "../../FunMRI/Include/FunMRI.h"
 
-class FunMRI; // TODO FORWARD DECLARATION?  https://stackoverflow.com/questions/396084/headers-including-each-other-in-c
+class FunMRI; // Forward declaration...  https://stackoverflow.com/questions/396084/headers-including-each-other-in-c
 
 class IState
 {

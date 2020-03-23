@@ -22,22 +22,28 @@
 #include "../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h"
 #include "../../FunMRIFactory/Include/IFunMRIFactory.h"
 
+class IState; // Forward declaration...  https://stackoverflow.com/questions/396084/headers-including-each-other-in-c
+
 class FunMRI
 {
 public:
-    void setState(IState &state);
+    FunMRI(IFunMRIFactory* funMRIFactory);
+    ~FunMRI();
+    void setState(IState *state);
     void scan(void);
     void playSound(void);
     void send(Data& data);
-    void receive(Data& data);
-    void chargingStatus(void);
+    void receive();
+    void setData(Data& data);
+    Data getData();
+    void batteryStatus(void);
     void initPressed(void);
     void scanPressed(void);
     void modeChanged(void);
     void microSwitchPressed(void);
 private:
     IFunMRIFactory* _funMRIFactory = nullptr;
-    IUserInterfaceModule* _userInterface = nullptr;
+    IUserInterfaceModule* _userInterfaceModule = nullptr;
     ISupplyModule* _supplyModule = nullptr;
     IScannerModule* _scannerModule = nullptr;
     ICommunicationModule* _communicationModule = nullptr;

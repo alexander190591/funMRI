@@ -18,12 +18,12 @@
  * 
  */
 enum Message{
-    MSG_ERROR_NO_ID_REGISTERED = 0xAA, // Used when ScannerModule cannot scan an ID.
-    MSG_ERROR_NOT_INIT_TAG     = 0xBB, // Used when ID is not the same as when ID was initiated.
-    MSG_INFO_SOUND_PLAYED      = 0xCC, // Used when sound clip is done playing.
-    MSG_CMD_INIT               = 0xDD, // Used to scanning the ID before playing sound.
-    MSG_CMD_SCAN               = 0xEE, // Used to play sound.
-    MSG_ERROR_NOT_A_MESSAGE    = 0xFF, // Used for when data following the Type Byte is not one of the below values.
+    MSG_ERROR_NO_ID_REGISTERED = '0', // Used when ScannerModule cannot scan an ID.
+    MSG_ERROR_NOT_INIT_TAG     = '1', // Used when ID is not the same as when ID was initiated.
+    MSG_INFO_SOUND_PLAYED      = '2', // Used when sound clip is done playing.
+    MSG_CMD_INIT               = '3', // Used to scanning the ID before playing sound.
+    MSG_CMD_SCAN               = '4', // Used to play sound.
+    MSG_ERROR_NOT_A_MESSAGE    = '5', // Used for when data following the Type Byte is not one of the below values.
     MSG_TEST_INIT              = 'I',  // FOR TEST PURPOSES
     MSG_TEST_SCAN              = 'S',  // FOR TEST PURPOSES
 };
@@ -31,7 +31,7 @@ enum Message{
 class IData
 {
 public:
-    virtual void getData(unsigned char dataOutputParameter[]) = 0;
+    virtual void getData(unsigned char dataOutputParameter[]) const = 0;
     virtual void setData(unsigned char dataInputParameter[]) = 0;
     virtual void setMessage(Message msg) = 0;
     virtual void setIDdata(unsigned char IDdata[]) = 0;

@@ -46,7 +46,9 @@ build/objects/main.o: main.cpp \
  ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/CommunicationModule/Include/ICommunicationModule.h \
  ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/ScannerModule/Include/IScannerModule.h \
  ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/SupplyModule/Include/ISupplyModule.h \
- ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h
+ ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h \
+ ../src/FunMRIFactory/Include/Implementations/TestFactory.h \
+ ../src/FunMRIFactory/Include/Implementations/../IFunMRIFactory.h
 
 GoogleTest/googletest/googletest/src/gtest-all.cc:
 
@@ -145,3 +147,7 @@ GoogleTest/googletest/googletest/src/gtest-typed-test.cc:
 ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/SupplyModule/Include/ISupplyModule.h:
 
 ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h:
+
+../src/FunMRIFactory/Include/Implementations/TestFactory.h:
+
+../src/FunMRIFactory/Include/Implementations/../IFunMRIFactory.h:

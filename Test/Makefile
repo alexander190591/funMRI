@@ -37,13 +37,15 @@ INCLUDEPATH  := 																	\
 	-IGoogleTest/googletest/googlemock/include/gmock/								\
 	-I../src/FunMRI/Include/ 														\
 	-I../src/FunMRIController/Include/ 												\
+	-I../src/FunMRIFactory/Include/													\
 	-I../src/Protocol/Include/ 														\
+	-I../src/State/Include/															\
 	#-I../src/Modules/SupplyModule/Include/ 											\
 	-I../src/Modules/CommunicationModule/Include/ 									\
 	-I../src/Modules/ScannerModule/Include/ 										\
 	-I../src/Modules/SoundModule/Include/ 											\
 	-I../src/Modules/SoundDummy/Include/ 											\
-	-I../src/Modules/ScannerModule/Include/RFID-RC522/rfid-master/rfid-master/src/ 	\
+	#-I../src/Modules/ScannerModule/Include/RFID-RC522/rfid-master/rfid-master/src/ 	\
 	-I../src/Modules/SoundModule/Include/DFRobotDFPlayer/							\
 
 # Alias for source files placed at src/subfolders.
@@ -55,13 +57,15 @@ SRC      :=                      																		\
    $(wildcard *.cpp)																					\
    $(wildcard ../src/FunMRI/Src/*.cpp) 																	\
    $(wildcard ../src/FunMRIController/Src/*.cpp) 														\
+   $(wildcard ../src/FunMRIFactory/Src/TestFactory.cpp) 															\
    $(wildcard ../src/Protocol/Src/*.cpp) 																\
-   #$(wildcard ../src/Modules/SupplyModule/Src/*.cpp) 													\
+   #$(wildcard ../src/State/Src/*.cpp) 																	\
+   $(wildcard ../src/Modules/SupplyModule/Src/*.cpp) 													\
    $(wildcard ../src/Modules/CommunicationModule/Src/*.cpp) 											\
    $(wildcard ../src/Modules/ScannerModule/Src/*.cpp) 													\
    $(wildcard ../src/Modules/SoundModule/Src/*.cpp) 													\
    $(wildcard ../src/Modules/SoundDummy/Src/*.cpp) 														\
-   $(wildcard ../src/Modules/ScannerModule/Include/RFID-RC522/rfid-master/rfid-master/src/*.cpp) 		\
+   #$(wildcard ../src/Modules/ScannerModule/Include/RFID-RC522/rfid-master/rfid-master/src/*.cpp) 		\
    $(wildcard ../src/Modules/SoundModule/Include/DFRobotDFPlayer/*.cpp) 								\
 
 # This line creates the string of object files.

@@ -43,7 +43,7 @@
 class Data : public IData
 {
 public:
-    void getData(unsigned char dataOutputParameter[]) override;
+    void getData(unsigned char dataOutputParameter[]) const override;
     void setData(unsigned char dataInputParameter[])  override;
     void setMessage(Message msg)  override;
     void setIDdata(unsigned char IDdata[])  override;
@@ -51,8 +51,17 @@ public:
     void clearData()  override;
     bool dataReceived()  override;
     bool isSame(unsigned char arrayOne[], unsigned char arrayTwo[])  override;
+    Data& operator=(const Data& data) // Assignment Operator
+    {
+        for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++)
+            _data[i] = data._data[i];
+        
+        return *this;
+    };
 private:
     char _data[SIZE_OF_DATA_ARRAY];             
 };
+
+bool operator==(const Data& lhs, const Data& rhs);
 
 #endif // DATA_H_

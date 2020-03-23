@@ -2,11 +2,12 @@
 //#include "GoogleTest/googletest/googlemock/src/gmock-all.cc"
 #include "../src/Protocol/Include/Data.h"
 #include "../src/FunMRI/Include/FunMRI.h"
+#include "../src/FunMRIFactory/Include/Implementations/TestFactory.h"
 
 #include <stdio.h>
 
 /** P R O T O C O L   T E S T S ********************************************************/
-/*
+
 TEST(Data, setMessage_getData)
 {
     IData* uut_ = new Data();
@@ -75,7 +76,7 @@ TEST(Data, setIDdata_getData)
     // Assert
     ASSERT_EQ(isSame, true);
 }
-*/
+
 
 /** M O C K   C L A S S E S ************************************************************/
 
@@ -106,6 +107,17 @@ TEST(Data, setIDdata_getData)
 //     MOCK_METHOD0(microSwitchPressed, void());
 // }
 
+TEST(FunMRI, Data_EqualEqualOperator)
+{
+    FunMRI* myFunMRI = new FunMRI(new TestFactory());
+    Data* data = new Data();
+    data->setMessage(MSG_INFO_SOUND_PLAYED);
+    myFunMRI->setData(*data);
+
+    Data dataRead = myFunMRI->getData();
+
+    ASSERT_EQ(*data, dataRead);
+    }
 
 
 int main( int argc, char* argv[] )

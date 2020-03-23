@@ -12,7 +12,7 @@
  * 
  */
 
-#include "IFunMRIFactory.h"
+#include "../IFunMRIFactory.h"
 
 class TestFactory : public IFunMRIFactory
 {
