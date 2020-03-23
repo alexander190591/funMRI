@@ -97,10 +97,10 @@ void startAdv(void)
  * 
  * @param [out] data Reference to the data object with the data that is to be sent to the central (funMRI App).
  */
-void BluetoothFeather::sendData(Data& data)
+void BluetoothFeather::sendData(IData* data)
 {
     unsigned char buf[SIZE_OF_DATA_ARRAY];
-    data.getData(buf);
+    data->getData(buf);
     bleuart.write((char*)buf);
 }
 
@@ -111,7 +111,7 @@ void BluetoothFeather::sendData(Data& data)
  * @param [out] data Reference to the data object with the data attribute that is to be set with the incoming data.
  * 
  */
-void BluetoothFeather::receiveData(Data& data)
+void BluetoothFeather::receiveData(IData* data)
 {
   char tmpArray[SIZE_OF_DATA_ARRAY + 1] = {0,0,0,0,0,0,0,0,0};  // Adding +1 to receive the /0
   char dataArray[SIZE_OF_DATA_ARRAY] = {0,0,0,0,0,0,0,0};       // Final array for setting Data attribute.
@@ -134,7 +134,7 @@ void BluetoothFeather::receiveData(Data& data)
     }
   }
 
-  data.setData((unsigned char*)dataArray);
+  data->setData((unsigned char*)dataArray);
 }
 
 /**

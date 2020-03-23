@@ -14,14 +14,15 @@
 #ifndef BLUETOOTHFEATHER_H_
 #define BLUETOOTHFEATHER_H_
 #include "ICommunicationModule.h"
+#include "../../../Protocol/Include/Data.h"
 
 class BluetoothFeather : public ICommunicationModule
 {
 public:
 	BluetoothFeather();
 	bool init();
-	void sendData(Data& data);
-	void receiveData(Data& data);
+	void sendData(IData* data);
+	void receiveData(IData* data);
 };
 
 #endif /* BLUETOOTHMODULE_HM_10_BLUETOOTHMODULE_H_ */

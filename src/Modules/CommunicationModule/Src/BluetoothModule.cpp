@@ -52,10 +52,10 @@
 	 * If no device is connected via Bluetooth to the Bluetooth Module, the string is sent as a command to the Bluetooth Module.
 	 * @param cmd is the string to be sent to the Bluetooth Module.
 	 */
-	void BluetoothModule::sendData(Data& data)
+	void BluetoothModule::sendData(IData* data)
 	{
 		unsigned char buf[SIZE_OF_DATA_ARRAY];
-		data.getData(buf);
+		data->getData(buf);
 		_serialPtr->write(buf,SIZE_OF_DATA_ARRAY);
 	}
 
@@ -65,7 +65,7 @@
 	 * @return Response from the Bluetooth Device.
 	 */
 
-	void BluetoothModule::receiveData(Data& data)
+	void BluetoothModule::receiveData(IData* data)
 	{
 		char tmpArray[SIZE_OF_DATA_ARRAY + 1] = {0};
 		char dataArray[SIZE_OF_DATA_ARRAY] = {0};
@@ -92,6 +92,6 @@
 
 		}
 
-		data.setData((unsigned char*)dataArray);
+		data->setData((unsigned char*)dataArray);
 	}
 

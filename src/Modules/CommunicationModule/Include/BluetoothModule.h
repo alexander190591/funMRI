@@ -12,6 +12,7 @@
 #ifndef BLUETOOTHMODULE_HM_10_BLUETOOTHMODULE_H_
 #define BLUETOOTHMODULE_HM_10_BLUETOOTHMODULE_H_
 #include "../../CommunicationModule/Include/ICommunicationModule.h"
+#include "../../../Protocol/Include/Data.h"
 #include <SoftwareSerial.h>
 #include <Arduino.h>
 
@@ -25,8 +26,8 @@ class BluetoothModule : public ICommunicationModule
 public:
 	BluetoothModule();
 	bool init();
-	void sendData(Data& data);
-	void receiveData(Data& data);
+	void sendData(IData* data);
+	void receiveData(IData* data);
 	~BluetoothModule();
 
 private:

@@ -62,6 +62,6 @@ private:
     char _data[SIZE_OF_DATA_ARRAY];             
 };
 
-bool operator==(const Data& lhs, const Data& rhs);
+bool operator==(const IData& lhs, const IData& rhs);
 
 #endif // DATA_H_

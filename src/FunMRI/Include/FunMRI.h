@@ -17,7 +17,7 @@
 #include "../../Modules/SoundModule/include/ISoundModule.h"
 #include "../../Modules/SupplyModule/Include/ISupplyModule.h"
 #include "../../Modules/CommunicationModule/Include/ICommunicationModule.h"
-#include "../../Protocol/Include/Data.h"
+#include "../../Protocol/Include/IData.h"
 #include "../../State/Include/IState.h"
 #include "../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h"
 #include "../../FunMRIFactory/Include/IFunMRIFactory.h"
@@ -32,10 +32,10 @@ public:
     void setState(IState *state);
     void scan(void);
     void playSound(void);
-    void send(Data& data);
+    void send(IData* data);
     void receive();
-    void setData(Data& data);
-    Data getData();
+    void setData(IData* data);
+    IData* getData();
     void batteryStatus(void);
     void initPressed(void);
     void scanPressed(void);

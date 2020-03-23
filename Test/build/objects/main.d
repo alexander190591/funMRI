@@ -37,8 +37,8 @@ build/objects/main.o: main.cpp \
  ../src/FunMRI/Include/../../Modules/SoundModule/include/ISoundModule.h \
  ../src/FunMRI/Include/../../Modules/SupplyModule/Include/ISupplyModule.h \
  ../src/FunMRI/Include/../../Modules/CommunicationModule/Include/ICommunicationModule.h \
- ../src/FunMRI/Include/../../Modules/CommunicationModule/Include/../../../Protocol/Include/Data.h \
- ../src/FunMRI/Include/../../Protocol/Include/Data.h \
+ ../src/FunMRI/Include/../../Modules/CommunicationModule/Include/../../../Protocol/Include/IData.h \
+ ../src/FunMRI/Include/../../Protocol/Include/IData.h \
  ../src/FunMRI/Include/../../State/Include/IState.h \
  ../src/FunMRI/Include/../../State/Include/../../FunMRI/Include/FunMRI.h \
  ../src/FunMRI/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h \
@@ -128,9 +128,9 @@ GoogleTest/googletest/googletest/src/gtest-typed-test.cc:
 
 ../src/FunMRI/Include/../../Modules/CommunicationModule/Include/ICommunicationModule.h:
 
-../src/FunMRI/Include/../../Modules/CommunicationModule/Include/../../../Protocol/Include/Data.h:
+../src/FunMRI/Include/../../Modules/CommunicationModule/Include/../../../Protocol/Include/IData.h:
 
-../src/FunMRI/Include/../../Protocol/Include/Data.h:
+../src/FunMRI/Include/../../Protocol/Include/IData.h:
 
 ../src/FunMRI/Include/../../State/Include/IState.h:
 

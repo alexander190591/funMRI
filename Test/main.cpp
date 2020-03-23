@@ -110,13 +110,13 @@ TEST(Data, setIDdata_getData)
 TEST(FunMRI, Data_EqualEqualOperator)
 {
     FunMRI* myFunMRI = new FunMRI(new TestFactory());
-    Data* data = new Data();
+    IData* data = new Data();
     data->setMessage(MSG_INFO_SOUND_PLAYED);
-    myFunMRI->setData(*data);
+    myFunMRI->setData(data);
 
-    Data dataRead = myFunMRI->getData();
+    IData* dataRead = myFunMRI->getData();
 
-    ASSERT_EQ(*data, dataRead);
+    ASSERT_EQ(*data, *dataRead);
     }
 
 

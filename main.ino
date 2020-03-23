@@ -19,7 +19,7 @@
 IScannerModule *scannerPtr = nullptr;
 ISoundModule *soundPtr = nullptr;
 ICommunicationModule *communicationPtr = nullptr;
-Data* data = new Data();
+IData* data = new Data();
 
 unsigned char IDTag[SIZE_OF_DATA_ARRAY - 1] = {0, 0, 0, 0, 0, 0, 0};
 unsigned char newIDTag[SIZE_OF_DATA_ARRAY - 1] = {0, 0, 0, 0, 0, 0, 0};
@@ -52,7 +52,7 @@ void loop()
 { 
   data->clearData();  // Every loop starts by clearing data for new data to be received.
   
-  communicationPtr->receiveData(*data);
+  communicationPtr->receiveData(data);
 
   if(data->dataReceived())
   {
@@ -61,7 +61,7 @@ void loop()
     data->getData(receivedArray); Serial.write(receivedArray, SIZE_OF_DATA_ARRAY); Serial.println("");
 
     Serial.print("Type received: "); Serial.write(receivedArray, 1); Serial.println("");
-    Serial.print("_data[0]: "); Serial.write(receivedArray+1,1); Serial.println("");
+    Serial.print("_data[1]: "); Serial.write(receivedArray+1,1); Serial.println("");
 
     if(data->getMessage() == MSG_CMD_INIT || data->getMessage() == MSG_TEST_INIT)
     {
@@ -90,7 +90,7 @@ void loop()
       data->getData(idTagArray);
       Serial.print("IDTag: "); Serial.write(idTagArray+1,7); Serial.println("");
 
-      communicationPtr->sendData(*data);
+      communicationPtr->sendData(data);
     }
     else if(data->getMessage() == MSG_CMD_SCAN || data->getMessage() == MSG_TEST_SCAN)
     {
@@ -109,13 +109,13 @@ void loop()
           soundPtr->playSound();
           Serial.println("INFO_SOUND_PLAYED (0xCC)");
           data->setMessage(MSG_INFO_SOUND_PLAYED);
-          communicationPtr->sendData(*data);
+          communicationPtr->sendData(data);
         }
         else
         {
           Serial.println("ERROR_NOT_INIT_TAG (0xBB)");
           data->setMessage(MSG_ERROR_NOT_INIT_TAG);
-          communicationPtr->sendData(*data);
+          communicationPtr->sendData(data);
           //communicationPtr->sendData("scanning error: not init tag");
         }
       }
@@ -127,7 +127,7 @@ void loop()
       unsigned char msgToSend[SIZE_OF_DATA_ARRAY];
       data->getData(msgToSend);
       Serial.print("Sending data: "); Serial.write(msgToSend, SIZE_OF_DATA_ARRAY);
-      communicationPtr->sendData(*data);
+      communicationPtr->sendData(data);
 
       //communicationPtr->sendData("scanning error: scanning not available");
     }

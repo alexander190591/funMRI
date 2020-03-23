@@ -145,7 +145,7 @@ bool Data::isSame(unsigned char arrayOne[], unsigned char arrayTwo[])
     return isSame;
 }
 
-bool operator==(const Data& lhs, const Data& rhs)
+bool operator==(const IData& lhs, const IData& rhs)
 {
     unsigned char one[SIZE_OF_DATA_ARRAY];
     lhs.getData(one);

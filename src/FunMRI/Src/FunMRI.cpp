@@ -78,10 +78,10 @@ void FunMRI::playSound(void)
  * 
  * @param data object is the object containing the data/message sent. See Data.h for protocol.
  */
-void FunMRI::send(Data& data)
+void FunMRI::send(IData* data)
 {
     setData(data);
-    _communicationModule->sendData((Data&)_data); // Workaround.. Should've been an IData-reference in methods all way down..
+    _communicationModule->sendData(_data);
 }
 
 /**
@@ -91,7 +91,7 @@ void FunMRI::send(Data& data)
  */
 void FunMRI::receive()
 {
-    _communicationModule->receiveData((Data&)_data); // Workaround.. Should've been an Idata-reference in methods all way down..
+    _communicationModule->receiveData(_data);
 }
 
 /**
@@ -99,9 +99,9 @@ void FunMRI::receive()
  * 
  * @param data is the data object that contains the value to be stored in FunMRI.
  */
-void FunMRI::setData(Data& data)
+void FunMRI::setData(IData* data)
 {
-    *(Data*)_data = data;
+    *_data = *data;
 }
 
 /**
@@ -109,9 +109,9 @@ void FunMRI::setData(Data& data)
  * 
  * @return Data is the object stored in the FunMRI object. Returned by value.
  */
-Data FunMRI::getData()
+IData* FunMRI::getData()
 {
-    return *((Data*)_data);
+    return _data;
 }
 
 /**
