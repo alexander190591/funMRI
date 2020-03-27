@@ -17,6 +17,11 @@
 #include "../../Modules/ScannerModule/Include/RFIDRC522.h"
 #include "../../Modules/SoundModule/Include/DFPlayerMini.h"
 
+    WithoutSmartphoneFactory::WithoutSmartphoneFactory()
+    {
+        // Nothing to delete...
+    }
+    
     WithoutSmartphoneFactory::~WithoutSmartphoneFactory()
     {
         // Nothing to delete...
@@ -74,4 +79,9 @@
     {
         return nullptr;
         // TODO --------------------------------------------------------------------------------------------
+    }
+
+    IData* WithoutSmartphoneFactory::createDataObject(void)
+    {
+        return new Data();
     }

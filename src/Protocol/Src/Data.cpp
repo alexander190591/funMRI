@@ -10,6 +10,7 @@
  */
 
 #include "..\Include\Data.h"
+#include <iostream>
 
 // Data::Data(const Data& oldData)
 // {
@@ -37,8 +38,14 @@ void Data::getData(unsigned char dataOutputArray[]) const
  */
 void Data::setData(unsigned char dataInputArray[])
 {
+    // std::cout << "Entered Data::setData()..." << std::endl;
     for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++)
+    {
         _data[i] = dataInputArray[i];
+        // std::cout << "_data[" << i << "] = " << _data[i] << std::endl;
+        // std::cout << "dataInputArray[" << i << "] = " << dataInputArray[i] << std::endl;
+    }
+    // std::cout << "Exits Data::setData()..." << std::endl;
 }
 
 /**
@@ -65,6 +72,17 @@ void Data::setIDdata(unsigned char ID[])
     _data[0] = 'D';
     for(int i = 1; i < SIZE_OF_DATA_ARRAY; i++)
         _data[i] = ID[i-1];
+}
+
+/**
+ * @brief Sets the output parameter ID (should be 7 bytes long) to the data bytes of the _data array in the Data object.
+ * 
+ * @param ID [out] is set to the (7) data bytes of the _data array in the Data object.
+ */
+void Data::getIDdata(unsigned char ID[])
+{
+    for(int i = 0; i < SIZE_OF_DATA_ARRAY - 1; i++)
+        ID[i] = _data[i+1];
 }
 
 /**
@@ -144,6 +162,13 @@ bool Data::isSame(unsigned char arrayOne[], unsigned char arrayTwo[])
     return isSame;
 }
 
+/**
+ * @brief Checks if the data bytes ([1] to [7]) in the this data object is the same as the unsigned char array (7 byte long).
+ * 
+ * @param testData is a 7 byte long unsigned char array that contains the data that is tested for in the object's data bytes.
+ * @return true if the data bytes are the same as in the testData array.
+ * @return false if the data bytes are NOT the same as in the testData array.
+ */
 bool Data::isIDDataSame(unsigned char testData[])
 {
     bool isSame = false;
@@ -159,15 +184,3 @@ bool Data::isIDDataSame(unsigned char testData[])
     }
     return isSame;
 }
-
-// bool operator==(const IData& lhs, const IData& rhs)
-// {
-//     unsigned char one[SIZE_OF_DATA_ARRAY];
-//     lhs.getData(one);
-//     unsigned char two[SIZE_OF_DATA_ARRAY];
-//     rhs.getData(two);
-
-//     Data dataComparer = Data();
-
-//     return dataComparer.isSame(one, two);
-// }

@@ -27,12 +27,15 @@
 
 class SmartphoneFactory : public IFunMRIFactory
 {
+public:
+    SmartphoneFactory();
     ~SmartphoneFactory();
     ICommunicationModule* createCommunicationModule(void);
     IScannerModule* createScannerModule(void);
     ISoundModule* createSoundModule(void);
     ISupplyModule*  createSupplyModule(void);
     IUserInterfaceModule* createUserInterfaceModule(void);
+    IData* createDataObject(void);
 };
 
 #endif // SMARTPHONEFACTORY_H_

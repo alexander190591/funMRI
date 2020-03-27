@@ -15,6 +15,6 @@
 class UserInterfaceDummyTest: public IUserInterfaceModule
 {
 public:
-    UserInterfaceDummyTest() {std::cout << "UserInterfaceDummyTest: Constructor." << std::endl;}
-    ~UserInterfaceDummyTest() { std::cout << "UserInterfaceDummyTest: Destructor." << std::endl; /*Nothing to delete...*/}
+    UserInterfaceDummyTest() { /* std::cout << "UserInterfaceDummyTest: Constructor." << std::endl; */ }
+    ~UserInterfaceDummyTest() { /* std::cout << "UserInterfaceDummyTest: Destructor." << std::endl; */ /*Nothing to delete...*/}
 };

@@ -36,6 +36,7 @@ public:
     void receive();
     void setData(IData* data);
     IData* getData();
+    void storeInitID(unsigned char* initID);
     bool isIDSameAsInit(unsigned char* newID);
     void batteryStatus(void);
     void initPressed(void);

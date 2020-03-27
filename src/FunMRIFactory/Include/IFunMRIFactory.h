@@ -27,6 +27,7 @@ public:
     virtual ISoundModule* createSoundModule(void) = 0;
     virtual ISupplyModule*  createSupplyModule(void) = 0;
     virtual IUserInterfaceModule* createUserInterfaceModule(void) = 0;
+    virtual IData* createDataObject(void) = 0;
 };
 
 #endif // IFUNMRIFACTORY_H_

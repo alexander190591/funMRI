@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-/** P R O T O C O L   T E S T S ********************************************************/
+/** P R O T O C O L   T E S T S ******************************************************************/
 
 TEST(Data, setMessage_getData)
 {
@@ -74,6 +74,21 @@ TEST(Data, isIDDataSame)
     ASSERT_TRUE(uut_->isIDDataSame(IDdata));
 }
 
+
+/** F U N M R I   T E S T S **********************************************************************/
+TEST(FunMRI, isIDSameAsInit)
+{
+    // Arrange
+    FunMRI* _uut = new FunMRI(new TestFactory());
+    unsigned char IDdata[SIZE_OF_DATA_ARRAY] = {'1','2','3','4','5','6','7'};
+
+    // Act
+    _uut->storeInitID(IDdata);
+    
+    // Assert
+    ASSERT_TRUE(_uut->isIDSameAsInit(IDdata));
+}
+
 TEST(FunMRI, SoundDummyTest_playSound)
 {
     // Arrange
@@ -85,35 +100,38 @@ TEST(FunMRI, SoundDummyTest_playSound)
     // Assert: Check if cout matches...
 }
 
-// TEST(FunMRI, isIDSameAsInit)
-// {
-//     // Arrange
-//     FunMRI* _uut = new FunMRI(new TestFactory());
+TEST(FunMRI, CommunicationDummyTest_send)
+{
+    // Arrange
+    FunMRI* _uut = new FunMRI(new TestFactory());
+    unsigned char IDdata[SIZE_OF_DATA_ARRAY] = {'1','2','3','4','5','6','7'};
+    IData* dataToSend = new Data();
+    dataToSend->setIDdata(IDdata);
+
+    // Act
+    _uut->send(dataToSend);
+
+    // Assert: Check if cout matches...
+}
+
+TEST(FunMRI, CommunicationDummyTest_receive)
+{
+    // Arrange
+    FunMRI* _uut = new FunMRI(new TestFactory());
+    unsigned char IDdata[SIZE_OF_DATA_ARRAY - 1] = {'1','2','3','4','5','6','7'};
+    unsigned char receivedData[SIZE_OF_DATA_ARRAY];
+    // Act
+    _uut->storeInitID(IDdata);
+
+    _uut->receive();
     
-//     unsigned char IDdata[SIZE_OF_DATA_ARRAY] = {'1','2','3','4','5','6','7'};
-//     Data* tmpData = new Data();
+    IData* dataPtr = _uut->getData();
 
-//     // Act
-//     tmpData->setIDdata(IDdata);
+    dataPtr->getIDdata(receivedData);
 
-//     _uut->setData(tmpData);
-    
-//     // Assert
-//     ASSERT_TRUE(_uut->isIDSameAsInit(IDdata));
-// }
-
-// TEST(FunMRI, CommunicationDummyTest_send)
-// {
-//     // Arrange
-//     FunMRI* _uut = new FunMRI(new TestFactory());
-//     unsigned char IDdata[SIZE_OF_DATA_ARRAY] = {'1','2','3','4','5','6','7'};
-//     IData* dataToSend = new Data();
-//     dataToSend->setIDdata(IDdata);
-
-//     std::cout << "Test........................................" << std::endl;
-//     // Act
-//     _uut->send(dataToSend);
-// }
+    // Assert
+    ASSERT_TRUE(_uut->isIDSameAsInit(receivedData));
+}
 
 TEST(FunMRI, Scan_test)
 {
@@ -124,17 +142,20 @@ TEST(FunMRI, Scan_test)
     _uut->scan();
 }
 
-// TEST(FunMRI, Data_EqualEqualOperator)
-// {
-//     FunMRI* myFunMRI = new FunMRI(new TestFactory());
-//     IData* data = new Data();
-//     data->setMessage(MSG_INFO_SOUND_PLAYED);
-//     myFunMRI->setData(data);
+TEST(FunMRI, storeInitID)
+{
+    // Arrange
+    FunMRI* _uut = new FunMRI(new TestFactory());
+    unsigned char IDdata[SIZE_OF_DATA_ARRAY - 1] = {'1','2','3','4','5','6','7'};
 
-//     IData* dataRead = myFunMRI->getData();
+    // Act
+    _uut->storeInitID(IDdata);
 
-//     ASSERT_EQ(*data, *dataRead);
-// }
+    // Assert
+    ASSERT_TRUE(_uut->isIDSameAsInit(IDdata));
+}
+
+/** S T A T E    P A T T E R N   T E S T *********************************************************/
 
 
 int main( int argc, char* argv[] )

@@ -16,6 +16,14 @@
 #include "../../Modules/SupplyModule/Include/SupplyDummyTest.h"
 #include "../../Modules/UserInterfaceModule/Include/UserInterfaceDummyTest.h"
 
+#include <iostream>
+
+TestFactory::TestFactory()
+{
+    std::cout << "TestFactory: Constructor." << std::endl;
+    // Nothing too delete... Everything sent to FunMRI and deleted in that destructor.
+}
+
 TestFactory::~TestFactory()
 {
     std::cout << "TestFactory: Destructor." << std::endl;
@@ -45,4 +53,9 @@ ISupplyModule*  TestFactory::createSupplyModule(void)
 IUserInterfaceModule* TestFactory::createUserInterfaceModule(void)
 {
     return new UserInterfaceDummyTest();
+}
+
+IData* TestFactory::createDataObject(void)
+{
+    return new Data();
 }

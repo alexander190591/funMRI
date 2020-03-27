@@ -16,11 +16,6 @@ DummyScanner::DummyScanner()
 	this->init();
 }
 
-DummyScanner::~DummyScanner()
-{
-	// Nothing to delete...
-}
-
 void DummyScanner::scan()
 {
 	Serial.println("DummyScanner: scan()");

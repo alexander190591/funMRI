@@ -16,12 +16,15 @@
 
 class TestFactory : public IFunMRIFactory
 {
+public:
+    TestFactory();
     ~TestFactory();
     ICommunicationModule* createCommunicationModule(void);
     IScannerModule* createScannerModule(void);
     ISoundModule* createSoundModule(void);
     ISupplyModule*  createSupplyModule(void);
     IUserInterfaceModule* createUserInterfaceModule(void);
+    IData* createDataObject(void);
 };
 
 #endif // TESTFACTORY_H_

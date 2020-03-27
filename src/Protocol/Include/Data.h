@@ -13,6 +13,8 @@
 
 #include "IData.h"
 
+//#include <iostream>
+
 #define SIZE_OF_DATA_ARRAY 8
 
 /**
@@ -45,28 +47,35 @@
 class Data : public IData
 {
 public:
+    ~Data() {/*std::cout << "Data: Deconstructor." << std::endl;*/ /*Nothing to delete here...*/}
     void getData(unsigned char dataOutputParameter[]) const override;
     void setData(unsigned char dataInputParameter[])  override;
     void setMessage(Message msg)  override;
     void setIDdata(unsigned char IDdata[])  override;
+    void getIDdata(unsigned char IDdata[]) override;
     Message getMessage()  override;
     void clearData()  override;
     bool dataReceived()  override;
     bool isSame(unsigned char arrayOne[], unsigned char arrayTwo[])  override;
     bool isIDDataSame(unsigned char testData[]);
 
-    Data& operator=(const Data& data) // Assignment Operator
-    {
-        for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++)
-            _data[i] = data._data[i];
+    // Data& operator=(const Data& data) // Assignment Operator
+    // {
+    //     std::cout << "Data Assignment operator... begin." << std::endl;
+    //     if(&data == this)   // Checking for self-assignment
+    //         return *this;
         
-        return *this;
-    };
+    //     for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++)
+    //         _data[i] = data._data[i];
+        
+    //     std::cout << "Data Assignment operator... end." << std::endl;
+    //     return *this;
+    // };
 
 private:
     unsigned char _data[SIZE_OF_DATA_ARRAY];             
 };
 
-bool operator==(const IData& lhs, const IData& rhs);
+//bool operator==(const IData& lhs, const IData& rhs);
 
 #endif // DATA_H_

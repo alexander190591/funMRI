@@ -31,10 +31,12 @@ enum Message{
 class IData
 {
 public:
+    virtual ~IData() {/* Nothing to delete here...*/};
     virtual void getData(unsigned char dataOutputParameter[]) const = 0;
     virtual void setData(unsigned char dataInputParameter[]) = 0;
     virtual void setMessage(Message msg) = 0;
     virtual void setIDdata(unsigned char IDdata[]) = 0;
+    virtual void getIDdata(unsigned char IDdata[]) = 0;
     virtual Message getMessage() = 0;
     virtual void clearData() = 0;
     virtual bool dataReceived() = 0;

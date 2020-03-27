@@ -21,13 +21,13 @@ private:
 
 DummyScannerTest::DummyScannerTest()
 {
-	std::cout << "DummyScanner: Constructor" << std::endl;
+	//std::cout << "DummyScanner: Constructor" << std::endl;
 	this->init();
 }
 
 DummyScannerTest::~DummyScannerTest()
 {
-    std::cout << "DummyScannerTest: Destructor." << std::endl;
+    //std::cout << "DummyScannerTest: Destructor." << std::endl;
     // Nothing to delete
 }
 
@@ -58,5 +58,5 @@ int DummyScannerTest::getSizeOfData()
 
 void DummyScannerTest::init()
 {
-	std::cout << "DummyScanner: init()" << std::endl;
+	// std::cout << "DummyScanner: init()" << std::endl;
 }

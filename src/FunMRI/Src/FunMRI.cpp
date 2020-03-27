@@ -19,6 +19,8 @@
 #include "../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h"
 #include "../../FunMRIFactory/Include/IFunMRIFactory.h"
 
+#include <iostream>
+
 /**
  * @brief Construct a new funMRI object.
  * 
@@ -32,6 +34,7 @@ FunMRI::FunMRI(IFunMRIFactory* funMRIFactory)
     _soundModule = _funMRIFactory->createSoundModule();
     _supplyModule = _funMRIFactory->createSupplyModule();
     _userInterfaceModule = _funMRIFactory->createUserInterfaceModule();
+    _data = _funMRIFactory->createDataObject();
 }
 
 FunMRI::~FunMRI()
@@ -42,6 +45,7 @@ FunMRI::~FunMRI()
     delete _soundModule;
     delete _supplyModule;
     delete _userInterfaceModule;
+    delete _data;
 }
 
 /**
@@ -80,6 +84,7 @@ void FunMRI::playSound(void)
  */
 void FunMRI::send(IData* data)
 {
+    std::cout << "Entered FunMRI.send()..." << std::endl;
     setData(data);
     _communicationModule->sendData(_data);
 }
@@ -101,7 +106,19 @@ void FunMRI::receive()
  */
 void FunMRI::setData(IData* data)
 {
-    *_data = *data;
+    /**
+     * This method is currently aware of the exact size of the incoming data array. This is NOT generic.
+     * To overcome this, an assignmentoperator should be implemented for both the IData object and the derived object.
+     */
+    std::cout << "FunMRI.setData()..." << std::endl;
+    unsigned char incomingData[SIZE_OF_DATA_ARRAY];
+    // std::cout << "calling data->getData(incomingData)" << std::endl;
+    data->getData(incomingData);
+    // std::cout << "calling _data->setData(incomingData)" << std::endl;
+    _data->setData(incomingData);
+
+    // *_data = *data; // This would work, if an assignmentoperator was implemented for both IData and the derived object...
+    // std::cout << "Exited FunMRI.setData()." << std::endl;
 }
 
 /**
@@ -114,15 +131,24 @@ IData* FunMRI::getData()
     return _data;
 }
 
+void FunMRI::storeInitID(unsigned char* initID)
+{
+    for(int i = 0; i < SIZE_OF_DATA_ARRAY - 1; i++)
+    {
+        this->_storedID[i] = initID[i];
+    }
+}
+
 bool FunMRI::isIDSameAsInit(unsigned char newID[])
 {
     bool isSame = false;
-    unsigned char dataArray[SIZE_OF_DATA_ARRAY];
-    _data->getData(dataArray);
+    // unsigned char dataArray[SIZE_OF_DATA_ARRAY];
+    // _data->getData(dataArray);
 
     for(int i = 0; i < SIZE_OF_DATA_ARRAY-1; i++)
     {
-        if(dataArray[i+1] == newID[i])
+        // if(dataArray[i+1] == newID[i])
+        if(_storedID[i] == newID[i])
             isSame = true;
         else
         {

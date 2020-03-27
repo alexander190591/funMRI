@@ -41,7 +41,7 @@ INCLUDEPATH  := 																	\
 	-I../src/FunMRIFactory/Include/													\
 	-I../src/Protocol/Include/ 														\
 	-I../src/State/Include/															\
-	#-I../src/Modules/SupplyModule/Include/ 											\
+	-I../src/Modules/SupplyModule/Include/ 											\
 	-I../src/Modules/CommunicationModule/Include/ 									\
 	-I../src/Modules/ScannerModule/Include/ 										\
 	-I../src/Modules/SoundModule/Include/ 											\
