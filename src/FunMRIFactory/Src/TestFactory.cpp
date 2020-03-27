@@ -10,28 +10,39 @@
  */
 
 #include "../Include/Implementations/TestFactory.h"
+#include "../../Modules/CommunicationModule/Include/CommunicationDummyTest.h"
+#include "../../Modules/ScannerModule/Include/DummyScannerTest.h"
+#include "../../Modules/SoundModule/Include/SoundDummyTest.h"
+#include "../../Modules/SupplyModule/Include/SupplyDummyTest.h"
+#include "../../Modules/UserInterfaceModule/Include/UserInterfaceDummyTest.h"
+
+TestFactory::~TestFactory()
+{
+    std::cout << "TestFactory: Destructor." << std::endl;
+    // Nothing too delete... Everything sent to FunMRI and deleted in that destructor.
+}
 
 ICommunicationModule* TestFactory::createCommunicationModule(void)
 {
-    // This is where the dummy communicationmodule goes.
+    return new CommunicationDummyTest();
 }
 
 IScannerModule* TestFactory::createScannerModule(void)
 {
-    // This is where the dummy scanner module goes.
+    return new DummyScannerTest();
 }
 
 ISoundModule* TestFactory::createSoundModule(void)
 {
-    // This is where the dummy sound module goes.
+    return new SoundDummyTest();
 }
 
 ISupplyModule*  TestFactory::createSupplyModule(void)
 {
-    // This is where the dummy dummy supply module goes.
+    return new SupplyDummyTest();
 }
 
 IUserInterfaceModule* TestFactory::createUserInterfaceModule(void)
 {
-    // This is where the dummy user interface module goes.
+    return new UserInterfaceDummyTest();
 }

@@ -1,37 +1,110 @@
 
 #include "src/Modules/ScannerModule/include/RFIDRC522.h"
 #include "src/Modules/SoundModule/include/DFPlayerMini.h"
-//#include "src/Modules/SoundDummy/Include/SoundDummy.h"
+//#include "src/Modules/SoundModule/Include/SoundDummy.h"
 #include "src/Modules/CommunicationModule/Include/BluetoothFeather.h"
 #include "src/Protocol/Include/Data.h"
+#include "src/FunMRI/Include/FunMRI.h"
+#include "src/FunMRIFactory/Include/Implementations/SmartphoneFactory.h"
 
 /**
  * @brief Defines for Bluefruit Feather nRF52832
  * 
  */
-#define SOMO_TX 7
-#define SOMO_RX 11
+#define SOMO_TX 7   // Using Serial pin instead (pin 6)
+#define SOMO_RX 11   // Using Serial pin instead (pin 8)
 #define SOMO_BAUDRATE 9600
 #define LED_PIN LED_BUILTIN
 #define RFID_SS_PIN 5
 #define RFID_RST_PIN 4
+//#define INT_MODE_PIN 7
+//#define INT_MICROSWITCH_PIN 11
 
 IScannerModule *scannerPtr = nullptr;
 ISoundModule *soundPtr = nullptr;
 ICommunicationModule *communicationPtr = nullptr;
 IData* data = new Data();
+IFunMRIFactory* myFunMRIFactory = new SmartphoneFactory();
+//FunMRI* myFunMRI = new FunMRI(myFunMRIFactory);
 
 unsigned char IDTag[SIZE_OF_DATA_ARRAY - 1] = {0, 0, 0, 0, 0, 0, 0};
 unsigned char newIDTag[SIZE_OF_DATA_ARRAY - 1] = {0, 0, 0, 0, 0, 0, 0};
 
+enum MODE{
+  SMARTPHONE        = 0,
+  WITHOUTSMARTPHONE = 1,
+};
+
+volatile bool currentMode = true;
+volatile bool microswitchState = LOW;
+volatile bool newInterrupt = false;
+
+// void ISR_MODE()
+// {
+//   //newInterrupt = true;
+
+//   Serial.print("ISR_MODE entered.");
+
+//   //Serial.print(newInterrupt);
+
+//   // if(digitalRead(INT_MODE_PIN))
+//   // {
+//   //   currentMode = true; // WITHOUTSMARTPHONE
+//   // }
+//   // else
+//   // {
+//   //   currentMode = false; // SMARTPHONE
+//   // }
+// }
+
+// void ISR_MICROSWITCH()
+// {
+//   //newInterrupt = true;
+
+//   Serial.print("ISR_MICROSWITCH entered.");
+
+//   // if(digitalRead(INT_MICROSWITCH_PIN))
+//   // {
+//   //   microswitchState = 1;
+//   // }
+//   // else
+//   // {
+//   //   microswitchState = 0;
+//   // }
+// }
+
+bool isIDSameAsInit(unsigned char newID[])
+{
+    bool isSame = false;
+    unsigned char dataArray[SIZE_OF_DATA_ARRAY];
+    data->getData(dataArray);
+
+    for(int i = 0; i < SIZE_OF_DATA_ARRAY-1; i++)
+    {
+        if(dataArray[i+1] == newID[i])
+            isSame = true;
+        else
+        {
+            isSame = false;
+            break;
+        }
+    }
+    return isSame;
+}
+
 void setup()
 {
+  // Setting up interrupt pins
+  // pinMode(INT_MODE_PIN, INPUT);
+  // pinMode(INT_MICROSWITCH_PIN, INPUT);
+  // attachInterrupt(digitalPinToInterrupt(INT_MODE_PIN), ISR_MODE, CHANGE);
+  // attachInterrupt(digitalPinToInterrupt(INT_MICROSWITCH_PIN), ISR_MICROSWITCH, CHANGE);
+
   Serial.begin(9600);
 
   pinMode(LED_PIN, OUTPUT);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
-
 
   communicationPtr = new BluetoothFeather();
   communicationPtr->init();
@@ -43,13 +116,24 @@ void setup()
 
   digitalWrite(LED_BUILTIN, HIGH);
 
-  //soundPtr->playSound();
+  soundPtr->playSound();
 
   Serial.println("Setup done...");
 }
 
 void loop()
 { 
+  Serial.println("Test...");
+  delay(500);
+  //Serial.println("HEJ!...");
+  // if(newInterrupt)
+  // {
+  //   Serial.println("New Interrupt!");
+  //   newInterrupt = false;
+  //   //Serial.print("Mode is now: "); Serial.println(currentMode);
+  //   //Serial.print("microswitchState is now: "); Serial.println(microswitchState);
+  // }
+
   data->clearData();  // Every loop starts by clearing data for new data to be received.
   
   communicationPtr->receiveData(data);
@@ -104,7 +188,7 @@ void loop()
           newIDTag[i] = scannerPtr->retrieveResult()[i];
         }
 
-        if(data->isSame(newIDTag, IDTag))
+        if(isIDSameAsInit(newIDTag))
         {
           soundPtr->playSound();
           Serial.println("INFO_SOUND_PLAYED (0xCC)");

@@ -26,6 +26,7 @@ class DummyScanner : public IScannerModule
 {
 public:
 	DummyScanner();
+	~DummyScanner() {/*Nothing to delete*/}
 	void scan();
 	unsigned char* retrieveResult();
 	bool isNewScanAvailable();

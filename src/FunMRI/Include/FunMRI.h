@@ -36,6 +36,7 @@ public:
     void receive();
     void setData(IData* data);
     IData* getData();
+    bool isIDSameAsInit(unsigned char* newID);
     void batteryStatus(void);
     void initPressed(void);
     void scanPressed(void);
@@ -48,8 +49,9 @@ private:
     IScannerModule* _scannerModule = nullptr;
     ICommunicationModule* _communicationModule = nullptr;
     ISoundModule* _soundModule = nullptr;
-    IData* _data = nullptr;
     IState* _state = nullptr;
+    IData* _data = nullptr;
+    unsigned char _storedID[7];
 };
 
 #endif // FUNMRI_H_

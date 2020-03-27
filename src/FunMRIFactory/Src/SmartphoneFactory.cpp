@@ -15,6 +15,11 @@
 #include "../../Modules/ScannerModule/Include/RFIDRC522.h"
 #include "../../Modules/SoundModule/Include/DFPlayerMini.h"
 
+    SmartphoneFactory::~SmartphoneFactory()
+    {
+        // Nothing to delete...
+    }
+    
     ICommunicationModule* SmartphoneFactory::createCommunicationModule(void)
     {
         return new BluetoothFeather();
@@ -32,10 +37,12 @@
 
     ISupplyModule*  SmartphoneFactory::createSupplyModule(void)
     {
+        return nullptr;
         // TODO --------------------------------------------------------------------------------------------
     }
 
     IUserInterfaceModule* SmartphoneFactory::createUserInterfaceModule(void)
     {
+        return nullptr;
         // TODO --------------------------------------------------------------------------------------------
     }

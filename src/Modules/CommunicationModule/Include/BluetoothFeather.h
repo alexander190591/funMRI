@@ -20,6 +20,7 @@ class BluetoothFeather : public ICommunicationModule
 {
 public:
 	BluetoothFeather();
+	~BluetoothFeather();
 	bool init();
 	void sendData(IData* data);
 	void receiveData(IData* data);

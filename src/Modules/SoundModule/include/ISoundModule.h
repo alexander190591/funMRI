@@ -18,14 +18,15 @@
 class ISoundModule
 {
 public:
-	/**
+	virtual ~ISoundModule() {/*Nothing to delete...*/}
+	virtual void playSound() = 0;
+	virtual void stopSound() = 0;
+protected:
+/**
 	*@brief The constructor calls the protected member init() whitch needs to be implemented in the derived classes
 	*@param void
 	*@returns void
 	*/
-	virtual void playSound() = 0;
-	virtual void stopSound() = 0;
-protected:
 	virtual void init() = 0;
 };
 #endif /* SOUNDMODULE_INCLUDE_ISOUNDMODULE_H_ */

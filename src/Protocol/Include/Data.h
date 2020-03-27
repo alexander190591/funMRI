@@ -1,3 +1,5 @@
+#ifndef DATA_H_
+#define DATA_H_
 /**
  * @file Data.h
  * @author Alexander Najbjerg Christensen (au482141@post.au.dk)
@@ -8,9 +10,6 @@
  * @copyright Copyright (c) 2020
  * 
  */
-
-#ifndef DATA_H_
-#define DATA_H_
 
 #include "IData.h"
 
@@ -34,11 +33,14 @@
  * If the data is a message (error or information) the Type-byte (byte 0) is an 'M'. 
  * Only Data0 (bit 1) used to store the message. The message is of type DataMessage (enum):
  * 
- * ERROR_NO_ID_REGISTERED = 0xAA, Used when ScannerModule cannot scan an ID.
- * ERROR_NOT_INIT_TAG     = 0xBB, Used when ID is not the same as when ID was initiated.
- * INFO_SOUND_PLAYED      = 0xCC, Used when sound clip is done playing.
- * CMD_INIT               = 0xDD, Used for initiating ID.
- * CMD_SCAN               = 0xEE, Used to play sound.
+ * MSG_ERROR_NO_ID_REGISTERED = '0', // Used when ScannerModule cannot scan an ID.
+ * MSG_ERROR_NOT_INIT_TAG     = '1', // Used when ID is not the same as when ID was initiated.
+ * MSG_INFO_SOUND_PLAYED      = '2', // Used when sound clip is done playing.
+ * MSG_CMD_INIT               = '3', // Used to scanning the ID before playing sound.
+ * MSG_CMD_SCAN               = '4', // Used to play sound.
+ * MSG_ERROR_NOT_A_MESSAGE    = '5', // Used for when data following the Type Byte is not one of the below values.
+ * MSG_TEST_INIT              = 'I',  // FOR TEST PURPOSES
+ * MSG_TEST_SCAN              = 'S',  // FOR TEST PURPOSES
  */
 class Data : public IData
 {
@@ -51,6 +53,8 @@ public:
     void clearData()  override;
     bool dataReceived()  override;
     bool isSame(unsigned char arrayOne[], unsigned char arrayTwo[])  override;
+    bool isIDDataSame(unsigned char testData[]);
+
     Data& operator=(const Data& data) // Assignment Operator
     {
         for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++)
@@ -58,8 +62,9 @@ public:
         
         return *this;
     };
+
 private:
-    char _data[SIZE_OF_DATA_ARRAY];             
+    unsigned char _data[SIZE_OF_DATA_ARRAY];             
 };
 
 bool operator==(const IData& lhs, const IData& rhs);

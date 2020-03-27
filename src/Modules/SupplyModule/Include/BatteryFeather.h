@@ -34,6 +34,7 @@ class BatteryFeather : public ISupplyModule
 {
 public:
     BatteryFeather(uint32_t BatteryVoltagePin);
+    ~BatteryFeather() {/*Nothing to delete...*/};
     float readBatteryVoltage(void);
     uint8_t MilliVoltToPercentage(float mVolts);
 private:

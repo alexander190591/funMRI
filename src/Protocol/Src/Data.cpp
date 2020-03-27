@@ -133,7 +133,6 @@ bool Data::isSame(unsigned char arrayOne[], unsigned char arrayTwo[])
     bool isSame = false;
     for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++)
     {
-        //std::cout << " IDDataFinal[" << i << "]: "<< IDDataFinal[i] << ". dataRead[" << i << "]: " << dataRead[i] << std::endl; // For visual testing...
         if(arrayOne[i] == arrayTwo[i])
             isSame = true;
         else
@@ -145,14 +144,30 @@ bool Data::isSame(unsigned char arrayOne[], unsigned char arrayTwo[])
     return isSame;
 }
 
-bool operator==(const IData& lhs, const IData& rhs)
+bool Data::isIDDataSame(unsigned char testData[])
 {
-    unsigned char one[SIZE_OF_DATA_ARRAY];
-    lhs.getData(one);
-    unsigned char two[SIZE_OF_DATA_ARRAY];
-    rhs.getData(two);
-
-    Data dataComparer = Data();
-
-    return dataComparer.isSame(one, two);
+    bool isSame = false;
+    for(int i = 0; i < SIZE_OF_DATA_ARRAY-1; i++)
+    {
+        if(_data[i+1] == testData[i])
+            isSame = true;
+        else
+        {
+            isSame = false;
+            break;
+        }
+    }
+    return isSame;
 }
+
+// bool operator==(const IData& lhs, const IData& rhs)
+// {
+//     unsigned char one[SIZE_OF_DATA_ARRAY];
+//     lhs.getData(one);
+//     unsigned char two[SIZE_OF_DATA_ARRAY];
+//     rhs.getData(two);
+
+//     Data dataComparer = Data();
+
+//     return dataComparer.isSame(one, two);
+// }

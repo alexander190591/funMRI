@@ -48,7 +48,7 @@ TEST(Data, setData_getData)
     ASSERT_EQ(isSame, true);
 }
 
-TEST(Data, setIDdata_getData)
+TEST(Data, setIDdata_getData_isSame)
 {
     // Arrange
     IData* uut_ = new Data();
@@ -60,64 +60,81 @@ TEST(Data, setIDdata_getData)
     unsigned char dataRead[SIZE_OF_DATA_ARRAY];
     uut_->getData(dataRead);
 
-    bool isSame = false;
-    for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++)
-    {
-        //std::cout << " IDDataFinal[" << i << "]: "<< IDDataFinal[i] << ". dataRead[" << i << "]: " << dataRead[i] << std::endl; // For visual testing...
-        if(IDDataFinal[i] == dataRead[i])
-            isSame = true;
-        else
-        {
-            isSame = false;
-            break;
-        }
-    }   
-
     // Assert
-    ASSERT_EQ(isSame, true);
+    ASSERT_EQ(uut_->isSame(dataRead, IDDataFinal), true);
+    ASSERT_NE(uut_->isSame(dataRead, IDdata), true);
 }
 
+TEST(Data, isIDDataSame)
+{
+    // Arrange
+    IData* uut_ = new Data();
+    unsigned char IDdata[SIZE_OF_DATA_ARRAY] = {'1','2','3','4','5','6','7'};
+    uut_->setIDdata(IDdata);
+    ASSERT_TRUE(uut_->isIDDataSame(IDdata));
+}
 
-/** M O C K   C L A S S E S ************************************************************/
+TEST(FunMRI, SoundDummyTest_playSound)
+{
+    // Arrange
+    FunMRI* _uut = new FunMRI(new TestFactory());
 
-// class MockFunMRI : public FunMRI
+    // Act
+    _uut->playSound();
+
+    // Assert: Check if cout matches...
+}
+
+// TEST(FunMRI, isIDSameAsInit)
 // {
-//     // Public methods of FunMRI:
-//     // void setState(IState &state);
-//     // void scan(void);
-//     // void playSound(void);
-//     // void send(Data& data);
-//     // void receive(Data& data);
-//     // void chargingStatus(void);
-//     // void initPressed(void);
-//     // void scanPressed(void);
-//     // void modeChanged(void);
-//     // void microSwitchPressed(void);
+//     // Arrange
+//     FunMRI* _uut = new FunMRI(new TestFactory());
+    
+//     unsigned char IDdata[SIZE_OF_DATA_ARRAY] = {'1','2','3','4','5','6','7'};
+//     Data* tmpData = new Data();
 
-//     // Mock methods of the above:
-//     MOCK_METHOD1(setState, void(IState &state));
-//     MOCK_METHOD0(scan, void());
-//     MOCK_METHOD0(playSound,void());
-//     MOCK_METHOD1(send, void(Data &data));
-//     MOCK_METHOD1(receive(Data &data));
-//     MOCK_METHOD0(chargingStatus, void());
-//     MOCK_METHOD0(initPressed, void());
-//     MOCK_METHOD0(scanPressed, void());
-//     MOCK_METHOD0(modeChanged, void());
-//     MOCK_METHOD0(microSwitchPressed, void());
+//     // Act
+//     tmpData->setIDdata(IDdata);
+
+//     _uut->setData(tmpData);
+    
+//     // Assert
+//     ASSERT_TRUE(_uut->isIDSameAsInit(IDdata));
 // }
 
-TEST(FunMRI, Data_EqualEqualOperator)
+// TEST(FunMRI, CommunicationDummyTest_send)
+// {
+//     // Arrange
+//     FunMRI* _uut = new FunMRI(new TestFactory());
+//     unsigned char IDdata[SIZE_OF_DATA_ARRAY] = {'1','2','3','4','5','6','7'};
+//     IData* dataToSend = new Data();
+//     dataToSend->setIDdata(IDdata);
+
+//     std::cout << "Test........................................" << std::endl;
+//     // Act
+//     _uut->send(dataToSend);
+// }
+
+TEST(FunMRI, Scan_test)
 {
-    FunMRI* myFunMRI = new FunMRI(new TestFactory());
-    IData* data = new Data();
-    data->setMessage(MSG_INFO_SOUND_PLAYED);
-    myFunMRI->setData(data);
+    // Arrange
+    FunMRI* _uut = new FunMRI(new TestFactory());
 
-    IData* dataRead = myFunMRI->getData();
+    // Act
+    _uut->scan();
+}
 
-    ASSERT_EQ(*data, *dataRead);
-    }
+// TEST(FunMRI, Data_EqualEqualOperator)
+// {
+//     FunMRI* myFunMRI = new FunMRI(new TestFactory());
+//     IData* data = new Data();
+//     data->setMessage(MSG_INFO_SOUND_PLAYED);
+//     myFunMRI->setData(data);
+
+//     IData* dataRead = myFunMRI->getData();
+
+//     ASSERT_EQ(*data, *dataRead);
+// }
 
 
 int main( int argc, char* argv[] )

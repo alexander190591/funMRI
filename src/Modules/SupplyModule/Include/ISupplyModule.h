@@ -4,6 +4,7 @@
 
 class ISupplyModule {
 	public:
+		virtual ~ISupplyModule() {/*Nothing to delete...*/}
 		virtual float readBatteryVoltage(void) = 0;
 		virtual uint8_t MilliVoltToPercentage(float mVolts) = 0;
 	};

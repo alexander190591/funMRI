@@ -148,6 +148,15 @@ BluetoothFeather::BluetoothFeather()
 }
 
 /**
+ * @brief Destroy the Bluetooth Feather:: Bluetooth Feather object
+ * 
+ */
+BluetoothFeather::~BluetoothFeather()
+{
+  // Nothing to delete...
+}
+
+/**
  * @brief Initiates the Bluetooth module with names, stettings, etc.
  * 
  * @return true is returned always. Needed for the interface implementation (old module checked if module was connected to Arduino).

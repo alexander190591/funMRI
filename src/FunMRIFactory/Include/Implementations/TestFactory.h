@@ -16,6 +16,7 @@
 
 class TestFactory : public IFunMRIFactory
 {
+    ~TestFactory();
     ICommunicationModule* createCommunicationModule(void);
     IScannerModule* createScannerModule(void);
     ISoundModule* createSoundModule(void);

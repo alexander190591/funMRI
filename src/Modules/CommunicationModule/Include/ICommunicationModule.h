@@ -11,9 +11,10 @@
 
 	class ICommunicationModule {
 	public:
+	 	virtual ~ICommunicationModule() {/*Nothing to delete*/}
 		virtual bool init() = 0;
 		virtual void sendData(IData* data) = 0;
-		virtual void receiveData(IData* data);
+		virtual void receiveData(IData* data) = 0;
 	};
 
 #endif /* BLUETOOTHMODULE_HM_10_ICOMMUNICATIONMODULE_H_ */

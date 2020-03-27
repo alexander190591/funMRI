@@ -14,7 +14,8 @@
 
 class IUserInterfaceModule
 {
-    // IMPLEMENT THIS....
+public:
+    virtual ~IUserInterfaceModule() { /*Nothing to delete...*/ };
 };
 
 #endif // IUSERINTERFACEMODULE_H_

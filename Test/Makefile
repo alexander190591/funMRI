@@ -8,6 +8,7 @@ CPP      := g++
 #	-> pedantic-errors: wtf
 #	-> Wall:			Tilføjer warnings til nogle af de ting der anses for værende "questionable".
 #	-> Wextra:			
+
 CPPFLAGS := -std=gnu++17 -pedantic-errors -Wall -Wextra -MMD -MP -pthread
 
 # No linker flags for now. Maybe include them later on.
@@ -45,7 +46,7 @@ INCLUDEPATH  := 																	\
 	-I../src/Modules/ScannerModule/Include/ 										\
 	-I../src/Modules/SoundModule/Include/ 											\
 	-I../src/Modules/SoundDummy/Include/ 											\
-	#-I../src/Modules/ScannerModule/Include/RFID-RC522/rfid-master/rfid-master/src/ 	\
+	-I../src/Modules/ScannerModule/Include/RFID-RC522/rfid-master/rfid-master/src/ 	\
 	-I../src/Modules/SoundModule/Include/DFRobotDFPlayer/							\
 
 # Alias for source files placed at src/subfolders.
@@ -57,10 +58,10 @@ SRC      :=                      																		\
    $(wildcard *.cpp)																					\
    $(wildcard ../src/FunMRI/Src/*.cpp) 																	\
    $(wildcard ../src/FunMRIController/Src/*.cpp) 														\
-   $(wildcard ../src/FunMRIFactory/Src/TestFactory.cpp) 															\
+   $(wildcard ../src/FunMRIFactory/Src/TestFactory.cpp) 												\
    $(wildcard ../src/Protocol/Src/*.cpp) 																\
-   #$(wildcard ../src/State/Src/*.cpp) 																	\
-   $(wildcard ../src/Modules/SupplyModule/Src/*.cpp) 													\
+   $(wildcard ../src/State/Src/*.cpp) 																	\
+   #$(wildcard ../src/Modules/SupplyModule/Src/*.cpp) 													\
    $(wildcard ../src/Modules/CommunicationModule/Src/*.cpp) 											\
    $(wildcard ../src/Modules/ScannerModule/Src/*.cpp) 													\
    $(wildcard ../src/Modules/SoundModule/Src/*.cpp) 													\

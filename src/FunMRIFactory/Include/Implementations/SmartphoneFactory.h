@@ -27,6 +27,7 @@
 
 class SmartphoneFactory : public IFunMRIFactory
 {
+    ~SmartphoneFactory();
     ICommunicationModule* createCommunicationModule(void);
     IScannerModule* createScannerModule(void);
     ISoundModule* createSoundModule(void);

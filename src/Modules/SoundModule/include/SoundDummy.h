@@ -5,6 +5,7 @@ class SoundDummy : public ISoundModule
 {
 public:
     SoundDummy(uint8_t ledPin);
+    ~SoundDummy() {/*Nothing to delete...*/}
     void playSound() override;
 	void stopSound() override;
 protected:

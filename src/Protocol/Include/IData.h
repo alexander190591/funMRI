@@ -39,6 +39,7 @@ public:
     virtual void clearData() = 0;
     virtual bool dataReceived() = 0;
     virtual bool isSame(unsigned char arrayOne[], unsigned char arrayTwo[]) = 0;
+    virtual bool isIDDataSame(unsigned char testData[]) = 0;
 };
 
 #endif // IDATA_H_

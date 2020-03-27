@@ -21,6 +21,7 @@
 class IFunMRIFactory
 {
 public:
+    virtual ~IFunMRIFactory() { /*Nothing to delete*/};
     virtual ICommunicationModule* createCommunicationModule(void) = 0;
     virtual IScannerModule* createScannerModule(void) = 0;
     virtual ISoundModule* createSoundModule(void) = 0;

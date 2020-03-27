@@ -114,6 +114,25 @@ IData* FunMRI::getData()
     return _data;
 }
 
+bool FunMRI::isIDSameAsInit(unsigned char newID[])
+{
+    bool isSame = false;
+    unsigned char dataArray[SIZE_OF_DATA_ARRAY];
+    _data->getData(dataArray);
+
+    for(int i = 0; i < SIZE_OF_DATA_ARRAY-1; i++)
+    {
+        if(dataArray[i+1] == newID[i])
+            isSame = true;
+        else
+        {
+            isSame = false;
+            break;
+        }
+    }
+    return isSame;
+}
+
 /**
  * @brief Reads the status of the battery.
  * 

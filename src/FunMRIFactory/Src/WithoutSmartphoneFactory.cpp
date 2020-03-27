@@ -17,6 +17,11 @@
 #include "../../Modules/ScannerModule/Include/RFIDRC522.h"
 #include "../../Modules/SoundModule/Include/DFPlayerMini.h"
 
+    WithoutSmartphoneFactory::~WithoutSmartphoneFactory()
+    {
+        // Nothing to delete...
+    }
+
     /**
      * @brief This method creates a communication module object object for the case where no smartphone should be connected to funMRI.
      *        It would be prefered if this object took care of setting the module in some kind of low-power mode, as the communication module is not used here.
@@ -56,6 +61,7 @@
      */
     ISupplyModule*  WithoutSmartphoneFactory::createSupplyModule(void)
     {
+        return nullptr;
         // TODO --------------------------------------------------------------------------------------------
     }
 
@@ -66,5 +72,6 @@
      */
     IUserInterfaceModule* WithoutSmartphoneFactory::createUserInterfaceModule(void)
     {
+        return nullptr;
         // TODO --------------------------------------------------------------------------------------------
     }
