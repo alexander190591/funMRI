@@ -13,7 +13,9 @@
 
 #include "IData.h"
 
-//#include <iostream>
+#ifdef TEST_BUILD
+    #include <iostream>
+#endif
 
 #define SIZE_OF_DATA_ARRAY 8
 

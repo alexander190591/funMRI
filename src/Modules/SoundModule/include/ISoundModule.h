@@ -10,6 +10,8 @@
 
 #pragma once
 
+#include "../../../../src/build_defines.h"
+
 /**
 * @brief This is the interface for the SoundModule
 *

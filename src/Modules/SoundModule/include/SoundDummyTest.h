@@ -1,13 +1,39 @@
 #include "ISoundModule.h"
-#include <iostream>
+
+#ifdef TEST_BUILD
+    #include <iostream>
+#endif
 
 class SoundDummyTest : public ISoundModule
 {
 public:
-    SoundDummyTest() {/* std::cout << "SoundDummyTest: Constructor." << std::endl;*/ this->init(); }
-    ~SoundDummyTest() {/* std::cout << "SoundDummyTest: Destructor." << std::endl;*/ /*Nothing to delete...*/ }
-    void playSound() { std::cout << "Sound played." << std::endl; }
-	void stopSound() { std::cout << "Sound stopped" << std::endl; }
+    SoundDummyTest() {
+        #ifdef DEBUGGING_LARGE
+            std::cout << "SoundDummyTest: Constructor." << std::endl;
+        #endif
+        this->init(); 
+        }
+    ~SoundDummyTest() {
+        #ifdef DEBUGGING_LARGE
+            std::cout << "SoundDummyTest: Destructor." << std::endl;
+        #endif            
+            
+        /*Nothing to delete...*/ 
+    }
+    void playSound() {
+        #ifdef DEBUGGING_SUBTLE
+            std::cout << "Sound played." << std::endl;
+        #endif
+    }
+	void stopSound() {
+        #ifdef DEBUGGING_SUBTLE
+            std::cout << "Sound stopped" << std::endl;
+        #endif
+        }
 protected:
-	void init() { /* std::cout << "SoundDummyTest init()." << std::endl; */ }
+	void init() { 
+        #ifdef DEBUGGING_LARGE
+            std::cout << "SoundDummyTest init()." << std::endl;
+        #endif
+        }
 };

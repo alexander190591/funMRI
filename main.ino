@@ -1,4 +1,5 @@
 
+#include "src/build_defines.h"
 #include "src/Modules/ScannerModule/include/RFIDRC522.h"
 #include "src/Modules/SoundModule/include/DFPlayerMini.h"
 //#include "src/Modules/SoundModule/Include/SoundDummy.h"
@@ -23,7 +24,7 @@
 IScannerModule *scannerPtr = nullptr;
 ISoundModule *soundPtr = nullptr;
 ICommunicationModule *communicationPtr = nullptr;
-IData* data = new Data();
+IData* data = nullptr;
 FunMRI* myFunMRI = nullptr;
 
 unsigned char IDTag[SIZE_OF_DATA_ARRAY - 1] = {0, 0, 0, 0, 0, 0, 0};
@@ -107,17 +108,19 @@ void setup()
 
   // O B J E C T   I N I T I A L I Z A T I O N
   myFunMRI = new FunMRI(new SmartphoneFactory());
+  data = new Data();
 
   // Old testing pointers. Should be phazed out to use myFunMRI instead...
   communicationPtr = new BluetoothFeather();
   communicationPtr->init();
   scannerPtr = new RFIDRC522(RFID_RST_PIN, RFID_SS_PIN);
-  soundPtr = new DFPlayerMini(SOMO_RX, SOMO_TX, SOMO_BAUDRATE);
+  //soundPtr = new DFPlayerMini(SOMO_RX, SOMO_TX, SOMO_BAUDRATE);
   //soundPtr = new SoundDummy(LED_PIN);
 
   digitalWrite(LED_BUILTIN, HIGH);
 
-  myFunMRI->playSound();
+  //soundPtr->playSound();
+  //myFunMRI->playSound();
 
   Serial.println("Setup done...");
 }

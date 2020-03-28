@@ -56,7 +56,7 @@
      */
     ISoundModule* WithoutSmartphoneFactory::createSoundModule(void)
     {
-        new DFPlayerMini(SOMO_RX, SOMO_TX, SOMO_BAUDRATE);
+        return new DFPlayerMini(SOMO_RX, SOMO_TX, SOMO_BAUDRATE);
     }
 
     /**

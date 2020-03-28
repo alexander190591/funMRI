@@ -9,6 +9,7 @@
  * 
  */
 
+
 #include "../Include/Implementations/TestFactory.h"
 #include "../../Modules/CommunicationModule/Include/CommunicationDummyTest.h"
 #include "../../Modules/ScannerModule/Include/DummyScannerTest.h"
@@ -16,17 +17,23 @@
 #include "../../Modules/SupplyModule/Include/SupplyDummyTest.h"
 #include "../../Modules/UserInterfaceModule/Include/UserInterfaceDummyTest.h"
 
-#include <iostream>
+#ifdef TEST_BUILD
+    #include <iostream>
+#endif
 
 TestFactory::TestFactory()
 {
-    std::cout << "TestFactory: Constructor." << std::endl;
+    #ifdef DEBUGGING_LARGE
+        std::cout << "TestFactory: Constructor." << std::endl;
+    #endif
     // Nothing too delete... Everything sent to FunMRI and deleted in that destructor.
 }
 
 TestFactory::~TestFactory()
 {
-    std::cout << "TestFactory: Destructor." << std::endl;
+    #ifdef DEBUGGING_LARGE
+        std::cout << "TestFactory: Destructor." << std::endl;
+    #endif
     // Nothing too delete... Everything sent to FunMRI and deleted in that destructor.
 }
 

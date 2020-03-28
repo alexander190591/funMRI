@@ -32,17 +32,25 @@ build/objects/main.o: main.cpp \
  GoogleTest/googletest/googletest/src/gtest-test-part.cc \
  GoogleTest/googletest/googletest/src/gtest-typed-test.cc \
  ../src/Protocol/Include/Data.h ../src/Protocol/Include/IData.h \
+ ../src/Protocol/Include/../../build_defines.h \
  ../src/FunMRI/Include/FunMRI.h \
+ ../src/FunMRI/Include/../../../src/build_defines.h \
  ../src/FunMRI/Include/../../Modules/ScannerModule/include/IScannerModule.h \
+ ../src/FunMRI/Include/../../Modules/ScannerModule/include/../../../../src/build_defines.h \
  ../src/FunMRI/Include/../../Modules/SoundModule/include/ISoundModule.h \
+ ../src/FunMRI/Include/../../Modules/SoundModule/include/../../../../src/build_defines.h \
  ../src/FunMRI/Include/../../Modules/SupplyModule/Include/ISupplyModule.h \
+ ../src/FunMRI/Include/../../Modules/SupplyModule/Include/../../../build_defines.h \
  ../src/FunMRI/Include/../../Modules/CommunicationModule/Include/ICommunicationModule.h \
+ /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/build_defines.h \
  ../src/FunMRI/Include/../../Modules/CommunicationModule/Include/../../../Protocol/Include/IData.h \
  ../src/FunMRI/Include/../../Protocol/Include/IData.h \
  ../src/FunMRI/Include/../../State/Include/IState.h \
  ../src/FunMRI/Include/../../State/Include/../../FunMRI/Include/FunMRI.h \
  ../src/FunMRI/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h \
+ ../src/FunMRI/Include/../../Modules/UserInterfaceModule/Include/../../../build_defines.h \
  ../src/FunMRI/Include/../../FunMRIFactory/Include/IFunMRIFactory.h \
+ ../src/FunMRI/Include/../../FunMRIFactory/Include/../../../src/build_defines.h \
  ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/CommunicationModule/Include/ICommunicationModule.h \
  ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/ScannerModule/Include/IScannerModule.h \
  ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/SupplyModule/Include/ISupplyModule.h \
@@ -118,15 +126,27 @@ GoogleTest/googletest/googletest/src/gtest-typed-test.cc:
 
 ../src/Protocol/Include/IData.h:
 
+../src/Protocol/Include/../../build_defines.h:
+
 ../src/FunMRI/Include/FunMRI.h:
+
+../src/FunMRI/Include/../../../src/build_defines.h:
 
 ../src/FunMRI/Include/../../Modules/ScannerModule/include/IScannerModule.h:
 
+../src/FunMRI/Include/../../Modules/ScannerModule/include/../../../../src/build_defines.h:
+
 ../src/FunMRI/Include/../../Modules/SoundModule/include/ISoundModule.h:
+
+../src/FunMRI/Include/../../Modules/SoundModule/include/../../../../src/build_defines.h:
 
 ../src/FunMRI/Include/../../Modules/SupplyModule/Include/ISupplyModule.h:
 
+../src/FunMRI/Include/../../Modules/SupplyModule/Include/../../../build_defines.h:
+
 ../src/FunMRI/Include/../../Modules/CommunicationModule/Include/ICommunicationModule.h:
+
+/cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/build_defines.h:
 
 ../src/FunMRI/Include/../../Modules/CommunicationModule/Include/../../../Protocol/Include/IData.h:
 
@@ -138,7 +158,11 @@ GoogleTest/googletest/googletest/src/gtest-typed-test.cc:
 
 ../src/FunMRI/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h:
 
+../src/FunMRI/Include/../../Modules/UserInterfaceModule/Include/../../../build_defines.h:
+
 ../src/FunMRI/Include/../../FunMRIFactory/Include/IFunMRIFactory.h:
+
+../src/FunMRI/Include/../../FunMRIFactory/Include/../../../src/build_defines.h:
 
 ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/CommunicationModule/Include/ICommunicationModule.h:
 

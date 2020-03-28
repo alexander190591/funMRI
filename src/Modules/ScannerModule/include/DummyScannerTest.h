@@ -1,5 +1,8 @@
 #include "IScannerModule.h"
-#include <iostream>
+
+#ifdef TEST_BUILD
+    #include <iostream>
+#endif
 
 #define SIZE_OF_DATA 7
 
@@ -21,19 +24,28 @@ private:
 
 DummyScannerTest::DummyScannerTest()
 {
-	//std::cout << "DummyScanner: Constructor" << std::endl;
+	#ifdef DEBUGGING_LARGE
+		std::cout << "DummyScanner: Constructor" << std::endl;
+	#endif
+
 	this->init();
 }
 
 DummyScannerTest::~DummyScannerTest()
 {
-    //std::cout << "DummyScannerTest: Destructor." << std::endl;
+	#ifdef DEBUGGING_LARGE
+    std::cout << "DummyScannerTest: Destructor." << std::endl;
+	#endif
+
     // Nothing to delete
 }
 
 void DummyScannerTest::scan()
 {
-	std::cout << "DummyScanner: scan()" << std::endl;
+	#ifdef DEBUGGING_SUBTLE
+		std::cout << "DummyScanner: scan()" << std::endl;
+	#endif
+
 	for(int i = 0; i < SIZE_OF_DATA; i++)
 	{
 		this->_data[i] = i;
@@ -58,5 +70,7 @@ int DummyScannerTest::getSizeOfData()
 
 void DummyScannerTest::init()
 {
-	// std::cout << "DummyScanner: init()" << std::endl;
+	#ifdef DEBUGGING_LARGE
+		std::cout << "DummyScanner: init()" << std::endl;
+	#endif
 }

@@ -1,6 +1,8 @@
 #ifndef ISCANNERMODULE_H
 #define ISCANNERMODULE_H
 
+#include "../../../../src/build_defines.h"
+
 class IScannerModule
 {
 public:

@@ -13,6 +13,7 @@
  * 
  */
 
+#include "../../../src/build_defines.h"
 #include "../../Modules/ScannerModule/include/IScannerModule.h"
 #include "../../Modules/SoundModule/include/ISoundModule.h"
 #include "../../Modules/SupplyModule/Include/ISupplyModule.h"

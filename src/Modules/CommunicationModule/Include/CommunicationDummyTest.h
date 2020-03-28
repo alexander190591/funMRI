@@ -9,24 +9,36 @@
  * 
  */
 
+#include "../../../../src/build_defines.h"
 #include "ICommunicationModule.h"
 #include "../../../Protocol/Include/Data.h"
-#include <iostream>
+
+#ifdef TEST_BUILD
+    #include <iostream>
+#endif
 
 class CommunicationDummyTest : public ICommunicationModule
 {
 public:
-    CommunicationDummyTest() {/* std::cout << "CommunicationDummyTest: Constructor." << std::endl;*/ }
+    CommunicationDummyTest() {
+        #ifdef DEBUGGING_LARGE
+            std::cout << "CommunicationDummyTest: Constructor." << std::endl;   
+        #endif
+        }
 
     ~CommunicationDummyTest()
     {
-        // std::cout << "CommunicationDummyTest: Destructor." << std::endl;
+    #ifdef DEBUGGING_LARGE
+        std::cout << "CommunicationDummyTest: Destructor." << std::endl;
+    #endif
         // Nothing to delete...
     }
 
     bool init() 
     {
-        //std::cout << "Communication Module Init." << std::endl;
+        #ifdef DEBUGGING_LARGE
+            std::cout << "Communication Module Init." << std::endl;
+        #endif
         return true;
     }
     
@@ -34,7 +46,9 @@ public:
     {
         unsigned char dataArray[SIZE_OF_DATA_ARRAY];
         data->getData(dataArray);
-        std::cout << "Data sent... " << std::endl; // << dataArray << std::endl;
+        #ifdef DEBUGGING_LARGE
+            std::cout << "Data sent... " << std::endl; // << dataArray << std::endl;
+        #endif
     }
 
     void receiveData(IData* data)
@@ -42,9 +56,11 @@ public:
         unsigned char dataArray[SIZE_OF_DATA_ARRAY] = {'D', '1', '2', '3', '4', '5', '6', '7'};
         data->setData(dataArray);
         
-        std::cout << "Data received... " << std::endl;
-        // for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++) 
-        //     std::cout << dataArray[i];
-        // std::cout << std::endl;
+        #ifdef DEBUGGING_LARGE
+            std::cout << "Data received... " << std::endl;
+            for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++) 
+                std::cout << dataArray[i];
+            std::cout << std::endl;
+        #endif
     }
 };

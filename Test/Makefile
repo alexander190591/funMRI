@@ -36,6 +36,7 @@ INCLUDEPATH  := 																	\
 	-IGoogleTest/googletest/googletest/ 											\
 	-IGoogleTest/googletest/googlmock/												\
 	-IGoogleTest/googletest/googlemock/include/gmock/								\
+	-I../src																		\
 	-I../src/FunMRI/Include/ 														\
 	-I../src/FunMRIController/Include/ 												\
 	-I../src/FunMRIFactory/Include/													\
@@ -66,7 +67,7 @@ SRC      :=                      																		\
    $(wildcard ../src/Modules/ScannerModule/Src/*.cpp) 													\
    $(wildcard ../src/Modules/SoundModule/Src/*.cpp) 													\
    $(wildcard ../src/Modules/SoundDummy/Src/*.cpp) 														\
-   #$(wildcard ../src/Modules/ScannerModule/Include/RFID-RC522/rfid-master/rfid-master/src/*.cpp) 		\
+   $(wildcard ../src/Modules/ScannerModule/Include/RFID-RC522/rfid-master/rfid-master/src/*.cpp) 		\
    $(wildcard ../src/Modules/SoundModule/Include/DFRobotDFPlayer/*.cpp) 								\
 
 # This line creates the string of object files.

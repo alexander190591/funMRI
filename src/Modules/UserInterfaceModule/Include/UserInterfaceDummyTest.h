@@ -10,11 +10,23 @@
  */
 
 #include "IUserInterfaceModule.h"
-#include <iostream>
+
+#ifdef TEST_BUILD
+    #include <iostream>
+#endif
 
 class UserInterfaceDummyTest: public IUserInterfaceModule
 {
 public:
-    UserInterfaceDummyTest() { /* std::cout << "UserInterfaceDummyTest: Constructor." << std::endl; */ }
-    ~UserInterfaceDummyTest() { /* std::cout << "UserInterfaceDummyTest: Destructor." << std::endl; */ /*Nothing to delete...*/}
+    UserInterfaceDummyTest() { 
+        #ifdef DEBUGGING_LARGE
+            std::cout << "UserInterfaceDummyTest: Constructor." << std::endl;
+        #endif
+        }
+    ~UserInterfaceDummyTest() { 
+        #ifdef DEBUGGING_LARGE
+            std::cout << "UserInterfaceDummyTest: Destructor." << std::endl;
+        #endif
+        /*Nothing to delete...*/
+        }
 };

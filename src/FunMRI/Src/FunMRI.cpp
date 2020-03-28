@@ -19,7 +19,9 @@
 #include "../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h"
 #include "../../FunMRIFactory/Include/IFunMRIFactory.h"
 
-#include <iostream>
+#ifdef TEST_BUILD
+    #include <iostream>
+#endif
 
 /**
  * @brief Construct a new funMRI object.
@@ -84,7 +86,10 @@ void FunMRI::playSound(void)
  */
 void FunMRI::send(IData* data)
 {
-    std::cout << "Entered FunMRI.send()..." << std::endl;
+    #ifdef DEBUGGING_SUBTLE
+        std::cout << "Entered FunMRI.send()..." << std::endl;
+    #endif
+
     setData(data);
     _communicationModule->sendData(_data);
 }
@@ -110,11 +115,23 @@ void FunMRI::setData(IData* data)
      * This method is currently aware of the exact size of the incoming data array. This is NOT generic.
      * To overcome this, an assignmentoperator should be implemented for both the IData object and the derived object.
      */
-    std::cout << "FunMRI.setData()..." << std::endl;
+    
+    #ifdef DEBUGGING_SUBTLE
+        std::cout << "FunMRI.setData()..." << std::endl;
+    #endif
+
     unsigned char incomingData[SIZE_OF_DATA_ARRAY];
-    // std::cout << "calling data->getData(incomingData)" << std::endl;
+
+    #ifdef DEBUGGING_LARGE
+        std::cout << "calling data->getData(incomingData)" << std::endl;
+    #endif
+
     data->getData(incomingData);
-    // std::cout << "calling _data->setData(incomingData)" << std::endl;
+
+    #ifdef DEBUGGING_LARGE
+        std::cout << "calling _data->setData(incomingData)" << std::endl;
+    #endif
+
     _data->setData(incomingData);
 
     // *_data = *data; // This would work, if an assignmentoperator was implemented for both IData and the derived object...

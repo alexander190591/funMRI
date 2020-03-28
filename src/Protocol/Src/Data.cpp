@@ -10,7 +10,6 @@
  */
 
 #include "..\Include\Data.h"
-#include <iostream>
 
 // Data::Data(const Data& oldData)
 // {
@@ -38,14 +37,22 @@ void Data::getData(unsigned char dataOutputArray[]) const
  */
 void Data::setData(unsigned char dataInputArray[])
 {
-    // std::cout << "Entered Data::setData()..." << std::endl;
+    #ifdef DEBUGGING_SUBTLE
+        std::cout << "Entered Data::setData()..." << std::endl;
+    #endif
+
     for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++)
     {
         _data[i] = dataInputArray[i];
-        // std::cout << "_data[" << i << "] = " << _data[i] << std::endl;
-        // std::cout << "dataInputArray[" << i << "] = " << dataInputArray[i] << std::endl;
+        #ifdef DEBUGGING_LARGE
+            std::cout << "_data[" << i << "] = " << _data[i] << std::endl;
+            std::cout << "dataInputArray[" << i << "] = " << dataInputArray[i] << std::endl;
+        #endif
     }
-    // std::cout << "Exits Data::setData()..." << std::endl;
+
+    #ifdef DEBUGGING_LARGE
+        std::cout << "Exits Data::setData()..." << std::endl;
+    #endif
 }
 
 /**
@@ -68,6 +75,10 @@ void Data::setMessage(Message msg)
  */
 void Data::setIDdata(unsigned char ID[])
 {
+    #ifdef DEBUGGING_LARGE
+        std::cout << "Enter: setIDdata()..." << std::endl;
+    #endif
+
     _data[SIZE_OF_DATA_ARRAY] = {0};        // Clearing the array.
     _data[0] = 'D';
     for(int i = 1; i < SIZE_OF_DATA_ARRAY; i++)

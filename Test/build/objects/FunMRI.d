@@ -1,20 +1,28 @@
 build/objects/FunMRI.o: ../src/FunMRI/Src/FunMRI.cpp \
  ../src/FunMRI/Src/../../Modules/ScannerModule/include/IScannerModule.h \
+ ../src/FunMRI/Src/../../Modules/ScannerModule/include/../../../../src/build_defines.h \
  ../src/FunMRI/Src/../../Modules/SoundModule/include/ISoundModule.h \
+ ../src/FunMRI/Src/../../Modules/SoundModule/include/../../../../src/build_defines.h \
  ../src/FunMRI/Src/../../Modules/SupplyModule/Include/ISupplyModule.h \
+ ../src/FunMRI/Src/../../Modules/SupplyModule/Include/../../../build_defines.h \
  ../src/FunMRI/Src/../../Modules/CommunicationModule/Include/ICommunicationModule.h \
+ ../src/FunMRI/Src/../../Modules/CommunicationModule/Include/../../../../src/build_defines.h \
  ../src/FunMRI/Src/../../Modules/CommunicationModule/Include/../../../Protocol/Include/IData.h \
+ /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/build_defines.h \
  ../src/FunMRI/Src/../../Protocol/Include/Data.h \
  ../src/FunMRI/Src/../../Protocol/Include/IData.h \
  ../src/FunMRI/Src/../../State/Include/IState.h \
  ../src/FunMRI/Src/../../State/Include/../../FunMRI/Include/FunMRI.h \
+ ../src/FunMRI/Src/../../State/Include/../../FunMRI/Include/../../../src/build_defines.h \
  ../src/FunMRI/Src/../../State/Include/../../FunMRI/Include/../../Modules/ScannerModule/include/IScannerModule.h \
  ../src/FunMRI/Src/../../State/Include/../../FunMRI/Include/../../Modules/SupplyModule/Include/ISupplyModule.h \
  ../src/FunMRI/Src/../../State/Include/../../FunMRI/Include/../../Modules/CommunicationModule/Include/ICommunicationModule.h \
  ../src/FunMRI/Src/../../State/Include/../../FunMRI/Include/../../Protocol/Include/IData.h \
  ../src/FunMRI/Src/../../State/Include/../../FunMRI/Include/../../State/Include/IState.h \
  ../src/FunMRI/Src/../../State/Include/../../FunMRI/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h \
+ /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/build_defines.h \
  ../src/FunMRI/Src/../../State/Include/../../FunMRI/Include/../../FunMRIFactory/Include/IFunMRIFactory.h \
+ /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/build_defines.h \
  /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/CommunicationModule/Include/ICommunicationModule.h \
  /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/ScannerModule/Include/IScannerModule.h \
  /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/SupplyModule/Include/ISupplyModule.h \
@@ -24,13 +32,23 @@ build/objects/FunMRI.o: ../src/FunMRI/Src/FunMRI.cpp \
 
 ../src/FunMRI/Src/../../Modules/ScannerModule/include/IScannerModule.h:
 
+../src/FunMRI/Src/../../Modules/ScannerModule/include/../../../../src/build_defines.h:
+
 ../src/FunMRI/Src/../../Modules/SoundModule/include/ISoundModule.h:
+
+../src/FunMRI/Src/../../Modules/SoundModule/include/../../../../src/build_defines.h:
 
 ../src/FunMRI/Src/../../Modules/SupplyModule/Include/ISupplyModule.h:
 
+../src/FunMRI/Src/../../Modules/SupplyModule/Include/../../../build_defines.h:
+
 ../src/FunMRI/Src/../../Modules/CommunicationModule/Include/ICommunicationModule.h:
 
+../src/FunMRI/Src/../../Modules/CommunicationModule/Include/../../../../src/build_defines.h:
+
 ../src/FunMRI/Src/../../Modules/CommunicationModule/Include/../../../Protocol/Include/IData.h:
+
+/cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/build_defines.h:
 
 ../src/FunMRI/Src/../../Protocol/Include/Data.h:
 
@@ -39,6 +57,8 @@ build/objects/FunMRI.o: ../src/FunMRI/Src/FunMRI.cpp \
 ../src/FunMRI/Src/../../State/Include/IState.h:
 
 ../src/FunMRI/Src/../../State/Include/../../FunMRI/Include/FunMRI.h:
+
+../src/FunMRI/Src/../../State/Include/../../FunMRI/Include/../../../src/build_defines.h:
 
 ../src/FunMRI/Src/../../State/Include/../../FunMRI/Include/../../Modules/ScannerModule/include/IScannerModule.h:
 
@@ -52,7 +72,11 @@ build/objects/FunMRI.o: ../src/FunMRI/Src/FunMRI.cpp \
 
 ../src/FunMRI/Src/../../State/Include/../../FunMRI/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h:
 
+/cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/build_defines.h:
+
 ../src/FunMRI/Src/../../State/Include/../../FunMRI/Include/../../FunMRIFactory/Include/IFunMRIFactory.h:
+
+/cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/build_defines.h:
 
 /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/CommunicationModule/Include/ICommunicationModule.h:
 

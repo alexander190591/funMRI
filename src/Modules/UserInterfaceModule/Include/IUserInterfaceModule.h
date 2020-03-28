@@ -12,6 +12,8 @@
  * 
  */
 
+#include "../../../build_defines.h"
+
 class IUserInterfaceModule
 {
 public:

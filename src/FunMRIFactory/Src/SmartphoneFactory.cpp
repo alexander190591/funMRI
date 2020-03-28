@@ -37,7 +37,8 @@
 
     ISoundModule* SmartphoneFactory::createSoundModule(void)
     {
-        new DFPlayerMini(SOMO_RX, SOMO_TX, SOMO_BAUDRATE);
+        // TODO ERROR IN THIS RETURN........... MAKES THE MICROCONTROLLER STOP!!!
+        return new DFPlayerMini(SOMO_RX, SOMO_TX, SOMO_BAUDRATE);
     }
 
     ISupplyModule*  SmartphoneFactory::createSupplyModule(void)

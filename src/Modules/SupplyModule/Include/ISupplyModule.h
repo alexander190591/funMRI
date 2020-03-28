@@ -1,6 +1,7 @@
 #ifndef ISUPPLYMODULE_H_
 #define ISUPPLYMODULE_H_
 #include <stdint.h>
+#include "../../../build_defines.h"
 
 class ISupplyModule {
 	public:

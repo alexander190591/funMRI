@@ -12,6 +12,7 @@
  * 
  */
 
+#include "../../../src/build_defines.h"
 #include "../../Modules/CommunicationModule/Include/ICommunicationModule.h"
 #include "../../Modules/ScannerModule/Include/IScannerModule.h"
 #include "../../Modules/SoundModule/Include/ISoundModule.h"

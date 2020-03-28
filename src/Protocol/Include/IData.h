@@ -12,6 +12,8 @@
 #ifndef IDATA_H_
 #define IDATA_H_
 
+#include "../../build_defines.h"
+
 /**
  * @brief DataMessage is the enum used to keep track of the different messages
  *        that can be sent between funMRI and funMRI App.

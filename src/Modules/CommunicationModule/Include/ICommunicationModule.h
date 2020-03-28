@@ -7,6 +7,7 @@
 
 #ifndef ICOMMUNICATIONMODULE_H_
 #define ICOMMUNICATIONMODULE_H_
+#include "../../../../src/build_defines.h"
 #include "../../../Protocol/Include/IData.h"
 
 	class ICommunicationModule {
