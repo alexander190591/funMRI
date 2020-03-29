@@ -16,19 +16,18 @@
 // This outcomments ALL #include <iostream> and ALL calls to functions in iostream.
 // By commenting this line, DEBUGGING_SUBTLE is automatically defined.
 
-// #define TEST_BUILD
+#define TEST_BUILD
 
 // This define should be here if the code should compile for testing with debugging for console.
-// OBS!!! It can only be here if TEST_BUILD is defined (outcommented)!!!
+// OBS!!! It can only be defined if TEST_BUILD is defined (outcommented)!!!
 
 #ifdef TEST_BUILD
     #define DEBUGGING_SUBTLE
 #endif
 
-// This define should be here if the could should compile for testing with debugging for console.
-// It implements a LOT of cout for a LOT of objects and methods to really get into knowing what
+// This define implements a LOT of cout for a LOT of objects and methods to really get into knowing what
 // methods are called.
-// OBS! Can only be outcommented if TEST_BUILD is defined AND DEBUGGING_SUBTLE is defined!
+// OBS! Can only be defined if TEST_BUILD is defined AND DEBUGGING_SUBTLE is defined!
 
 #ifdef TEST_BUILD
     #ifdef DEBUGGING_SUBTLE

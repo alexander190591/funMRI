@@ -1,5 +1,5 @@
-#ifndef ISTATE_H_
-#define ISTATE_H_
+#ifndef __ISTATE_H__
+#define __ISTATE_H__
 
 /**
  * @file IState.h
@@ -13,16 +13,54 @@
  */
 
 #include "../../FunMRI/Include/FunMRI.h"
+#include "../../build_defines.h"
+
+#ifdef TEST_BUILD
+    #include <iostream>
+#endif
+
 
 class FunMRI; // Forward declaration...  https://stackoverflow.com/questions/396084/headers-including-each-other-in-c
 
 class IState
 {
 public:
-    virtual void handleScanPressed(FunMRI* funMRIPtr) = 0;
-    virtual void handleInitPressed(FunMRI* funMRIPtr) = 0;
-    virtual void handleModeChanged(FunMRI* funMRIPtr) = 0;
-    virtual void handleMicroSwitchPressed(FunMRI* funMRIPtr) = 0;
+    virtual ~IState() { /* Nothing to delete here... */ }
+    virtual void handleScanPressed(FunMRI* funMRIPtr)
+    {
+        #ifdef DEBUGGING_SUBTLE
+            std::cout << "handleScanPressed: Nothing special happens..." << std::endl;
+        #endif
+        
+        (void)funMRIPtr;    // Removing warning. Should not be used. Nothing should happen here.
+    }
+    
+    virtual void handleInitPressed(FunMRI* funMRIPtr)
+    {
+        #ifdef DEBUGGING_SUBTLE
+            std::cout << "handleInitPressed: Nothing special happens..." << std::endl;
+        #endif
+        
+        (void)funMRIPtr;    // Removing warning. Should not be used. Nothing should happen here.
+    }
+    
+    virtual void handleModeChanged(FunMRI* funMRIPtr)
+    {
+        #ifdef DEBUGGING_SUBTLE
+            std::cout << "handleModeChanged: Nothing special happens..." << std::endl;
+        #endif
+
+        (void)funMRIPtr;    // Removing warning. Should not be used. Nothing should happen here.
+    }
+
+    virtual void handleMicroSwitchPressed(FunMRI* funMRIPtr)
+    {
+        #ifdef DEBUGGING_SUBTLE
+            std::cout << "handleMicroSwitchPressed: Nothing special happens..." << std::endl;
+        #endif
+
+        (void)funMRIPtr;    // Removing warning. Should not be used. Nothing should happen here.
+    }
 };
 
-#endif // ISTATE_H_
+#endif // __ISTATE_H__

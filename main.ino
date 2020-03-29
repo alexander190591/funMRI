@@ -6,7 +6,7 @@
 #include "src/Modules/CommunicationModule/Include/BluetoothFeather.h"
 #include "src/Protocol/Include/Data.h"
 #include "src/FunMRI/Include/FunMRI.h"
-#include "src/FunMRIFactory/Include/Implementations/SmartphoneFactory.h"
+#include "src/FunMRIFactory/Include/SmartphoneFactory.h"
 
 /**
  * @brief Defines for Bluefruit Feather nRF52832

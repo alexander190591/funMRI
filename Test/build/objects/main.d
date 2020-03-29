@@ -47,6 +47,7 @@ build/objects/main.o: main.cpp \
  ../src/FunMRI/Include/../../Protocol/Include/IData.h \
  ../src/FunMRI/Include/../../State/Include/IState.h \
  ../src/FunMRI/Include/../../State/Include/../../FunMRI/Include/FunMRI.h \
+ ../src/FunMRI/Include/../../State/Include/../../build_defines.h \
  ../src/FunMRI/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h \
  ../src/FunMRI/Include/../../Modules/UserInterfaceModule/Include/../../../build_defines.h \
  ../src/FunMRI/Include/../../FunMRIFactory/Include/IFunMRIFactory.h \
@@ -55,8 +56,11 @@ build/objects/main.o: main.cpp \
  ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/ScannerModule/Include/IScannerModule.h \
  ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/SupplyModule/Include/ISupplyModule.h \
  ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h \
- ../src/FunMRIFactory/Include/Implementations/TestFactory.h \
- ../src/FunMRIFactory/Include/Implementations/../IFunMRIFactory.h
+ ../src/FunMRIFactory/Include/TestFactory.h \
+ ../src/FunMRIFactory/Include/IFunMRIFactory.h \
+ ../src/FunMRIController/Include/TestMode.h \
+ ../src/FunMRIController/Include/IFunMRIController.h \
+ ../src/FunMRIController/Include/../../FunMRI/Include/FunMRI.h
 
 GoogleTest/googletest/googletest/src/gtest-all.cc:
 
@@ -156,6 +160,8 @@ GoogleTest/googletest/googletest/src/gtest-typed-test.cc:
 
 ../src/FunMRI/Include/../../State/Include/../../FunMRI/Include/FunMRI.h:
 
+../src/FunMRI/Include/../../State/Include/../../build_defines.h:
+
 ../src/FunMRI/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h:
 
 ../src/FunMRI/Include/../../Modules/UserInterfaceModule/Include/../../../build_defines.h:
@@ -172,6 +178,12 @@ GoogleTest/googletest/googletest/src/gtest-typed-test.cc:
 
 ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h:
 
-../src/FunMRIFactory/Include/Implementations/TestFactory.h:
+../src/FunMRIFactory/Include/TestFactory.h:
 
-../src/FunMRIFactory/Include/Implementations/../IFunMRIFactory.h:
+../src/FunMRIFactory/Include/IFunMRIFactory.h:
+
+../src/FunMRIController/Include/TestMode.h:
+
+../src/FunMRIController/Include/IFunMRIController.h:
+
+../src/FunMRIController/Include/../../FunMRI/Include/FunMRI.h:

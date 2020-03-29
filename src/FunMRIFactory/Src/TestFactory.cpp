@@ -10,7 +10,7 @@
  */
 
 
-#include "../Include/Implementations/TestFactory.h"
+#include "../Include/TestFactory.h"
 #include "../../Modules/CommunicationModule/Include/CommunicationDummyTest.h"
 #include "../../Modules/ScannerModule/Include/DummyScannerTest.h"
 #include "../../Modules/SoundModule/Include/SoundDummyTest.h"

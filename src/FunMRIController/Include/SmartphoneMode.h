@@ -1,5 +1,5 @@
-#ifndef SMARTPHONEMODE_H_
-#define SMARTPHONEMODE_H_
+#ifndef __SMARTPHONEMODE_H__
+#define __SMARTPHONEMODE_H__
 
 /**
  * @file SmartphoneMode.h
@@ -17,9 +17,15 @@
 class SmartphoneMode : public IFunMRIController
 {
 public:
+    SmartphoneMode();
+    ~SmartphoneMode();
     void run(void);
+    void setmicroSwitchChanged(bool isChanged);
+    void setMicroSwitchState(bool isPressed);
 private:
     FunMRI* _funMRI = nullptr;
+    bool _microSwitchChanged = false; // Value changed to true in interrupt.
+    bool _microSwitchState = false;   // Value changed to true if microswitch is HIGH (slider is in the mini-scanner).
 };
 
-#endif // SMARTPHONEMODE_H_
+#endif // __SMARTPHONEMODE_H__

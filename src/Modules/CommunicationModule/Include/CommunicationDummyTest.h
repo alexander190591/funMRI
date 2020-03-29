@@ -1,3 +1,6 @@
+#ifndef __COMMUNICATIONDUMMYTEST_H__
+#define __COMMUNICATIONDUMMYTEST_H__
+
 /**
  * @file CommunicationDummyTest.h
  * @author Alexander Najbjerg Christensen (au482141@post.au.dk)
@@ -64,3 +67,5 @@ public:
         #endif
     }
 };
+
+#endif // __COMMUNICATIONDUMMYTEST_H__

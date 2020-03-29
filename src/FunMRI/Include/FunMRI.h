@@ -1,5 +1,5 @@
-#ifndef FUNMRI_H_
-#define FUNMRI_H_
+#ifndef __FUNMRI_H__
+#define __FUNMRI_H__
 
 /**
  * @file FunMRI.h
@@ -56,4 +56,4 @@ private:
     unsigned char _storedID[7];
 };
 
-#endif // FUNMRI_H_
+#endif // __FUNMRI_H__

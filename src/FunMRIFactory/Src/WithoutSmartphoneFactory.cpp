@@ -12,14 +12,14 @@
  * 
  */
 
-#include "../Include/Implementations/WithoutSmartphoneFactory.h"
+#include "../Include/WithoutSmartphoneFactory.h"
 #include "../../Modules/CommunicationModule/Include/BluetoothFeather.h"
 #include "../../Modules/ScannerModule/Include/RFIDRC522.h"
 #include "../../Modules/SoundModule/Include/DFPlayerMini.h"
 
     WithoutSmartphoneFactory::WithoutSmartphoneFactory()
     {
-        // Nothing to delete...
+        // Nothing to do...
     }
     
     WithoutSmartphoneFactory::~WithoutSmartphoneFactory()

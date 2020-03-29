@@ -47,6 +47,7 @@ FunMRI::~FunMRI()
     delete _soundModule;
     delete _supplyModule;
     delete _userInterfaceModule;
+    delete _state;
     delete _data;
 }
 
@@ -57,6 +58,7 @@ FunMRI::~FunMRI()
  */
 void FunMRI::setState(IState *state)
 {
+    delete _state;          // Garbage collecting
     _state = state;
 }
 

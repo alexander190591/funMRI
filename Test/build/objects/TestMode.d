@@ -1,6 +1,5 @@
-build/objects/WithoutSmartphoneMode.o: \
- ../src/FunMRIController/Src/WithoutSmartphoneMode.cpp \
- ../src/FunMRIController/Src/../Include/WithoutSmartphoneMode.h \
+build/objects/TestMode.o: ../src/FunMRIController/Src/TestMode.cpp \
+ ../src/FunMRIController/Src/../Include/TestMode.h \
  ../src/FunMRIController/Src/../Include/IFunMRIController.h \
  ../src/FunMRIController/Src/../Include/../../FunMRI/Include/FunMRI.h \
  ../src/FunMRIController/Src/../Include/../../FunMRI/Include/../../../src/build_defines.h \
@@ -17,6 +16,7 @@ build/objects/WithoutSmartphoneMode.o: \
  ../src/FunMRIController/Src/../Include/../../FunMRI/Include/../../Protocol/Include/IData.h \
  ../src/FunMRIController/Src/../Include/../../FunMRI/Include/../../State/Include/IState.h \
  /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/FunMRI/Include/FunMRI.h \
+ /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/build_defines.h \
  ../src/FunMRIController/Src/../Include/../../FunMRI/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h \
  /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/build_defines.h \
  ../src/FunMRIController/Src/../Include/../../FunMRI/Include/../../FunMRIFactory/Include/IFunMRIFactory.h \
@@ -24,9 +24,11 @@ build/objects/WithoutSmartphoneMode.o: \
  /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/CommunicationModule/Include/ICommunicationModule.h \
  /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/ScannerModule/Include/IScannerModule.h \
  /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/SupplyModule/Include/ISupplyModule.h \
- /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/UserInterfaceModule/Include/IUserInterfaceModule.h
+ /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/UserInterfaceModule/Include/IUserInterfaceModule.h \
+ ../src/FunMRIController/Src/../../FunMRIFactory/Include/TestFactory.h \
+ ../src/FunMRIController/Src/../../FunMRIFactory/Include/IFunMRIFactory.h
 
-../src/FunMRIController/Src/../Include/WithoutSmartphoneMode.h:
+../src/FunMRIController/Src/../Include/TestMode.h:
 
 ../src/FunMRIController/Src/../Include/IFunMRIController.h:
 
@@ -60,6 +62,8 @@ build/objects/WithoutSmartphoneMode.o: \
 
 /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/FunMRI/Include/FunMRI.h:
 
+/cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/build_defines.h:
+
 ../src/FunMRIController/Src/../Include/../../FunMRI/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h:
 
 /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/build_defines.h:
@@ -75,3 +79,7 @@ build/objects/WithoutSmartphoneMode.o: \
 /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/SupplyModule/Include/ISupplyModule.h:
 
 /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/UserInterfaceModule/Include/IUserInterfaceModule.h:
+
+../src/FunMRIController/Src/../../FunMRIFactory/Include/TestFactory.h:
+
+../src/FunMRIController/Src/../../FunMRIFactory/Include/IFunMRIFactory.h:

@@ -1,5 +1,5 @@
-#ifndef ISCANNERMODULE_H
-#define ISCANNERMODULE_H
+#ifndef __ISCANNERMODULE_H__
+#define __ISCANNERMODULE_H__
 
 #include "../../../../src/build_defines.h"
 
@@ -15,5 +15,4 @@ public:
 };
 
 
-
-#endif
+#endif // __ISCANNERMODULE_H__

@@ -2,7 +2,8 @@
 //#include "GoogleTest/googletest/googlemock/src/gmock-all.cc"
 #include "../src/Protocol/Include/Data.h"
 #include "../src/FunMRI/Include/FunMRI.h"
-#include "../src/FunMRIFactory/Include/Implementations/TestFactory.h"
+#include "../src/FunMRIFactory/Include/TestFactory.h"
+#include "../src/FunMRIController/Include/TestMode.h"
 
 #include <stdio.h>
 
@@ -155,8 +156,32 @@ TEST(FunMRI, storeInitID)
     ASSERT_TRUE(_uut->isIDSameAsInit(IDdata));
 }
 
-/** S T A T E    P A T T E R N   T E S T *********************************************************/
+/** F U N M R I C O N T R O L L E R   T E S T S **************************************************/
+TEST(IFunMRIController, run)
+{
+    // Arrange
+    IFunMRIController* myFunMRIController = new TestMode();
+    
+    // Act
+    myFunMRIController->run();
 
+    // Assert
+    // Test cout...
+}
+
+TEST(IFunMRIController, run)
+{
+    // Arrange
+    IFunMRIController* myFunMRIController = new TestMode();
+    
+    // Act
+    myFunMRIController->setmicroSwitchChanged(true);
+
+    // Assert
+    // Test cout...
+}
+
+/** S T A T E    P A T T E R N   T E S T *********************************************************/
 
 int main( int argc, char* argv[] )
 {

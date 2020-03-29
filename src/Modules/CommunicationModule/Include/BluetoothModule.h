@@ -1,3 +1,6 @@
+#ifndef __BLUETOOTHMODULE_H__
+#define __BLUETOOTHMODULE_H__
+
 /**
  * @file BluetoothModule.h
  * @author TBA (au328752@post.au.dk)
@@ -9,8 +12,6 @@
  *
  */
 
-#ifndef BLUETOOTHMODULE_HM_10_BLUETOOTHMODULE_H_
-#define BLUETOOTHMODULE_HM_10_BLUETOOTHMODULE_H_
 #include "../../CommunicationModule/Include/ICommunicationModule.h"
 #include "../../../Protocol/Include/Data.h"
 #include <SoftwareSerial.h>
@@ -34,6 +35,4 @@ private:
 	SoftwareSerial* _serialPtr = nullptr;
 };
 
-
-
-#endif /* BLUETOOTHMODULE_HM_10_BLUETOOTHMODULE_H_ */
+#endif // __BLUETOOTHMODULE_H__

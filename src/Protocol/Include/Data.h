@@ -1,5 +1,6 @@
-#ifndef DATA_H_
-#define DATA_H_
+#ifndef __DATA_H__
+#define __DATA_H__
+
 /**
  * @file Data.h
  * @author Alexander Najbjerg Christensen (au482141@post.au.dk)
@@ -49,7 +50,12 @@
 class Data : public IData
 {
 public:
-    ~Data() {/*std::cout << "Data: Deconstructor." << std::endl;*/ /*Nothing to delete here...*/}
+    ~Data() override {
+        #ifdef DEBUGGING_LARGE
+        std::cout << "Data: Deconstructor." << std::endl;
+        #endif
+        /*Nothing to delete here...*/
+        }
     void getData(unsigned char dataOutputParameter[]) const override;
     void setData(unsigned char dataInputParameter[])  override;
     void setMessage(Message msg)  override;
@@ -59,7 +65,7 @@ public:
     void clearData()  override;
     bool dataReceived()  override;
     bool isSame(unsigned char arrayOne[], unsigned char arrayTwo[])  override;
-    bool isIDDataSame(unsigned char testData[]);
+    bool isIDDataSame(unsigned char testData[]) override;
 
     // Data& operator=(const Data& data) // Assignment Operator
     // {
@@ -80,4 +86,4 @@ private:
 
 //bool operator==(const IData& lhs, const IData& rhs);
 
-#endif // DATA_H_
+#endif // __DATA_H__

@@ -1,3 +1,6 @@
+#ifndef __ICOMMUNICATIONMODULE_H__
+#define __ICOMMUNICATIONMODULE_H__
+
 /*
  * ICommunicationModule.h
  *
@@ -5,8 +8,6 @@
  *      Author: Alexander
  */
 
-#ifndef ICOMMUNICATIONMODULE_H_
-#define ICOMMUNICATIONMODULE_H_
 #include "../../../../src/build_defines.h"
 #include "../../../Protocol/Include/IData.h"
 
@@ -18,4 +19,4 @@
 		virtual void receiveData(IData* data) = 0;
 	};
 
-#endif /* BLUETOOTHMODULE_HM_10_ICOMMUNICATIONMODULE_H_ */
+#endif // __ICOMMUNICATIONMODULE_H__

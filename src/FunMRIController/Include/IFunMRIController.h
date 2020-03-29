@@ -1,5 +1,5 @@
-#ifndef _IFUNMRICONTROLLER_H_
-#define _IFUNMRICONTROLLER_H_
+#ifndef __IFUNMRICONTROLLER_H__
+#define __IFUNMRICONTROLLER_H__
 
 /**
  * @file IFunMRIController.h
@@ -16,8 +16,11 @@
 
 class IFunMRIController
 {
-    public:
-        virtual void run(void) = 0;
+public:
+    ~IFunMRIController() { /* Nothing to delete here... */ }
+    virtual void run(void) = 0;
+    virtual void setmicroSwitchChanged(bool isChanged) = 0;
+    virtual void setMicroSwitchState(bool isPressed) = 0;
 };
 
-#endif // _IFUNMRICONTROLLER_H_
+#endif // __IFUNMRICONTROLLER_H__

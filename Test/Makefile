@@ -38,7 +38,7 @@ INCLUDEPATH  := 																	\
 	-IGoogleTest/googletest/googlemock/include/gmock/								\
 	-I../src																		\
 	-I../src/FunMRI/Include/ 														\
-	-I../src/FunMRIController/Include/ 												\
+	-I../src/FunMRIController/Include/												\
 	-I../src/FunMRIFactory/Include/													\
 	-I../src/Protocol/Include/ 														\
 	-I../src/State/Include/															\
@@ -46,9 +46,6 @@ INCLUDEPATH  := 																	\
 	-I../src/Modules/CommunicationModule/Include/ 									\
 	-I../src/Modules/ScannerModule/Include/ 										\
 	-I../src/Modules/SoundModule/Include/ 											\
-	-I../src/Modules/SoundDummy/Include/ 											\
-	-I../src/Modules/ScannerModule/Include/RFID-RC522/rfid-master/rfid-master/src/ 	\
-	-I../src/Modules/SoundModule/Include/DFRobotDFPlayer/							\
 
 # Alias for source files placed at src/subfolders.
 # wildcard is a function that returns a space-seperated string of all files with the extension .cpp. 
@@ -57,18 +54,13 @@ INCLUDEPATH  := 																	\
 
 SRC      :=                      																		\
    $(wildcard *.cpp)																					\
-   $(wildcard ../src/FunMRI/Src/*.cpp) 																	\
-   $(wildcard ../src/FunMRIController/Src/*.cpp) 														\
+   $(wildcard ../src/FunMRI/Src/FunMRI.cpp) 															\
+   $(wildcard ../src/FunMRIController/Src/TestMode.cpp)													\
    $(wildcard ../src/FunMRIFactory/Src/TestFactory.cpp) 												\
    $(wildcard ../src/Protocol/Src/*.cpp) 																\
    $(wildcard ../src/State/Src/*.cpp) 																	\
-   #$(wildcard ../src/Modules/SupplyModule/Src/*.cpp) 													\
-   $(wildcard ../src/Modules/CommunicationModule/Src/*.cpp) 											\
-   $(wildcard ../src/Modules/ScannerModule/Src/*.cpp) 													\
-   $(wildcard ../src/Modules/SoundModule/Src/*.cpp) 													\
-   $(wildcard ../src/Modules/SoundDummy/Src/*.cpp) 														\
-   $(wildcard ../src/Modules/ScannerModule/Include/RFID-RC522/rfid-master/rfid-master/src/*.cpp) 		\
-   $(wildcard ../src/Modules/SoundModule/Include/DFRobotDFPlayer/*.cpp) 								\
+   $(wildcard ../src/Modules/SupplyModule/Src/SupplyDummyTest.cpp) 										\
+   $(wildcard ../src/Modules/CommunicationModule/Src/CommunicationDummyTest.cpp) 						\
 
 # This line creates the string of object files.
 # It takes all the src-files, and replace them with the same name, but with /build/objects prepended.

@@ -1,3 +1,6 @@
+#ifndef __BLUETOOTHFEATHER_H__
+#define __BLUETOOTHFEATHER_H__
+
 /**
  * @file BluetoothFeather.h
  * @author Alexander Najbjerg Christensen (au482141@post.au.dk)
@@ -11,8 +14,6 @@
  * 
  */
 
-#ifndef BLUETOOTHFEATHER_H_
-#define BLUETOOTHFEATHER_H_
 #include "ICommunicationModule.h"
 #include "../../../Protocol/Include/Data.h"
 
@@ -26,4 +27,4 @@ public:
 	void receiveData(IData* data);
 };
 
-#endif /* BLUETOOTHMODULE_HM_10_BLUETOOTHMODULE_H_ */
+#endif // __BLUETOOTHFEATHER_H__
