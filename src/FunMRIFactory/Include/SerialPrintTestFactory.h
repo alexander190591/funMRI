@@ -11,23 +11,25 @@
  *
  */
 
-#include "../IFunMRIFactory.h"
+#include "IFunMRIFactory.h"
 
-
-#include "../../../Modules/ScannerModule/include/DummyScanner.h"
-#include "../../../Modules/CommunicationModule/Include/DummyCommunicationModule.h"
-#include "../../../Modules/SoundModule/include/DummySoundModule.h"
-#include "../../../Modules/SupplyModule/Include/DummySupplyModule.h"
-#include "../../../Modules/UserInterfaceModule/Include/DummyUserInterface.h"
+#include "../../Modules/ScannerModule/Include/DummyScanner.h"
+#include "../../Modules/CommunicationModule/Include/DummyCommunicationModule.h"
+#include "../../Modules/SoundModule/include/DummySoundModule.h"
+#include "../../Modules/SupplyModule/Include/DummySupplyModule.h"
+#include "../../Modules/UserInterfaceModule/Include/DummyUserInterface.h"
 
 class SerialPrintTestFactory : public IFunMRIFactory
 {
-    ~SerialPrintTestFactory(){Serial.println("SerialPrintTestFactory: Destructor");};
+public:
+    SerialPrintTestFactory(){Serial.println("SerialPrintTestFactory: Constructor.");};
+    ~SerialPrintTestFactory(){Serial.println("SerialPrintTestFactory: Destructor.");};
     ICommunicationModule* createCommunicationModule(void);
     IScannerModule* createScannerModule(void);
     ISoundModule* createSoundModule(void);
     ISupplyModule*  createSupplyModule(void);
     IUserInterfaceModule* createUserInterfaceModule(void);
+    virtual IData* createDataObject(void);
 };
 
 #endif // SMARTPHONEFACTORY_H_

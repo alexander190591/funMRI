@@ -143,7 +143,8 @@ void BluetoothFeather::receiveData(IData* data)
  */
 BluetoothFeather::BluetoothFeather()
 {
-    //Serial.println("Bluefruit BLE constructed.");                   // Used for debugging.
+    Serial.println("Bluefruit BLE constructed.");                   // Used for debugging.
+    init();
 
 }
 

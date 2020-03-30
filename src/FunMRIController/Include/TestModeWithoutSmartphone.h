@@ -24,6 +24,7 @@ public:
     void setMicroSwitchState(bool isPressed);
 // private:     // Made public for making testing simple...
     FunMRI* _funMRI = nullptr;
+    IData* _data = nullptr;
     volatile bool _microSwitchChanged = false; // Value changed to true in interrupt.
     volatile bool _microSwitchState = false;   // Value changed to true if microswitch is HIGH (slider is in the mini-scanner).
 };

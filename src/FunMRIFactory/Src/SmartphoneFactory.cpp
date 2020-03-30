@@ -15,6 +15,9 @@
 #include "../../Modules/ScannerModule/Include/RFIDRC522.h"
 #include "../../Modules/SoundModule/Include/DFPlayerMini.h"
 
+// FOR TESTING:
+#include "../../Modules/SoundModule/Include/DummySoundModule.h"
+
     SmartphoneFactory::SmartphoneFactory()
     {
         // Nothing to do...
@@ -37,6 +40,7 @@
 
     ISoundModule* SmartphoneFactory::createSoundModule(void)
     {
+        //return new DummySoundModule();
         // TODO ERROR IN THIS RETURN........... MAKES THE MICROCONTROLLER STOP!!!
         return new DFPlayerMini(SOMO_RX, SOMO_TX, SOMO_BAUDRATE);
     }

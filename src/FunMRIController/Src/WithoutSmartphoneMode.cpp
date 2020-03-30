@@ -12,6 +12,7 @@
 #include "../Include/WithoutSmartphoneMode.h"
 #include "../../FunMRIFactory/Include/WithoutSmartphoneFactory.h"
 #include "../../State/Include/IdleState.h"
+#include "../../Protocol/Include/Data.h"
 
 /**
  * @brief Constructs a new WithoutSmartphoneMode object, starts up the FunMRI object within,
@@ -38,7 +39,6 @@ void WithoutSmartphoneMode::run()
                 _funMRI->microSwitchPressed();
                 _microSwitchChanged = false;
             }
-
     }
 }
 

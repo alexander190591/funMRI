@@ -70,11 +70,21 @@ void FunMRI::setState(IState *state)
  */
 bool FunMRI::scan(void)
 {
+    bool newScanAvailable = false;
     _scannerModule->scan();
-    unsigned char IDTag[SIZE_OF_DATA_ARRAY - 1];
-    setNewID(_scannerModule->retrieveResult());
+    newScanAvailable = _scannerModule->isNewScanAvailable();
 
-    return _scannerModule->isNewScanAvailable();
+    if(newScanAvailable)
+    {
+        unsigned char IDTag[SIZE_OF_DATA_ARRAY - 1];
+        for(int i = 0; i < SIZE_OF_DATA_ARRAY - 1; i++)
+        {
+            IDTag[i] = _scannerModule->retrieveResult()[i];
+        }
+        setNewID(IDTag);
+    }
+
+    return newScanAvailable;
 }
 
 /**
