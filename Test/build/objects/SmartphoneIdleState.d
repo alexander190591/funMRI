@@ -1,5 +1,6 @@
-build/objects/IdleState.o: ../src/State/Src/IdleState.cpp \
- ../src/State/Src/../Include/IdleState.h \
+build/objects/SmartphoneIdleState.o: \
+ ../src/State/Src/SmartphoneIdleState.cpp \
+ ../src/State/Src/../Include/SmartphoneIdleState.h \
  ../src/State/Src/../Include/IState.h \
  ../src/State/Src/../Include/../../FunMRI/Include/FunMRI.h \
  ../src/State/Src/../Include/../../FunMRI/Include/../../../src/build_defines.h \
@@ -23,9 +24,11 @@ build/objects/IdleState.o: ../src/State/Src/IdleState.cpp \
  /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/ScannerModule/Include/IScannerModule.h \
  /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/SupplyModule/Include/ISupplyModule.h \
  /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/UserInterfaceModule/Include/IUserInterfaceModule.h \
- ../src/State/Src/../Include/../../build_defines.h
+ ../src/State/Src/../Include/../../build_defines.h \
+ ../src/State/Src/../../Protocol/Include/Data.h \
+ ../src/State/Src/../../Protocol/Include/IData.h
 
-../src/State/Src/../Include/IdleState.h:
+../src/State/Src/../Include/SmartphoneIdleState.h:
 
 ../src/State/Src/../Include/IState.h:
 
@@ -74,3 +77,7 @@ build/objects/IdleState.o: ../src/State/Src/IdleState.cpp \
 /cygdrive/c/Users/alexa/Dropbox/AU/2020\ Semester\ 7/Bachelorprojekt/funMRI/src/Modules/UserInterfaceModule/Include/IUserInterfaceModule.h:
 
 ../src/State/Src/../Include/../../build_defines.h:
+
+../src/State/Src/../../Protocol/Include/Data.h:
+
+../src/State/Src/../../Protocol/Include/IData.h:

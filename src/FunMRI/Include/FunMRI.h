@@ -31,12 +31,14 @@ public:
     FunMRI(IFunMRIFactory* funMRIFactory);
     ~FunMRI();
     void setState(IState *state);
-    void scan(void);
+    bool scan(void);
     void playSound(void);
     void send(IData* data);
     void receive();
     void setData(IData* data);
     IData* getData();
+    void getNewID(unsigned char* array);
+    void setNewID(unsigned char* newID);
     void storeInitID(unsigned char* initID);
     bool isIDSameAsInit(unsigned char* newID);
     void batteryStatus(void);
@@ -54,6 +56,7 @@ private:
     IState* _state = nullptr;
     IData* _data = nullptr;
     unsigned char _storedID[7];
+    unsigned char _newID[7];
 };
 
 #endif // __FUNMRI_H__

@@ -4,7 +4,7 @@
 /**
  * @file IdleState.h
  * @author Alexander Najbjerg Christensen (au482141@post.au.dk)
- * @brief IdleState is the idle state of the WithoutSmartphone state machine.
+ * @brief SmartphoneIdleState is the idle state of the Smartphone state machine.
  * @version 0.1
  * @date 2020-03-28
  * 
@@ -14,11 +14,13 @@
 
 #include "IState.h"
 
-class IdleState : public IState
+class SmartphoneIdleState : public IState
 {
 public:
-    IdleState();
-    ~IdleState() { /* Nothing to delete here... */ }
+    SmartphoneIdleState();
+    ~SmartphoneIdleState() { /* Nothing to delete here... */ }
+    void handleScanPressed(FunMRI* funMRIPtr);
+    void handleInitPressed(FunMRI* funMRIPtr);
     void handleModeChanged(FunMRI* funMRIPtr);
     void handleMicroSwitchPressed(FunMRI* funMRIPtr);
 };

@@ -9,7 +9,7 @@
 #define SOUNDMODULE_INCLUDE_DFPLAYERMINI_H_
 
 #include "ISoundModule.h"
-#include "SoftwareSerial.h"
+//#include "SoftwareSerial.h"
 #include "../include/DFRobotDFPlayer/DFRobotDFPlayerMini.h"
 
 
@@ -26,7 +26,7 @@ protected:
 private:
 	DFRobotDFPlayerMini *_DFPlayerPtr = nullptr;
 	//SoftwareSerial *_serialPtr = nullptr;
-	Uart* _serialPtr = nullptr;						// Changed to UART ptr instead of SoftwareSerial.
+	HardwareSerial* _serialPtr = nullptr;						// Changed to UART ptr instead of SoftwareSerial.
 	int _rx = -1;
 	int _tx = -1;
 	int _baudrate = 0;

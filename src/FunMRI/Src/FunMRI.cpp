@@ -65,10 +65,16 @@ void FunMRI::setState(IState *state)
 /**
  * @brief Commands the scanner module to scan for an RFID ID.
  * 
+ * @return true is returned if scanner has read an ID.
+ * @return false is returned if scanner did NOT read an ID.
  */
-void FunMRI::scan(void)
+bool FunMRI::scan(void)
 {
     _scannerModule->scan();
+    unsigned char IDTag[SIZE_OF_DATA_ARRAY - 1];
+    setNewID(_scannerModule->retrieveResult());
+
+    return _scannerModule->isNewScanAvailable();
 }
 
 /**
@@ -141,13 +147,29 @@ void FunMRI::setData(IData* data)
 }
 
 /**
- * @brief Returns the data object stored in the FunMRI object.
+ * @brief Returns the data pointer stored in the FunMRI object.
  * 
- * @return Data is the object stored in the FunMRI object. Returned by value.
+ * @return IData* is the pointer to the object stored in the FunMRI object.
  */
 IData* FunMRI::getData()
 {
     return _data;
+}
+
+void FunMRI::getNewID(unsigned char* array)
+{
+    for(int i = 0; i < SIZE_OF_DATA_ARRAY - 1; i++)
+    {
+        array[i] = this->_newID[i];
+    }
+}
+
+void FunMRI::setNewID(unsigned char* newID)
+{
+    for(int i = 0; i < SIZE_OF_DATA_ARRAY - 1; i++)
+    {
+        this->_newID[i] = newID[i];
+    }
 }
 
 void FunMRI::storeInitID(unsigned char* initID)

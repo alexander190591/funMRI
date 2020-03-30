@@ -2,7 +2,7 @@
  * @file IdleState.cpp
  * @author Alexander Najbjerg Christensen (au482141@post.au.dk)
  * @brief This is the idle state of the Without Smartphone mode.
- *        Its job is to set the state to ScanState when the microswitch is pressed.
+ *        Its job is to handle a scanning when the microswitch is pressed.
  * @version 0.1
  * @date 2020-03-28
  * 
@@ -11,7 +11,17 @@
  */
 
 #include "../Include/IdleState.h"
-#include "../Include/ScanState.h"
+
+#ifdef TEST_BUILD
+    #include <iostream>
+#endif
+
+IdleState::IdleState()
+{
+    #ifdef DEBUGGING_SUBTLE
+        std::cout << "IdleState object created." << std::endl;
+    #endif
+}
 
 // void IdleState::handleScanPressed(FunMRI* funMRIPtr); // NOT USED IN WITHOUTSMARTPHONE MODE
 
@@ -28,6 +38,8 @@ void IdleState::handleMicroSwitchPressed(FunMRI* funMRIPtr)
         std::cout << "IdleState::handleMicroSwitchPressed entered..." << std::endl;
     #endif
 
-    funMRIPtr->scan();
-    funMRIPtr->setState(new ScanState());
+    if(funMRIPtr->scan())
+    {
+        funMRIPtr->playSound();
+    }
 }

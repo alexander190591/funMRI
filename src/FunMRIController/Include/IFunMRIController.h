@@ -19,7 +19,7 @@ class IFunMRIController
 public:
     ~IFunMRIController() { /* Nothing to delete here... */ }
     virtual void run(void) = 0;
-    virtual void setmicroSwitchChanged(bool isChanged) = 0;
+    virtual void setMicroSwitchChanged(bool isChanged) = 0;
     virtual void setMicroSwitchState(bool isPressed) = 0;
 };
 

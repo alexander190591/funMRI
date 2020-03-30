@@ -20,12 +20,12 @@ public:
     WithoutSmartphoneMode();
     ~WithoutSmartphoneMode();
     void run(void);
-    void setmicroSwitchChanged(bool isChanged);
+    void setMicroSwitchChanged(bool isChanged);
     void setMicroSwitchState(bool isPressed);
 private:
     FunMRI* _funMRI = nullptr;
-    bool _microSwitchChanged = false; // Value changed to true in interrupt.
-    bool _microSwitchState = false;   // Value changed to true if microswitch is HIGH (slider is in the mini-scanner).
+    volatile bool _microSwitchChanged = false; // Value changed to true in interrupt.
+    volatile bool _microSwitchState = false;   // Value changed to true if microswitch is HIGH (slider is in the mini-scanner).
 };
 
 #endif // __WITHOUTSMARTPHONEMODE_H__

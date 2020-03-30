@@ -38,6 +38,7 @@ void WithoutSmartphoneMode::run()
                 _funMRI->microSwitchPressed();
                 _microSwitchChanged = false;
             }
+
     }
 }
 
@@ -47,7 +48,7 @@ void WithoutSmartphoneMode::run()
  * 
  * @param isChanged is set to true if an interrupt has just happened.
  */
-void WithoutSmartphoneMode::setmicroSwitchChanged(bool isChanged) 
+void WithoutSmartphoneMode::setMicroSwitchChanged(bool isChanged) 
 {
     _microSwitchChanged = isChanged;
 }

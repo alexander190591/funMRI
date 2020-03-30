@@ -12,25 +12,29 @@
  * 
  */
 
-// This define should be here if the code should compile for a microcontroller.
-// This outcomments ALL #include <iostream> and ALL calls to functions in iostream.
-// By commenting this line, DEBUGGING_SUBTLE is automatically defined.
 
-#define TEST_BUILD
+/**
+ * @brief This define should be here if the code should compile for a microcontroller.
+ *        This outcomments ALL #include <iostream> and ALL calls to functions in iostream.
+ *        By commenting this line, DEBUGGING_SUBTLE is automatically defined.
+ */
+// #define TEST_BUILD
 
-// This define should be here if the code should compile for testing with debugging for console.
-// OBS!!! It can only be defined if TEST_BUILD is defined (outcommented)!!!
-
+/**
+ * @brief This define should be here if the code should compile for testing with debugging for console.
+ *        OBS!!! It can only be defined if TEST_BUILD is defined (outcommented)!!!
+ */
 #ifdef TEST_BUILD
     #define DEBUGGING_SUBTLE
-#endif
+#endif // TEST_BUILD
 
-// This define implements a LOT of cout for a LOT of objects and methods to really get into knowing what
-// methods are called.
-// OBS! Can only be defined if TEST_BUILD is defined AND DEBUGGING_SUBTLE is defined!
-
+/**
+ * @brief This define implements a LOT of cout for a LOT of objects and methods to really get into knowing what
+ *        methods are called.
+ *        OBS! Can only be defined if TEST_BUILD is defined AND DEBUGGING_SUBTLE is defined!
+ */
 #ifdef TEST_BUILD
     #ifdef DEBUGGING_SUBTLE
         // #define DEBUGGING_LARGE
-    #endif
-#endif
+    #endif // DEBUGGING_SUBTLE
+#endif // TEST_BUILD

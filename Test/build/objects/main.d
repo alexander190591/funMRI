@@ -58,7 +58,7 @@ build/objects/main.o: main.cpp \
  ../src/FunMRI/Include/../../FunMRIFactory/Include/../../Modules/UserInterfaceModule/Include/IUserInterfaceModule.h \
  ../src/FunMRIFactory/Include/TestFactory.h \
  ../src/FunMRIFactory/Include/IFunMRIFactory.h \
- ../src/FunMRIController/Include/TestMode.h \
+ ../src/FunMRIController/Include/TestModeWithoutSmartphone.h \
  ../src/FunMRIController/Include/IFunMRIController.h \
  ../src/FunMRIController/Include/../../FunMRI/Include/FunMRI.h
 
@@ -182,7 +182,7 @@ GoogleTest/googletest/googletest/src/gtest-typed-test.cc:
 
 ../src/FunMRIFactory/Include/IFunMRIFactory.h:
 
-../src/FunMRIController/Include/TestMode.h:
+../src/FunMRIController/Include/TestModeWithoutSmartphone.h:
 
 ../src/FunMRIController/Include/IFunMRIController.h:
 

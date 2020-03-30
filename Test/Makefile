@@ -55,7 +55,7 @@ INCLUDEPATH  := 																	\
 SRC      :=                      																		\
    $(wildcard *.cpp)																					\
    $(wildcard ../src/FunMRI/Src/FunMRI.cpp) 															\
-   $(wildcard ../src/FunMRIController/Src/TestMode.cpp)													\
+   $(wildcard ../src/FunMRIController/Src/TestModeWithoutSmartphone.cpp)													\
    $(wildcard ../src/FunMRIFactory/Src/TestFactory.cpp) 												\
    $(wildcard ../src/Protocol/Src/*.cpp) 																\
    $(wildcard ../src/State/Src/*.cpp) 																	\

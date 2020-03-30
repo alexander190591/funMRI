@@ -1,5 +1,7 @@
 #include "../Include/SmartphoneMode.h"
 #include "../../FunMRIFactory/Include/SmartphoneFactory.h"
+#include "../../Protocol/Include/Data.h"
+#include <Arduino.h>
 
 SmartphoneMode::SmartphoneMode()
 {
@@ -16,7 +18,30 @@ void SmartphoneMode::run()
 {
     while(1) // This is the main loop for Without Smartphone mode
     {
-        //_funMRI->receive();
+        _funMRI->receive();
+        IData* data = _funMRI->getData();
+
+        if(data->getMessage() == MSG_CMD_INIT || data->getMessage() == MSG_TEST_INIT)
+        {
+            _funMRI->initPressed();
+        }
+        else if(data->getMessage() == MSG_CMD_SCAN || data->getMessage() == MSG_TEST_SCAN)
+        {
+            _funMRI->scanPressed();
+        }
+        else// if(data->getMessage() == MSG_ERROR_NOT_A_MESSAGE)
+        {
+        data->setMessage(MSG_ERROR_NOT_A_MESSAGE);              // Setting message up in data object in the FunMRI Object.
+        
+        /* For debugging purposes... *********************************************************************************/
+        Serial.println("ERROR_NOT_A_MESSAGE (0xFF)");           // Printing error to serial.
+        unsigned char msgToSend[SIZE_OF_DATA_ARRAY];            
+        data->getData(msgToSend);                               // Checking if the message is set correctly.
+        Serial.print("Sending data: "); Serial.write(msgToSend, SIZE_OF_DATA_ARRAY); // Printing message.
+        /*************************************************************************************************************/
+
+        _funMRI->send(data);
+        }
     }
 }
 
@@ -26,7 +51,7 @@ void SmartphoneMode::run()
  * 
  * @param isChanged is set to true if an interrupt has just happened.
  */
-void SmartphoneMode::setmicroSwitchChanged(bool isChanged) 
+void SmartphoneMode::setMicroSwitchChanged(bool isChanged) 
 {
     _microSwitchChanged = isChanged;
 }
