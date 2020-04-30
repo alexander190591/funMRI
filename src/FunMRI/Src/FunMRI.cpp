@@ -37,6 +37,8 @@ FunMRI::FunMRI(IFunMRIFactory* funMRIFactory)
     _supplyModule = _funMRIFactory->createSupplyModule();
     _userInterfaceModule = _funMRIFactory->createUserInterfaceModule();
     _data = _funMRIFactory->createDataObject();
+
+    _userInterfaceModule->supplyLEDOn();
 }
 
 FunMRI::~FunMRI()
@@ -247,10 +249,67 @@ void FunMRI::modeChanged(void)
 }
 
 /**
+ * @brief Returns the state of the Mode button.
+ * 
+ * @return true == HIGH
+ * @return false == LOW
+ */
+bool FunMRI::getMode(void) 
+{
+    return _userInterfaceModule->getMode();
+}
+
+/**
  * @brief Interrupt-method for when the microswitch on the funMRI has been pushed.
  * 
  */
 void FunMRI::microSwitchPressed(void)
 {
     _state->handleMicroSwitchPressed(this);
+    _userInterfaceModule->resetMicroSwitchChanged();
+}
+
+/**
+ * @brief Returns wether or not the microswitch has changed state.
+ * 
+ * @return true 
+ * @return false 
+ */
+bool FunMRI::microSwitchChanged(void) 
+{
+    return _userInterfaceModule->microSwitchChanged();
+}
+
+/**
+ * @brief Returns the state of the MicroSwitch.
+ * 
+ * @return true == HIGH
+ * @return false == LOW
+ */
+bool FunMRI::getMicroSwitchState(void) 
+{
+    return _userInterfaceModule->getMicroSwitchState();
+}
+
+/**
+ * @brief Used to clear the modeChanged "flag" to enable next change in mode.
+ *      Should ONLY be used, when the change has been handled!
+ */
+void FunMRI::resetModeChanged(void) 
+{
+    _userInterfaceModule->resetModeChanged();
+}
+
+/**
+ * @brief Used to clear the microSwitchChanged "flag" to enable next change in microswitch.
+ *      Should ONLY be used, when the change has been handled!
+ */
+void FunMRI::resetMicroSwitchChanged(void) 
+{
+    _userInterfaceModule->resetMicroSwitchChanged();
+}
+
+bool FunMRI::isModeChanged(void) 
+{
+    return _userInterfaceModule->modeChanged();
 }

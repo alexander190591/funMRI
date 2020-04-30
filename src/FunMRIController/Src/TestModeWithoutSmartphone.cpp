@@ -39,27 +39,19 @@ void TestModeWithoutSmartphone::run()
         std::cout << "TestModeWithoutSmartphone.run entered..." << std::endl;
     #endif
 
-    if(_microSwitchState && _microSwitchChanged)
-        _funMRI->microSwitchPressed();
+    while(!(_funMRI->isModeChanged()))
+    {
+        if(_funMRI->getMicroSwitchState() && _funMRI->microSwitchChanged())
+        {
+            #ifdef DEBUGGING_LARGE
+                std::cout << "Calling _funMRI->microSwitchPressed()" << std::endl;
+            #endif
+            _funMRI->microSwitchPressed();
+        }
+    }
+    
+    #ifdef DEBUGGING_LARGE
+        std::cout << "Mode has changed. Now leaving run()..." << std::endl;
+    #endif
 }
 
-/**
- * @brief Sets a bool value corresponding to a micro switch interrupt made on a change in value.
- *        OBS: Should be reset when handled, as a new interrupt should be able to happen!
- * 
- * @param isChanged is set to true if an interrupt has just happened.
- */
-void TestModeWithoutSmartphone::setMicroSwitchChanged(bool isChanged) 
-{
-    _microSwitchChanged = isChanged;
-}
-
-/**
- * @brief Sets the state of the micro switch (pressed/not pressed) as a bool value.
- * 
- * @param isPressed corresponds to the value read on the digital pin connected to the micro switch.
- */
-void TestModeWithoutSmartphone::setMicroSwitchState(bool isPressed) 
-{
-    _microSwitchState = isPressed;
-}

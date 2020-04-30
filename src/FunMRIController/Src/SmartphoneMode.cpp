@@ -20,8 +20,12 @@ SmartphoneMode::~SmartphoneMode()
 
 void SmartphoneMode::run()
 {
-    while(1) // This is the main loop for Without Smartphone mode
+    Serial.println("run() entered...");
+    Serial.print("isModeChanged == "); Serial.println(_funMRI->isModeChanged());
+
+    while(!(_funMRI->isModeChanged())) // This is the main loop for Without Smartphone mode
     {
+        Serial.println("While loop entered...");
         _data->clearData();
         _funMRI->receive();
         
@@ -59,25 +63,4 @@ void SmartphoneMode::run()
             }
         }
     }
-}
-
-/**
- * @brief Sets a bool value corresponding to a micro switch interrupt made on a change in value.
- *        OBS: Should be reset when handled, as a new interrupt should be able to happen!
- * 
- * @param isChanged is set to true if an interrupt has just happened.
- */
-void SmartphoneMode::setMicroSwitchChanged(bool isChanged) 
-{
-    _microSwitchChanged = isChanged;
-}
-
-/**
- * @brief Sets the state of the micro switch (pressed/not pressed) as a bool value.
- * 
- * @param isPressed corresponds to the value read on the digital pin connected to the micro switch.
- */
-void SmartphoneMode::setMicroSwitchState(bool isPressed) 
-{
-    _microSwitchState = isPressed;
 }

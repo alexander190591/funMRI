@@ -169,49 +169,49 @@ TEST(IFunMRIController, run)
     // Test cout...
 }
 
-TEST(IFunMRIController, setMicroSwitchChanged)
-{
-    // Arrange
-    IFunMRIController* myFunMRIController = new TestModeWithoutSmartphone();
-    bool testMicroSwitchChanged = false;
+// TEST(IFunMRIController, setMicroSwitchChanged)
+// {
+//     // Arrange
+//     IFunMRIController* myFunMRIController = new TestModeWithoutSmartphone();
+//     bool testMicroSwitchChanged = false;
 
-    // Act
-    myFunMRIController->setMicroSwitchChanged(true);
-    testMicroSwitchChanged = ((TestModeWithoutSmartphone*)myFunMRIController)->_microSwitchChanged;
+//     // Act
+//     myFunMRIController->setMicroSwitchChanged(true);
+//     testMicroSwitchChanged = ((TestModeWithoutSmartphone*)myFunMRIController)->_microSwitchChanged;
 
-    // Assert
-    ASSERT_TRUE(testMicroSwitchChanged);
-    myFunMRIController->setMicroSwitchChanged(false);   // Remember to set it to false to enable next interrupt!!
-}
+//     // Assert
+//     ASSERT_TRUE(testMicroSwitchChanged);
+//     myFunMRIController->setMicroSwitchChanged(false);   // Remember to set it to false to enable next interrupt!!
+// }
 
-TEST(IFunMRIController, setMicroSwitchState)
-{
-    // Arrange
-    IFunMRIController* myFunMRIController = new TestModeWithoutSmartphone();
-    bool testMicroSwitchState = false;
+// TEST(IFunMRIController, setMicroSwitchState)
+// {
+//     // Arrange
+//     IFunMRIController* myFunMRIController = new TestModeWithoutSmartphone();
+//     bool testMicroSwitchState = false;
 
-    // Act
-    myFunMRIController->setMicroSwitchState(true); // Dummy-read on interrupt pin, digital input from microswitch.
-    testMicroSwitchState = ((TestModeWithoutSmartphone*)myFunMRIController)->_microSwitchState;
+//     // Act
+//     myFunMRIController->setMicroSwitchState(true); // Dummy-read on interrupt pin, digital input from microswitch.
+//     testMicroSwitchState = ((TestModeWithoutSmartphone*)myFunMRIController)->_microSwitchState;
 
-    // Assert
-    ASSERT_TRUE(testMicroSwitchState);
-}
+//     // Assert
+//     ASSERT_TRUE(testMicroSwitchState);
+// }
 
-TEST(IFunMRIController, State_handleMicroSwitchPressed)
-{
-    // Arrange
-    IFunMRIController* myFunMRIController = new TestModeWithoutSmartphone();
+// TEST(IFunMRIController, State_handleMicroSwitchPressed)
+// {
+//     // Arrange
+//     IFunMRIController* myFunMRIController = new TestModeWithoutSmartphone();
 
-    // Act
-    // MicroSwitch pressed:
-    myFunMRIController->setMicroSwitchChanged(true);
-    myFunMRIController->setMicroSwitchState(true);
+//     // Act
+//     // MicroSwitch pressed:
+//     myFunMRIController->setMicroSwitchChanged(true);
+//     myFunMRIController->setMicroSwitchState(true);
 
-    // Assert
-    myFunMRIController->run();
-    myFunMRIController->setMicroSwitchChanged(false);   // Remember to set it to false to enable next interrupt!!
-}
+//     // Assert
+//     myFunMRIController->run();
+//     myFunMRIController->setMicroSwitchChanged(false);   // Remember to set it to false to enable next interrupt!!
+// }
 
 /** S T A T E    P A T T E R N   T E S T *********************************************************/
 

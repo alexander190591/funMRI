@@ -13,17 +13,7 @@
  */
 
 #include "IFunMRIFactory.h"
-
-/**
- * @brief Defines for Bluefruit Feather nRF52832
- * 
- */
-#define SOMO_TX 7
-#define SOMO_RX 11
-#define SOMO_BAUDRATE 9600
-#define LED_PIN LED_BUILTIN
-#define RFID_SS_PIN 5
-#define RFID_RST_PIN 4
+#include "../../defines.h"
 
 class SmartphoneFactory : public IFunMRIFactory
 {

@@ -45,7 +45,13 @@ public:
     void initPressed(void);
     void scanPressed(void);
     void modeChanged(void);
+    bool isModeChanged(void);
+    void resetModeChanged(void);
+    bool getMode(void);
     void microSwitchPressed(void);
+    bool microSwitchChanged(void);
+    void resetMicroSwitchChanged(void);
+    bool getMicroSwitchState(void);
 private:
     IFunMRIFactory* _funMRIFactory = nullptr;
     IUserInterfaceModule* _userInterfaceModule = nullptr;
@@ -58,5 +64,6 @@ private:
     unsigned char _storedID[7];
     unsigned char _newID[7];
 };
+
 
 #endif // __FUNMRI_H__

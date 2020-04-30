@@ -20,13 +20,10 @@ public:
     TestModeWithoutSmartphone();
     ~TestModeWithoutSmartphone();
     void run(void);
-    void setMicroSwitchChanged(bool isChanged);
-    void setMicroSwitchState(bool isPressed);
+    void resetModeChanged(void);
 // private:     // Made public for making testing simple...
     FunMRI* _funMRI = nullptr;
     IData* _data = nullptr;
-    volatile bool _microSwitchChanged = false; // Value changed to true in interrupt.
-    volatile bool _microSwitchState = false;   // Value changed to true if microswitch is HIGH (slider is in the mini-scanner).
 };
 
  #endif // __TESTMODE_H__

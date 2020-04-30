@@ -49,6 +49,13 @@ void SmartphoneIdleState::handleScanPressed(FunMRI* funMRIPtr)
             funMRIPtr->send(data);                                          // Sending.
         }
     }
+    else
+    {                                                                       // THIS HAS BEEN ADDED APRIL 28TH! TODO CHECK IF WORKS!!!!!!!!!!!!!!!!!!
+        Serial.println("MSG_ERROR_NO_ID_REGISTERED (0x00)");                // THIS HAS BEEN ADDED APRIL 28TH! TODO CHECK IF WORKS!!!!!!!!!!!!!!!!!!
+                                                                            // THIS HAS BEEN ADDED APRIL 28TH! TODO CHECK IF WORKS!!!!!!!!!!!!!!!!!!
+        data->setMessage(MSG_ERROR_NO_ID_REGISTERED);                       // THIS HAS BEEN ADDED APRIL 28TH! TODO CHECK IF WORKS!!!!!!!!!!!!!!!!!!
+        funMRIPtr->send(data);                                              // THIS HAS BEEN ADDED APRIL 28TH! TODO CHECK IF WORKS!!!!!!!!!!!!!!!!!!
+    }
 }
 
 void SmartphoneIdleState::handleInitPressed(FunMRI* funMRIPtr)
@@ -76,7 +83,7 @@ void SmartphoneIdleState::handleInitPressed(FunMRI* funMRIPtr)
 
 void SmartphoneIdleState::handleModeChanged(FunMRI* funMRIPtr)
 {
-    // ??????
+    // This is not where the mode is handled. It's in the Run-method of the FunMRIController.
 }
 
 void SmartphoneIdleState::handleMicroSwitchPressed(FunMRI* funMRIPtr)

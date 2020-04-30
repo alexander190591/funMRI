@@ -58,7 +58,7 @@ SRC      :=                      																		\
    $(wildcard ../src/FunMRIController/Src/TestModeWithoutSmartphone.cpp)													\
    $(wildcard ../src/FunMRIFactory/Src/TestFactory.cpp) 												\
    $(wildcard ../src/Protocol/Src/*.cpp) 																\
-   $(wildcard ../src/State/Src/*.cpp) 																	\
+   $(wildcard ../src/State/Src/IdleState.cpp) 																	\
    $(wildcard ../src/Modules/SupplyModule/Src/SupplyDummyTest.cpp) 										\
    $(wildcard ../src/Modules/CommunicationModule/Src/CommunicationDummyTest.cpp) 						\
 

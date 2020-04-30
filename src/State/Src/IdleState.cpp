@@ -30,6 +30,7 @@ IdleState::IdleState()
 void IdleState::handleModeChanged(FunMRI* funMRIPtr)
 {
     // ??????
+    (void)funMRIPtr;
 }
 
 void IdleState::handleMicroSwitchPressed(FunMRI* funMRIPtr)

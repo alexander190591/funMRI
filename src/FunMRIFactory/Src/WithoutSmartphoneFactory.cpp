@@ -16,6 +16,7 @@
 #include "../../Modules/CommunicationModule/Include/BluetoothFeather.h"
 #include "../../Modules/ScannerModule/Include/RFIDRC522.h"
 #include "../../Modules/SoundModule/Include/DFPlayerMini.h"
+#include "../../Modules/UserInterfaceModule/Include/UserInterfaceModule.h"
 
     WithoutSmartphoneFactory::WithoutSmartphoneFactory()
     {
@@ -77,8 +78,7 @@
      */
     IUserInterfaceModule* WithoutSmartphoneFactory::createUserInterfaceModule(void)
     {
-        return nullptr;
-        // TODO --------------------------------------------------------------------------------------------
+        return new UserInterfaceModule();
     }
 
     IData* WithoutSmartphoneFactory::createDataObject(void)

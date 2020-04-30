@@ -18,7 +18,7 @@
  *        This outcomments ALL #include <iostream> and ALL calls to functions in iostream.
  *        By commenting this line, DEBUGGING_SUBTLE is automatically defined.
  */
-// #define TEST_BUILD
+ //#define TEST_BUILD
 
 /**
  * @brief This define should be here if the code should compile for testing with debugging for console.
@@ -35,6 +35,6 @@
  */
 #ifdef TEST_BUILD
     #ifdef DEBUGGING_SUBTLE
-        // #define DEBUGGING_LARGE
+         #define DEBUGGING_LARGE
     #endif // DEBUGGING_SUBTLE
 #endif // TEST_BUILD
