@@ -15,8 +15,16 @@
 class DummyUserInterface: public IUserInterfaceModule
 {
 public:
-    DummyUserInterface() {Serial.println("DummyUserInterface: Constructor");}
-    ~DummyUserInterface() {Serial.println("DummyUserInteface: Destructor"); /*Nothing to delete...*/}
+    DummyUserInterface() {
+        #ifdef UART_BUILD
+            Serial.println("DummyUserInterface: Constructor");
+  		#endif UART_BUILD
+        }
+    ~DummyUserInterface() {
+        #ifdef UART_BUILD
+            Serial.println("DummyUserInteface: Destructor"); 
+  		#endif UART_BUILD
+        /*Nothing to delete...*/}
         // MicroSwitch (bed in or out)
     bool microSwitchChanged() {
         #ifdef DEBUGGING_LARGE

@@ -17,17 +17,23 @@ DummySoundModule::DummySoundModule()
 
 void DummySoundModule::playSound()
 {
-	Serial.println("DummySoundModule: playSound()");
+	#ifdef UART_BUILD
+    	Serial.println("DummySoundModule: playSound()");
+	#endif UART_BUILD
 }
 
 void DummySoundModule::stopSound()
 {
-	Serial.println("DummySoundModule: stopSound()");
+	#ifdef UART_BUILD
+    	Serial.println("DummySoundModule: stopSound()");
+	#endif UART_BUILD
 }
 
 void DummySoundModule::init()
 {
-	Serial.println("DummySoundModule: init()");
+	#ifdef UART_BUILD
+    	Serial.println("DummySoundModule: init()");
+	#endif UART_BUILD
 }
 
 

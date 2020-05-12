@@ -22,45 +22,58 @@ SmartphoneIdleState::SmartphoneIdleState()
 
 void SmartphoneIdleState::handleScanPressed(FunMRI* funMRIPtr)
 {
-    Serial.println("SmartphoneIdleState::handleScanPressed() entered.");
+    #ifdef UART_BUILD
+        Serial.println("SmartphoneIdleState::handleScanPressed() entered.");
+    #endif UART_BUILD
 
     Data* data = new Data();
     unsigned char id[SIZE_OF_DATA_ARRAY-1];
 
     if(funMRIPtr->scan())
     {
-        Serial.println("New scan is available.");
+        #ifdef UART_BUILD
+            Serial.println("New scan is available.");
+  		#endif UART_BUILD
+        
         funMRIPtr->getNewID(id);                                            // Reading new scan into id.
 
         if(funMRIPtr->isIDSameAsInit(id))                                   // If the new ID scanned (stored as _newID in FunMRI object) is same as _storedID (set in handleInitPressed())
         {
             funMRIPtr->playSound();                                         // Sound is played.
 
-            Serial.println("INFO_SOUND_PLAYED (0xCC)");                     // For debugging purposes...
+            #ifdef UART_BUILD
+                Serial.println("INFO_SOUND_PLAYED (0xCC)");                     // For debugging purposes...
+  		    #endif UART_BUILD
 
             data->setMessage(MSG_INFO_SOUND_PLAYED);                        // Setting message to be sent.
             funMRIPtr->send(data);                                          // Sending.
         }
         else
         {
-            Serial.println("ERROR_NOT_INIT_TAG (0xBB)");                    // For debugging purposes...
+            #ifdef UART_BUILD
+                Serial.println("ERROR_NOT_INIT_TAG (0xBB)");                    // For debugging purposes...
+  		    #endif UART_BUILD
 
             data->setMessage(MSG_ERROR_NOT_INIT_TAG);                       // Setting error message to be sent.
             funMRIPtr->send(data);                                          // Sending.
         }
     }
     else
-    {                                                                       // THIS HAS BEEN ADDED APRIL 28TH! TODO CHECK IF WORKS!!!!!!!!!!!!!!!!!!
-        Serial.println("MSG_ERROR_NO_ID_REGISTERED (0x00)");                // THIS HAS BEEN ADDED APRIL 28TH! TODO CHECK IF WORKS!!!!!!!!!!!!!!!!!!
-                                                                            // THIS HAS BEEN ADDED APRIL 28TH! TODO CHECK IF WORKS!!!!!!!!!!!!!!!!!!
-        data->setMessage(MSG_ERROR_NO_ID_REGISTERED);                       // THIS HAS BEEN ADDED APRIL 28TH! TODO CHECK IF WORKS!!!!!!!!!!!!!!!!!!
-        funMRIPtr->send(data);                                              // THIS HAS BEEN ADDED APRIL 28TH! TODO CHECK IF WORKS!!!!!!!!!!!!!!!!!!
+    {
+        #ifdef UART_BUILD
+            Serial.println("MSG_ERROR_NO_ID_REGISTERED (0x00)");                
+  		#endif UART_BUILD                                                        
+                                                                            
+        data->setMessage(MSG_ERROR_NO_ID_REGISTERED);                       
+        funMRIPtr->send(data);                                              
     }
 }
 
 void SmartphoneIdleState::handleInitPressed(FunMRI* funMRIPtr)
 {
-    Serial.println("SmartphoneIdleState::handleInitPressed() entered.");    // For debugging purposes...
+    #ifdef UART_BUILD
+        Serial.println("SmartphoneIdleState::handleInitPressed() entered.");    // For debugging purposes...
+    #endif UART_BUILD
     
     Data* data = new Data();
     data->setMessage(MSG_ERROR_NO_ID_REGISTERED);                           // Default message set in data object.
@@ -68,15 +81,20 @@ void SmartphoneIdleState::handleInitPressed(FunMRI* funMRIPtr)
 
     if(funMRIPtr->scan())                                                   // Scanning. If anything is scanned, it's read and set into funMRIPtr->_newID[SIZE_OF_DATA_ARRAY-1].
     {
-        Serial.println("New scan is available.");                           // For debugging purposes...
+        #ifdef UART_BUILD
+            Serial.println("New scan is available.");                           // For debugging purposes...
+  		#endif UART_BUILD
+        
 
         funMRIPtr->getNewID(id);                                            // Reading new scan into id.
         funMRIPtr->storeInitID(id);                                         // Storing id into _storedID in the FunMRI object.
         data->setIDdata(id);                                                // Setting up the data in the Data object for sending.
     }
 
-    Serial.print("IDTag: "); Serial.write(id+1,7); Serial.println("");      // For debugging purposes...
-
+    #ifdef UART_BUILD
+        Serial.print("IDTag: "); Serial.write(id+1,7); Serial.println("");      // For debugging purposes...
+    #endif UART_BUILD
+    
     funMRIPtr->send(data);                                                  // Sending the new tag as stated in the protocol ('D' + id);
 }
 

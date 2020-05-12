@@ -8,12 +8,18 @@ class DummySupplyModule : public ISupplyModule {
 	public:
 		float readBatteryVoltage(void)
         {
-            Serial.println("DummySupplyModule: readBatteryVoltage");
+            #ifdef UART_BUILD
+                Serial.println("DummySupplyModule: readBatteryVoltage");
+  		    #endif UART_BUILD
+            
             return 3.3;
         }
 		uint8_t MilliVoltToPercentage(float mVolts)
         {
-            Serial.println("DummySupplyModule: MilliVoltToPercentage");
+            #ifdef UART_BUILD
+                Serial.println("DummySupplyModule: MilliVoltToPercentage");
+  		    #endif UART_BUILD
+            
             return (mVolts/3.3)*100;
         }
 	};

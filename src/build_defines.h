@@ -38,3 +38,12 @@
          #define DEBUGGING_LARGE
     #endif // DEBUGGING_SUBTLE
 #endif // TEST_BUILD
+
+/**
+ * @brief If TEST_BUILD is not defined, this define can be used to debug with UART on funMRI.
+ * Incomments all Serial.write() and Serial.writeln().
+ * 
+ */
+#ifndef TEST_BUILD
+    //#define UART_BUILD
+#endif

@@ -44,8 +44,8 @@
  * MSG_CMD_INIT               = '3', // Used to scanning the ID before playing sound.
  * MSG_CMD_SCAN               = '4', // Used to play sound.
  * MSG_ERROR_NOT_A_MESSAGE    = '5', // Used for when data following the Type Byte is not one of the below values.
- * MSG_TEST_INIT              = 'I',  // FOR TEST PURPOSES
- * MSG_TEST_SCAN              = 'S',  // FOR TEST PURPOSES
+ * MSG_TEST_INIT              = 'I', // FOR TEST PURPOSES
+ * MSG_TEST_SCAN              = 'S', // FOR TEST PURPOSES
  */
 class Data : public IData
 {
@@ -67,23 +67,8 @@ public:
     bool isSame(unsigned char arrayOne[], unsigned char arrayTwo[])  override;
     bool isIDDataSame(unsigned char testData[]) override;
 
-    // Data& operator=(const Data& data) // Assignment Operator
-    // {
-    //     std::cout << "Data Assignment operator... begin." << std::endl;
-    //     if(&data == this)   // Checking for self-assignment
-    //         return *this;
-        
-    //     for(int i = 0; i < SIZE_OF_DATA_ARRAY; i++)
-    //         _data[i] = data._data[i];
-        
-    //     std::cout << "Data Assignment operator... end." << std::endl;
-    //     return *this;
-    // };
-
 private:
     unsigned char _data[SIZE_OF_DATA_ARRAY];             
 };
-
-//bool operator==(const IData& lhs, const IData& rhs);
 
 #endif // __DATA_H__

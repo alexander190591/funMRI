@@ -12,53 +12,69 @@
 #include "src/FunMRIController/Include/WithoutSmartphoneMode.h"
 #include "src/defines.h"
 
-//IData* data = nullptr;
-// FunMRI* myFunMRI = nullptr;
-// IFunMRIFactory* factoryPtr = nullptr;
 IFunMRIController* controllerPtr = nullptr;
-
-//unsigned char IDTag[SIZE_OF_DATA_ARRAY - 1] = {0, 0, 0, 0, 0, 0, 0};
-//unsigned char newIDTag[SIZE_OF_DATA_ARRAY - 1] = {0, 0, 0, 0, 0, 0, 0};
+unsigned char currentMode;
 
 enum MODE{
   SMARTPHONE        = 0,
   WITHOUTSMARTPHONE = 1,
 };
 
-unsigned char currentMode = WITHOUTSMARTPHONE;
-
 void setup()
 {
   Serial.begin(9600);
+
   pinMode(LED_PIN, OUTPUT);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
 
   // O B J E C T   I N I T I A L I Z A T I O N
   controllerPtr = new WithoutSmartphoneMode();
+  currentMode = WITHOUTSMARTPHONE;
   
   // For debugging:
-  Serial.println("Setup done...");
+  #ifdef UART_BUILD
+    Serial.println("Setup done...");
+  #endif // UART_BUILD
 }
 
 void loop()
 { 
   controllerPtr->run();
 
+  #ifdef UART_BUILD
+    Serial.println("Out of run(). STATUS: ");
+    Serial.print("---- currentMode: "); Serial.println(currentMode);    
+  #endif // UART_BUILD
+  
   switch(currentMode)
   {
     case WITHOUTSMARTPHONE:
-      Serial.println("Switch case WITHOUTSMARTPHONE entered... Changing Strategy to SmartphoneMode...");
+
+      #ifdef UART_BUILD
+        Serial.println("Switch case WITHOUTSMARTPHONE entered... Changing Strategy to SmartphoneMode...");
+      #endif // UART_BUILD
+
       delete controllerPtr;
       controllerPtr = new SmartphoneMode();
+      currentMode = SMARTPHONE;
       break;
     case SMARTPHONE:
-      Serial.println("Switch case SMARTPHONE entered... Changing Strategy to WithoutSmartphoneMode...");
+    
+      #ifdef UART_BUILD
+        Serial.println("Switch case SMARTPHONE entered... Changing Strategy to WithoutSmartphoneMode...");
+      #endif // UART_BUILD
+
       delete controllerPtr;
       controllerPtr = new WithoutSmartphoneMode();
+      currentMode = WITHOUTSMARTPHONE;
       break;
     default:
-      Serial.println("ERROR in switch-case :( .....");
+
+      #ifdef UART_BUILD
+        Serial.println("ERROR in switch-case :( .....");
+      #endif // UART_BUILD
+      
       break;
   }
 }

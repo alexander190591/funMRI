@@ -12,13 +12,19 @@
 
 DummyScanner::DummyScanner()
 {
-	Serial.println("DummyScanner: Constructor");
+	#ifdef UART_BUILD
+    	Serial.println("DummyScanner: Constructor");
+	#endif UART_BUILD
+	
 	this->init();
 }
 
 void DummyScanner::scan()
 {
-	Serial.println("DummyScanner: scan()");
+	#ifdef UART_BUILD
+    	Serial.println("DummyScanner: scan()");
+	#endif UART_BUILD
+	
 	for(int i = 0; i < SIZE_OF_DATA; i++)
 	{
 		this->_data[i] = i;
@@ -40,5 +46,7 @@ int DummyScanner::getSizeOfData()
 
 void DummyScanner::init()
 {
-	Serial.println("DummyScanner: init()");
+	#ifdef UART_BUILD
+    Serial.println("DummyScanner: init()");
+	#endif UART_BUILD
 }

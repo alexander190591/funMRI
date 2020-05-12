@@ -12,6 +12,10 @@
 
 #include "../Include/IdleState.h"
 
+
+#ifndef TEST_BUILD
+    #include <Arduino.h>
+#endif
 #ifdef TEST_BUILD
     #include <iostream>
 #endif
@@ -42,5 +46,8 @@ void IdleState::handleMicroSwitchPressed(FunMRI* funMRIPtr)
     if(funMRIPtr->scan())
     {
         funMRIPtr->playSound();
+        #ifdef UART_BUILD
+            Serial.println("SOUND PLAYED!");
+  		#endif UART_BUILD
     }
 }

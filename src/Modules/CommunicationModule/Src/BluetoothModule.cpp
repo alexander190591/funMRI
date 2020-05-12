@@ -27,7 +27,10 @@
 	 */
 	bool BluetoothModule::init()
 	{
-		Serial.println("calling new init");
+		#ifdef UART_BUILD
+    		Serial.println("calling new init");
+  		#endif UART_BUILD
+		
 		_serialPtr = new SoftwareSerial(BT_RX, BT_TX);
 
 		_serialPtr->begin(BT_BAUDRATE);

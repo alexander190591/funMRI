@@ -22,8 +22,18 @@
 class SerialPrintTestFactory : public IFunMRIFactory
 {
 public:
-    SerialPrintTestFactory(){Serial.println("SerialPrintTestFactory: Constructor.");};
-    ~SerialPrintTestFactory(){Serial.println("SerialPrintTestFactory: Destructor.");};
+    SerialPrintTestFactory(){
+        #ifdef UART_BUILD
+            Serial.println("SerialPrintTestFactory: Constructor.");
+        #endif UART_BUILD
+        };
+
+    ~SerialPrintTestFactory(){
+        #ifdef UART_BUILD
+            Serial.println("SerialPrintTestFactory: Destructor.");
+        #endif UART_BUILD
+        };
+        
     ICommunicationModule* createCommunicationModule(void);
     IScannerModule* createScannerModule(void);
     ISoundModule* createSoundModule(void);

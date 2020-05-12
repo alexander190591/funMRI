@@ -23,25 +23,37 @@ class DummyCommunicationModule : public ICommunicationModule
 public:
 	DummyCommunicationModule()
     {
-        Serial.println("DummyCommunicationModule: Constructor"); 
+        #ifdef UART_BUILD
+            Serial.println("DummyCommunicationModule: Constructor"); 
+        #endif UART_BUILD
+        
         this->init();
     };
 	bool init()
     {
-        Serial.println("DummyCommunicationModule: init()");
+        #ifdef UART_BUILD
+            Serial.println("DummyCommunicationModule: init()");
+        #endif UART_BUILD
+        
         return true;
     };
 	void sendData(IData* data)
     {
-        Serial.println("DummyCommunicationModule: sendData()");
+        #ifdef UART_BUILD
+            Serial.println("DummyCommunicationModule: sendData()");
+        #endif UART_BUILD
     };
 	void receiveData(IData* data)
     {
-        Serial.println("DummyCommunicationModule: receiveData()");
+        #ifdef UART_BUILD
+            Serial.println("DummyCommunicationModule: receiveData()");
+        #endif UART_BUILD
     };
 	~DummyCommunicationModule()
     {
-        Serial.println("DummyCommunicationModule: destructor");
+        #ifdef UART_BUILD
+            Serial.println("DummyCommunicationModule: destructor");
+        #endif UART_BUILD
     };
 
 private:

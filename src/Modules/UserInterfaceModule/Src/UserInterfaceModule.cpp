@@ -19,10 +19,13 @@
  * The pin numbers are defined in main.
  * 
  */
-UserInterfaceModule::UserInterfaceModule() 
+UserInterfaceModule::UserInterfaceModule(bool madeInSmartphoneMode) 
 {
+    _mode = madeInSmartphoneMode;
     pinMode(MODE_PIN, INPUT);
     pinMode(MICROSWITCH_PIN, INPUT);
+    pinMode(LED_PIN, OUTPUT);
+    supplyLEDOn();
 }
 
 /**
@@ -46,7 +49,10 @@ bool UserInterfaceModule::microSwitchChanged()
 bool UserInterfaceModule::getMicroSwitchState() 
 {
     bool microswitchstate = readMicroSwitch();
-    Serial.print("getMicroSwitchState returned: "); Serial.println(microswitchstate);
+    #ifdef UART_BUILD
+        Serial.print("getMicroSwitchState returned: "); Serial.println(microswitchstate);
+    #endif UART_BUILD
+    
     return microswitchstate;
 }
 
@@ -109,7 +115,10 @@ void UserInterfaceModule::supplyLEDOff()
 void UserInterfaceModule::setModeChanged(bool isChanged) 
 {
     _modeChanged = isChanged;
-}
+    #ifdef UART_BUILD
+        Serial.print("UserInterfaceModule.setModeChanged: _modeChanged == "); Serial.println(_modeChanged);
+    #endif UART_BUILD
+    }
 
 /**
  * @brief Sets _mode. Changes _modeChanged if _mode has changed since last time this method was called.
@@ -122,10 +131,18 @@ bool UserInterfaceModule::readModeButton()
     bool tmpMode = digitalRead(MODE_PIN);
     if(_mode != tmpMode)
     {
+        #ifdef UART_BUILD
+            Serial.println("UserInterfaceModule.readModeButton: SIGNAL HAS CHANGED!");
+  		#endif UART_BUILD
+        
         setModeChanged(true);
     }
     _mode = tmpMode;
-    Serial.print("readModeButton returned: "); Serial.println(_mode);
+
+    #ifdef UART_BUILD
+        Serial.print("readModeButton returns _mode: "); Serial.println(_mode);
+    #endif UART_BUILD
+    
     return _mode;
 }
 
@@ -140,10 +157,18 @@ bool UserInterfaceModule::readMicroSwitch()
     bool tmpMicroSwitchState = digitalRead(MICROSWITCH_PIN);
     if(_microSwitchState != tmpMicroSwitchState)
     {
+        #ifdef UART_BUILD
+            Serial.println("UserInterfaceModule.readMicroSwitch: SIGNAL HAS CHANGED!");
+  		#endif UART_BUILD
+        
         setMicroSwitchChanged(true);
     }
     _microSwitchState = tmpMicroSwitchState;
-    Serial.print("readMicroSwitch returned: "); Serial.println(_microSwitchState);
+
+    #ifdef UART_BUILD
+        Serial.print("readMicroSwitch returns _microSwitchState: "); Serial.println(_microSwitchState);
+    #endif UART_BUILD
+    
     return _microSwitchState;
 }
 

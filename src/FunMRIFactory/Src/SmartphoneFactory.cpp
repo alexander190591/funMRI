@@ -14,6 +14,7 @@
 #include "../../Modules/CommunicationModule/Include/BluetoothFeather.h"
 #include "../../Modules/ScannerModule/Include/RFIDRC522.h"
 #include "../../Modules/SoundModule/Include/DFPlayerMini.h"
+#include "../../Modules/UserInterfaceModule/Include/UserInterfaceModule.h"
 
 // FOR TESTING:
 #include "../../Modules/SoundModule/Include/DummySoundModule.h"
@@ -40,8 +41,6 @@
 
     ISoundModule* SmartphoneFactory::createSoundModule(void)
     {
-        //return new DummySoundModule();
-        // TODO ERROR IN THIS RETURN........... MAKES THE MICROCONTROLLER STOP!!!
         return new DFPlayerMini(SOMO_RX, SOMO_TX, SOMO_BAUDRATE);
     }
 
@@ -53,8 +52,7 @@
 
     IUserInterfaceModule* SmartphoneFactory::createUserInterfaceModule(void)
     {
-        return nullptr;
-        // TODO --------------------------------------------------------------------------------------------
+        return new UserInterfaceModule(true);   // True == Made is SmartphoneFactory == SmartphoneMode == ModeButton is HIGH to begin with...
     }
 
     IData* SmartphoneFactory::createDataObject(void)

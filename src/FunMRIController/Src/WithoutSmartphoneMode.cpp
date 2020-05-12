@@ -34,14 +34,31 @@ WithoutSmartphoneMode::~WithoutSmartphoneMode()
 
 void WithoutSmartphoneMode::run()
 {
-    Serial.println("Entered run()...");
+    #ifdef UART_BUILD
+        Serial.println("Entered run()...");
+    #endif // UART_BUILD
+    
     while(!(_funMRI->isModeChanged())) // This is the main loop for Without Smartphone mode
     {
+        #ifdef UART_BUILD
+            Serial.println("Entered while-loop. Waiting for MicroSwitch Press...");
+        #endif // UART_BUILD
+        
         delay(1000);
         if(_funMRI->microSwitchChanged() && _funMRI->getMicroSwitchState())
         {
             _funMRI->microSwitchPressed();
         }
     }
-    Serial.print("Exited run()...");
+
+    // Leaving mode, resetting mode changed
+    #ifdef UART_BUILD
+        Serial.print("Before WithoutSmartphoneMode.run() exit: modeChanged == "); Serial.println(_funMRI->isModeChanged());
+    #endif // UART_BUILD
+        
+    // Leaving mode, resetting mode changed
+    _funMRI->resetModeChanged();
+    #ifdef UART_BUILD
+        Serial.print("Exits WithoutSmartphoneMode.run(). Clearing changed flag: modeChanged == "); Serial.println(_funMRI->isModeChanged());
+    #endif // UART_BUILD
 }

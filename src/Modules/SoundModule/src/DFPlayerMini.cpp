@@ -52,6 +52,8 @@ void DFPlayerMini::init(){
 
 	    while(true);
 	}
+
+	_DFPlayerPtr->volume(25);
 }
 
 

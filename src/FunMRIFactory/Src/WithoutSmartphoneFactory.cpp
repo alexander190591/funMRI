@@ -78,7 +78,7 @@
      */
     IUserInterfaceModule* WithoutSmartphoneFactory::createUserInterfaceModule(void)
     {
-        return new UserInterfaceModule();
+        return new UserInterfaceModule(false);   // False == Made is WithoutSmartphoneFactory == WithoutSmartphoneMode == ModeButton is LOW to begin with...
     }
 
     IData* WithoutSmartphoneFactory::createDataObject(void)

@@ -213,6 +213,8 @@ TEST(IFunMRIController, run)
 //     myFunMRIController->setMicroSwitchChanged(false);   // Remember to set it to false to enable next interrupt!!
 // }
 
+
+TEST(IFunMRIController, )
 /** S T A T E    P A T T E R N   T E S T *********************************************************/
 
 int main( int argc, char* argv[] )

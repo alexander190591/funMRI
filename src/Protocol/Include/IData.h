@@ -26,8 +26,8 @@ enum Message{
     MSG_CMD_INIT               = '3', // Used to scanning the ID before playing sound.
     MSG_CMD_SCAN               = '4', // Used to play sound.
     MSG_ERROR_NOT_A_MESSAGE    = '5', // Used for when data following the Type Byte is not one of the below values.
-    MSG_TEST_INIT              = 'I',  // FOR TEST PURPOSES
-    MSG_TEST_SCAN              = 'S',  // FOR TEST PURPOSES
+    MSG_TEST_INIT              = 'I', // FOR TEST PURPOSES
+    MSG_TEST_SCAN              = 'S', // FOR TEST PURPOSES
 };
 
 class IData

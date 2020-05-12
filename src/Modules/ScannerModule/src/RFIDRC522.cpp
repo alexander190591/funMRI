@@ -23,8 +23,10 @@ RFIDRC522::~RFIDRC522()
 
 void RFIDRC522::scan()
 {
-	Serial.println("scan() entered..."); // For debugging purposes
-
+	#ifdef UART_BUILD
+        Serial.println("scan() entered..."); // For debugging purposes
+    #endif // UART_BUILD
+	
 	_rfidPtr->PCD_Reset();
 	_rfidPtr->PCD_Init();
 
@@ -45,8 +47,11 @@ void RFIDRC522::scan()
 void RFIDRC522::init()
 {
 	_rfidPtr = new MFRC522(_SSpin, _RSTpin);
-	Serial.print("ResetPin: "); Serial.println(_RSTpin);
-	Serial.print("SSPin: "); Serial.println(_SSpin);
+	#ifdef UART_BUILD
+        Serial.print("ResetPin: "); Serial.println(_RSTpin);
+		Serial.print("SSPin: "); Serial.println(_SSpin);
+    #endif // UART_BUILD
+	
 	SPI.begin();
 	_rfidPtr->PCD_Init();
 }
@@ -67,13 +72,18 @@ void RFIDRC522::readRFID()
 
 
 // Uncomment for debugging:
-	Serial.println("printDec the new");
+	#ifdef UART_BUILD
+        Serial.println("printDec the new");
+    #endif // UART_BUILD
+	
 	for (int i = 0; i < sizeof(_data); i++) {
 
-	Serial.print(_data[i] < 0x10 ? " 0" : " ");
+	#ifdef UART_BUILD
+        Serial.print(_data[i] < 0x10 ? " 0" : " ");
 
-	Serial.print(_data[i], DEC);
-	Serial.print(_data[i]);
+		Serial.print(_data[i], DEC);
+		Serial.print(_data[i]);
+    #endif // UART_BUILD
  	}
 
 	// Halt PICC ??

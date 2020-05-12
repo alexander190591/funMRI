@@ -13,20 +13,19 @@
 
 #include "../Include/BluetoothFeather.h"
 #include <bluefruit.h>
-#include <Adafruit_LittleFS.h>
-#include <InternalFileSystem.h>
+//#include <Adafruit_LittleFS.h>
+//#include <InternalFileSystem.h>
 
 //#include "../../SupplyModule/Include/BatteryFeather.h"
 //ISupplyModule* battModule = new BatteryFeather(31);
-
 
 // BLE Service
 BLEDfu  bledfu;  // OTA DFU service
 BLEDis  bledis;  // device information
 BLEUart bleuart; // uart over ble
-BLEBas  blebas;  // battery
+// BLEBas  blebas;  // battery
 
-int counter = 0;
+bool alreadySetup = false;
 
 /**
  * @brief Callback function for when module has connected to central.
@@ -40,9 +39,10 @@ void connect_callback(uint16_t conn_handle)
 
   char central_name[32] = { 0 };
   connection->getPeerName(central_name, sizeof(central_name));
-
-  Serial.print("Connected to ");
-  Serial.println(central_name);
+  #ifdef UART_BUILD
+    Serial.print("Connected to ");
+    Serial.println(central_name);
+  #endif UART_BUILD
 }
 
 /**
@@ -55,9 +55,11 @@ void disconnect_callback(uint16_t conn_handle, uint8_t reason)
   (void) conn_handle;
   (void) reason;
 
-  Serial.println();
-  Serial.print("Disconnected, reason = 0x"); 
-  Serial.println(reason, HEX);
+  #ifdef UART_BUILD
+    Serial.println();
+    Serial.print("Disconnected."); 
+    Serial.println(reason, HEX);
+  #endif UART_BUILD
 }
 
 /**
@@ -143,9 +145,15 @@ void BluetoothFeather::receiveData(IData* data)
  */
 BluetoothFeather::BluetoothFeather()
 {
-    Serial.println("Bluefruit BLE constructed.");                   // Used for debugging.
-    init();
-
+    #ifdef UART_BUILD
+      Serial.println("Bluefruit BLE constructed.");                   // Used for debugging.
+    #endif UART_BUILD
+    
+    if(!alreadySetup)
+    {
+      init();
+      alreadySetup = true;
+    }
 }
 
 /**
@@ -188,8 +196,9 @@ bool BluetoothFeather::init()
     //blebas.write(100);                                              // Always sends 100 % here. Needs rewriting to work with true values.
 
     startAdv();                                                     // Start advertising.
-
-    Serial.println("BLE setup done. Look for BLE-device 'funMRI'.");
+    #ifdef UART_BUILD
+      Serial.println("BLE setup done. Look for BLE-device 'funMRI'.");
+    #endif UART_BUILD
 
     return true;
 }

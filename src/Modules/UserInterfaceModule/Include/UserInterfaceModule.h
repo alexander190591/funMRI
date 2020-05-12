@@ -17,7 +17,7 @@
 class UserInterfaceModule : public IUserInterfaceModule
 {
 public:
-    UserInterfaceModule(void);
+    UserInterfaceModule(bool madeInSmartphoneMode);
     ~UserInterfaceModule() { /*Nothing to delete...*/ };
     // MicroSwitch (bed in or out)
     bool microSwitchChanged(void);

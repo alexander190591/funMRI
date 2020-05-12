@@ -72,12 +72,15 @@ void loop() {
   // Now a card is selected. The UID and SAK is in mfrc522.uid.
   
   // Dump UID
-  Serial.print(F("Card UID:"));
-  for (byte i = 0; i < mfrc522.uid.size; i++) {
-    Serial.print(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " ");
-    Serial.print(mfrc522.uid.uidByte[i], HEX);
-  } 
-  Serial.println();
+  #ifdef UART_BUILD
+    Serial.print(F("Card UID:"));
+    for (byte i = 0; i < mfrc522.uid.size; i++) {
+      Serial.print(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " ");
+      Serial.print(mfrc522.uid.uidByte[i], HEX);
+    } 
+    Serial.println();
+  #endif UART_BUILD
+  
 
   // Dump PICC type
 //  MFRC522::PICC_Type piccType = mfrc522.PICC_GetType(mfrc522.uid.sak);
